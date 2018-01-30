@@ -1,2 +1,3 @@
 *.cc linguist-language=c++
 *.h linguist-language=c++
+*.nb linguist-language=c++
