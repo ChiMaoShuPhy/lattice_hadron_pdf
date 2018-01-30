@@ -9,6 +9,10 @@ using namespace Chroma;
 
 #define PASS(ln) cout << "====== PASS  " << ln << " ======" << endl
 
+typedef OLattice<PSpinMatrix<PColorMatrix<RScalar<double>, Nc>, Ns>> LatticePropagatorReImPrt;
+
+typedef OLattice<PScalar<PColorMatrix<RScalar<double>, Nc>>> LatticeColorMatrixReImPrt;
+
 LatticePropagator getPointSource(const multi1d<int> &pos, const int &time_dir)
 {
   START_CODE();
@@ -82,7 +86,8 @@ int main(int argc, char **argv)
   Real wvf_param;
   int wvfIntPar;
 
-  //read in
+  //================= set parameters =====================
+
   try
   {
     read(xml_in, "/chroma/Param/nrow", nrow);
@@ -134,13 +139,22 @@ int main(int argc, char **argv)
 
   EvenOddPrecWilsonFermAct S(cfs, mass);
 
+  //============= create gauge configurations ===================
+
   XMLReader gauge_file_xml, gauge_xml;
   multi1d<LatticeColorMatrix> u(Nd);
-
   //HotSt(u);
 
   gaugeStartup(gauge_file_xml, gauge_xml, u, cfg);
   unitarityCheck(u);
+
+  //======================================================
+  //
+  //  BEFORE rgauge
+  //
+  //======================================================
+
+  //=================== 1st inversion =====================
 
   Handle<FermState<T, P, P>> state(S.createState(u));
   LinOpSysSolverCGEnv::registerAll();
@@ -148,7 +162,6 @@ int main(int argc, char **argv)
 
   try
   {
-
     XMLFileWriter xml_out("1st_propagator");
     push(xml_out, "pion_crrltr");
 
@@ -165,7 +178,17 @@ int main(int argc, char **argv)
     QDP_abort(1);
   }
 
-  try
+  LatticePropagatorReImPrt quark_prpgtrRe = real(quark_prpgtr);
+  LatticePropagatorReImPrt quark_prpgtrIm = imag(quark_prpgtr);
+
+  HDF5Writer quark_prpgtr_1st_file;
+  quark_prpgtr_1st_file.open("quark_prpgtr_1st.h5", HDF5Base::ate);
+  quark_prpgtr_1st_file.set_stripesize(1048576); // MAGIC NUMBER ALERT!  1048576 = 1024^2 = 1MB.
+  quark_prpgtr_1st_file.write("Re", quark_prpgtrRe, HDF5Base::trunc);
+  quark_prpgtr_1st_file.write("Im", quark_prpgtrIm, HDF5Base::trunc);
+  quark_prpgtr_1st_file.close();
+//============== 1st propagator sink smearing (not applied here)!!!!================ 
+/*  try
   {
     // Get the name of the smearing
     string smearing_name;
@@ -183,9 +206,10 @@ int main(int argc, char **argv)
     QDPIO::cerr << ": Caught Exception : " << e << endl;
     QDP_abort(1);
   }
+*/
+  //======================Feynman-Hellman Source=========================
 
-  LatticeColorMatrix g = one;
-  //  rgauge(u,g);
+  //Src^{H}(Delta)=gaugelink(z,z+\Delta \hat \mu)*quark_prpatr(z+Delta), Needs to shift quark_prpatr(z) to quark_prpatr quark_prpatr(z+Delta)
 
   //calculate propagator with FH source
   LatticePropagator FH_quark_prpgtr = zero;
@@ -193,15 +217,9 @@ int main(int argc, char **argv)
   {
     LatticeColorMatrix gaugelink = gauge_link(u, +1, dir, steps);
 
-    //quark_prpgtr = g * quark_prpgtr;
-
-    //======================Feynman-Hellman Source=========================
-
-    //Src^{H}(Delta)=gaugelink(z,z+\Delta \hat \mu)*quark_prpatr(z+Delta), Needs to shift quark_prpatr(z) to quark_prpatr quark_prpatr(z+Delta)
-
     LatticePropagator quark_prpgtr_Delta = quark_prpgtr;
     LatticePropagator quark_prpgtr_Delta_tmp = quark_prpgtr;
-    
+
     if (steps > 0)
     {
       for (int i = 1; i <= steps; i++)
@@ -223,10 +241,48 @@ int main(int argc, char **argv)
       quark_prpgtr_Delta = quark_prpgtr;
     }
     //Gamma(8)=gamma^3 comes from the definition of quasi-PDF
-    
-   //  LatticePropagator FH_src = Gamma(8)* gaugelink * quark_prpgtr_Delta; Wrong!, QDP does not support Gamma multiply with ColorMatrix
+
+    //  LatticePropagator FH_src = Gamma(8)* gaugelink * quark_prpgtr_Delta; Wrong!, QDP does not support Gamma multiply with ColorMatrix
+
+   LatticePropagator FH_src = gaugelink * (Gamma(8) * quark_prpgtr_Delta);
+
+
+   LatticePropagatorReImPrt quark_prpgtr_shftd_Re = real(quark_prpgtr_Delta);
+   LatticePropagatorReImPrt quark_prpgtr_shftd_Im = imag(quark_prpgtr_Delta);
+
+   HDF5Writer quark_prpgtr_shftd_file;
+   quark_prpgtr_shftd_file.open("quark_prpgtr_shftd.h5", HDF5Base::ate);
+   quark_prpgtr_shftd_file.set_stripesize(1048576); // MAGIC NUMBER ALERT!  1048576 = 1024^2 = 1MB.
+   quark_prpgtr_shftd_file.write("Re", quark_prpgtr_shftd_Re, HDF5Base::trunc);
+   quark_prpgtr_shftd_file.write("Im", quark_prpgtr_shftd_Im, HDF5Base::trunc);
+   quark_prpgtr_shftd_file.close();
+
+
+  //write out gauge link
+    LatticeColorMatrixReImPrt gaugelink_Re = real(gaugelink);
+    LatticeColorMatrixReImPrt gaugelink_Im = imag(gaugelink);
+
+    HDF5Writer gaugelink_file;
+    gaugelink_file.open("gaugelink.h5", HDF5Base::ate);
+    gaugelink_file.set_stripesize(1048576); // MAGIC NUMBER ALERT!  1048576 = 1024^2 = 1MB.
+    gaugelink_file.write("Re", gaugelink_Re, HDF5Base::trunc);
+    gaugelink_file.write("Im", gaugelink_Im, HDF5Base::trunc);
+    gaugelink_file.close();
+
    
-    LatticePropagator FH_src = gaugelink * (Gamma(8) * quark_prpgtr_Delta);
+ //write out Feynman-Hellman source
+    LatticePropagatorReImPrt FH_src_Re = real(FH_src);
+    LatticePropagatorReImPrt FH_src_Im = imag(FH_src);
+
+    HDF5Writer FH_src_file;
+    FH_src_file.open("FH_src.h5", HDF5Base::ate);
+    FH_src_file.set_stripesize(1048576); // MAGIC NUMBER ALERT!  1048576 = 1024^2 = 1MB.
+    FH_src_file.write("Re", FH_src_Re, HDF5Base::trunc);
+    FH_src_file.write("Im", FH_src_Im, HDF5Base::trunc);
+    FH_src_file.close();
+
+
+
 
     //======================Feynman-Hellman Source=========================
 
@@ -235,6 +291,8 @@ int main(int argc, char **argv)
     LinOpSysSolverCGEnv::registerAll();
 
     QuarkSpinType quarkSpinType = QUARK_SPIN_TYPE_FULL;
+
+//===============2nd inversion Feynman-Hellman propagator==================
 
     XMLFileWriter xml_out("fh_xmldat");
     push(xml_out, "FH_pion_crrltr");
@@ -250,32 +308,30 @@ int main(int argc, char **argv)
     QDP_abort(1);
   }
 
+  LatticePropagatorReImPrt FH_quark_prpgtrRe = real(FH_quark_prpgtr);
+  LatticePropagatorReImPrt FH_quark_prpgtrIm = imag(FH_quark_prpgtr);
+
+  HDF5Writer FH_quark_prpgtr_file;
+  FH_quark_prpgtr_file.open("FH_quark_prpgtr.h5", HDF5Base::ate);
+  FH_quark_prpgtr_file.set_stripesize(1048576); // MAGIC NUMBER ALERT!  1048576 = 1024^2 = 1MB.
+  FH_quark_prpgtr_file.write("Re", FH_quark_prpgtrRe, HDF5Base::trunc);FH_quark_prpgtr_file.write("Im", FH_quark_prpgtrIm, HDF5Base::trunc);
+  FH_quark_prpgtr_file.close();
+
+//=========================pion-correlation function========================
+
   LatticePropagator anti_quark_prpgtr = Gamma(15) * quark_prpgtr * Gamma(15);
   LatticeComplex tr_prpgtrs = trace(Gamma(15) * adj(anti_quark_prpgtr) * Gamma(15) * FH_quark_prpgtr);
 
-  SftMom phases(0, true, Nd - 1);
+  LatticeDouble tr_prpgtrs_Re = real(tr_prpgtrs);
+  LatticeDouble tr_prpgtrs_Im = imag(tr_prpgtrs);
 
-  multi2d<DComplex> hsum;
+  HDF5Writer tr_prpgtrs_file;
+  tr_prpgtrs_file.open("tr_prpgtrs.h5", HDF5Base::ate);
+  tr_prpgtrs_file.set_stripesize(1048576); // MAGIC NUMBER ALERT!  1048576 = 1024^2 = 1MB.
+  tr_prpgtrs_file.write("Re", tr_prpgtrs_Re, HDF5Base::trunc);
+  tr_prpgtrs_file.write("Im", tr_prpgtrs_Im, HDF5Base::trunc);
+  tr_prpgtrs_file.close();
 
-  hsum = phases.sft(tr_prpgtrs);
-
-  XMLFileWriter xml_out("pion_correlator");
-  XMLArrayWriter momenta(xml_out, phases.numMom());
-
-  push(momenta, "PseudoScalar"); // Array will be called PseudoScalar
-
-  for (int i = 0; i < phases.numMom(); i++)
-  {
-    push(momenta);
-    write(momenta, "mom_index", i);
-    write(momenta, "mom", phases.numToMom(i));
-    write(momenta, "correlator", hsum[i]);
-    pop(momenta);
-  }
-  pop(momenta);
-
-  xml_out.flush();
-  //pop(xml_out);
 
   END_CODE();
   finalize();

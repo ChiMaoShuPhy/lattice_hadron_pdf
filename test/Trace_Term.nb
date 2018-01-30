@@ -1,0 +1,4870 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    145429,       4862]
+NotebookOptionsPosition[    139668,       4672]
+NotebookOutlinePosition[    140057,       4689]
+CellTagsIndexPosition[    140014,       4686]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Quit", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.725799355695139*^9, 3.725799356363386*^9}, {
+  3.7257994179255*^9, 3.7257994179977207`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "NC`"}]], "Input",
+ CellChangeTimes->{{3.725799090982366*^9, 3.7257990934421787`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox["\<\"You are using the version of NCAlgebra which is found in:\"\>", 
+  TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.725799093780057*^9, 3.725799376536107*^9, 3.725799423983636*^9, 
+   3.7258070492531347`*^9, {3.7258073287412357`*^9, 3.725807354920355*^9}, 
+   3.7258073880925713`*^9, 3.725807490235886*^9, 3.725807617492045*^9, 
+   3.725807676617086*^9, 3.725813285827903*^9, 3.725813359040008*^9, 
+   3.7258138288099213`*^9, 3.725814443779488*^9, 3.725814492233304*^9, 
+   3.725814820867919*^9, 3.7258150681305103`*^9, {3.725815105619985*^9, 
+   3.7258151270422487`*^9}, 3.725964206194414*^9, 3.725978001897657*^9, 
+   3.7259890217299137`*^9, 3.725993605266348*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"  \"\>", 
+    "\[InvisibleSpace]", "\<\"/Users/xiaonuxiong/NC/\"\>"}],
+   SequenceForm["  ", "/Users/xiaonuxiong/NC/"],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.725799093780057*^9, 3.725799376536107*^9, 3.725799423983636*^9, 
+   3.7258070492531347`*^9, {3.7258073287412357`*^9, 3.725807354920355*^9}, 
+   3.7258073880925713`*^9, 3.725807490235886*^9, 3.725807617492045*^9, 
+   3.725807676617086*^9, 3.725813285827903*^9, 3.725813359040008*^9, 
+   3.7258138288099213`*^9, 3.725814443779488*^9, 3.725814492233304*^9, 
+   3.725814820867919*^9, 3.7258150681305103`*^9, {3.725815105619985*^9, 
+   3.7258151270422487`*^9}, 3.725964206194414*^9, 3.725978001897657*^9, 
+   3.7259890217299137`*^9, 3.7259936052796392`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"You can now use \\\"<< NCAlgebra`\\\" to load NCAlgebra.\\n\"\
+\>", "\[InvisibleSpace]", 
+    StyleBox["\<\"Xiaonu has modified rules for Power in \
+NonCommutativeMultiply.m to prevent x^n being expanded to x**x**x...x**x\"\>",
+     
+     StripOnInput->False,
+     LineColor->RGBColor[1, 0, 0],
+     FrontFaceColor->RGBColor[1, 0, 0],
+     BackFaceColor->RGBColor[1, 0, 0],
+     GraphicsColor->RGBColor[1, 0, 0],
+     FontSize->16,
+     FontWeight->Bold,
+     FontColor->RGBColor[1, 0, 0]]}],
+   SequenceForm["You can now use \"<< NCAlgebra`\" to load NCAlgebra.\n", 
+    Style[
+    "Xiaonu has modified rules for Power in NonCommutativeMultiply.m to \
+prevent x^n being expanded to x**x**x...x**x", Bold, 
+     RGBColor[1, 0, 0], 16]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.725799093780057*^9, 3.725799376536107*^9, 3.725799423983636*^9, 
+   3.7258070492531347`*^9, {3.7258073287412357`*^9, 3.725807354920355*^9}, 
+   3.7258073880925713`*^9, 3.725807490235886*^9, 3.725807617492045*^9, 
+   3.725807676617086*^9, 3.725813285827903*^9, 3.725813359040008*^9, 
+   3.7258138288099213`*^9, 3.725814443779488*^9, 3.725814492233304*^9, 
+   3.725814820867919*^9, 3.7258150681305103`*^9, {3.725815105619985*^9, 
+   3.7258151270422487`*^9}, 3.725964206194414*^9, 3.725978001897657*^9, 
+   3.7259890217299137`*^9, 3.7259936053612957`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "NCAlgebra`"}]], "Input",
+ CellChangeTimes->{{3.725799102222356*^9, 3.725799111306459*^9}}],
+
+Cell["\<\
+------------------------------------------------------------
+NCAlgebra - Version 5.0.4
+Compatible with Mathematica Version 10 and above
+
+Authors:
+
+  J. William Helton*
+  Mauricio de Oliveira&
+
+* Math, UCSD, La Jolla, CA
+& MAE, UCSD, La Jolla, CA
+
+with major earlier contributions by:
+
+  Mark Stankus$ 
+  Robert L. Miller#
+
+$ Math, Cal Poly San Luis Obispo
+# General Atomics Corp
+
+Copyright: 
+  Helton and de Oliveira 2017
+  Helton 2002
+  Helton and Miller June 1991
+  All rights reserved.
+
+The program was written by the authors and by:
+  David Hurst, Daniel Lamm, Orlando Merino, Robert Obar,
+  Henry Pfister, Mike Walker, John Wavrik, Lois Yu,
+  J. Camino, J. Griffin, J. Ovall, T. Shaheen, John Shopple. 
+  The beginnings of the program come from eran@slac.
+  Considerable recent help came from Igor Klep.
+
+Current primary support is from the 
+  NSF Division of Mathematical Sciences.
+  
+This program was written with support from 
+  AFOSR, NSF, ONR, Lab for Math and Statistics at UCSD,
+  UCSD Faculty Mentor Program,
+  and US Department of Education.
+
+For NCAlgebra updates see:
+
+  www.github.com/NCAlgebra/NC
+  www.math.ucsd.edu/~ncalg
+
+------------------------------------------------------------\
+\>", "Print",
+ CellChangeTimes->{3.725964211840308*^9, 3.725978004375719*^9, 
+  3.7259890227608843`*^9, 3.725993605524887*^9}],
+
+Cell[BoxData[
+ FormBox[
+  TemplateBox[{
+   "Notation","difform",
+    "\"The defined current default input format \
+\\!\\(\\*FormBox[\\\"StandardForm\\\", TraditionalForm]\\) differs from the \
+current default output format \\!\\(\\*FormBox[\\\"TraditionalForm\\\", \
+TraditionalForm]\\). The WorkingForm option will default to the current \
+default output format, but the Notations, Symbolizations, and InfixNotations \
+may behave differently than expected.\"",2,2,1,15232428284528136551,"Local"},
+   "MessageTemplate"], TraditionalForm]], "Message", "MSG",
+ CellChangeTimes->{3.725964212382883*^9, 3.725978005005578*^9, 
+  3.725989023519051*^9, 3.725993605991323*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Gamma]", "[", "\[Mu]_", "]"}], "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{
+    RowBox[{"\[Gamma]", "[", "\[Mu]_", "]"}], ",", "TraditionalForm"}], "]"}],
+   ":=", 
+  RowBox[{"SuperscriptBox", "[", 
+   RowBox[{"\"\<\[Gamma]\>\"", ",", 
+    RowBox[{"ToBoxes", "[", 
+     RowBox[{"\[Mu]", ",", "TraditionalForm"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.725737139128797*^9, 3.725737139613896*^9}, {
+  3.725739493879973*^9, 3.725739509759186*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"g", "[", 
+   RowBox[{"\[Mu]_", ",", "\[Nu]_"}], "]"}], "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"\[Mu]_", ",", "\[Nu]_"}], "]"}], ",", "TraditionalForm"}], 
+   "]"}], ":=", 
+  RowBox[{"SuperscriptBox", "[", 
+   RowBox[{"\"\<g\>\"", ",", 
+    RowBox[{"RowBox", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"ToBoxes", "[", 
+        RowBox[{"\[Mu]", ",", "TraditionalForm"}], "]"}], ",", 
+       RowBox[{"ToBoxes", "[", 
+        RowBox[{"\[Nu]", ",", "TraditionalForm"}], "]"}]}], "}"}], "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7257399914866133`*^9, 3.725740028428691*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Dulr", "[", 
+   RowBox[{"\[Mu]_:", "\"\<\>\""}], "]"}], "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{
+    RowBox[{"Dulr", "[", 
+     RowBox[{"\[Mu]_:", "\"\<\>\""}], "]"}], ",", "TraditionalForm"}], "]"}], 
+  ":=", 
+  RowBox[{"SuperscriptBox", "[", 
+   RowBox[{
+    RowBox[{"OverscriptBox", "[", 
+     RowBox[{"\"\<D\>\"", ",", "\"\<\[LeftRightArrow]\>\""}], "]"}], ",", 
+    RowBox[{"ToBoxes", "[", 
+     RowBox[{"\[Mu]", ",", "TraditionalForm"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.72573675492869*^9, 3.725736839030259*^9}, 
+   3.725736988363974*^9, {3.725738916575692*^9, 3.725738944641811*^9}, {
+   3.725815784467298*^9, 3.725815803675891*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Dslr", "[", 
+   RowBox[{"\[Mu]_:", "\"\<\>\""}], "]"}], "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{
+    RowBox[{"Dslr", "[", 
+     RowBox[{"\[Mu]_:", "\"\<\>\""}], "]"}], ",", "TraditionalForm"}], "]"}], 
+  ":=", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"OverscriptBox", "[", 
+     RowBox[{"\"\<D\>\"", ",", "\"\<\[LeftRightArrow]\>\""}], "]"}], ",", 
+    RowBox[{"ToBoxes", "[", 
+     RowBox[{"\[Mu]", ",", "TraditionalForm"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.725738920047719*^9, 3.725738947375762*^9}, {
+  3.725815811131693*^9, 3.7258158149001217`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Dulr", "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{"Dulr", ",", "TraditionalForm"}], "]"}], ":=", 
+  RowBox[{"OverscriptBox", "[", 
+   RowBox[{"\"\<D\>\"", ",", "\"\<\[LeftRightArrow]\>\""}], "]"}]}]], "Input",\
+
+ CellChangeTimes->{{3.725978296654224*^9, 3.725978305794746*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Dslr", "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{"Dslr", ",", "TraditionalForm"}], "]"}], ":=", 
+  RowBox[{"OverscriptBox", "[", 
+   RowBox[{"\"\<D\>\"", ",", "\"\<\[LeftRightArrow]\>\""}], "]"}]}]], "Input",\
+
+ CellChangeTimes->{{3.7259783171105537`*^9, 3.725978318574831*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DlrSlsh", "/:", 
+   RowBox[{"MakeBoxes", "[", 
+    RowBox[{"DlrSlsh", ",", "TraditionalForm"}], "]"}], "=", 
+   RowBox[{"OverscriptBox", "[", 
+    RowBox[{
+     RowBox[{"OverlayBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"StyleBox", "[", 
+            RowBox[{"\"\</\>\"", ",", "16"}], "]"}], ",", 
+           RowBox[{"StyleBox", "[", 
+            RowBox[{"\"\< \>\"", ",", "12"}], "]"}]}], "}"}], "]"}], ",", 
+        "\"\<D\>\""}], "}"}], "]"}], ",", "\"\<\[LeftRightArrow]\>\""}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.725984826302371*^9, 3.725984860102157*^9}, {
+  3.72598491853664*^9, 3.7259849560954247`*^9}, {3.725985222425919*^9, 
+  3.7259853864091177`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pdulr", "[", 
+   RowBox[{"\[Mu]_:", "\"\<\>\""}], "]"}], "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{
+    RowBox[{"pdulr", "[", 
+     RowBox[{"\[Mu]_:", "\"\<\>\""}], "]"}], ",", "TraditionalForm"}], "]"}], 
+  ":=", 
+  RowBox[{"SuperscriptBox", "[", 
+   RowBox[{
+    RowBox[{"OverscriptBox", "[", 
+     RowBox[{"\"\<\[PartialD]\>\"", ",", "\"\<\[LeftRightArrow]\>\""}], "]"}],
+     ",", 
+    RowBox[{"ToBoxes", "[", 
+     RowBox[{"\[Mu]", ",", "TraditionalForm"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.72573675492869*^9, 3.725736839030259*^9}, 
+   3.725736988363974*^9, {3.725738916575692*^9, 3.725738944641811*^9}, {
+   3.725815784467298*^9, 3.725815803675891*^9}, {3.72599455336447*^9, 
+   3.7259945864105053`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pdslr", "[", 
+   RowBox[{"\[Mu]_:", "\"\<\>\""}], "]"}], "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{
+    RowBox[{"pdslr", "[", 
+     RowBox[{"\[Mu]_:", "\"\<\>\""}], "]"}], ",", "TraditionalForm"}], "]"}], 
+  ":=", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"OverscriptBox", "[", 
+     RowBox[{"\"\<\[PartialD]\>\"", ",", "\"\<\[LeftRightArrow]\>\""}], "]"}],
+     ",", 
+    RowBox[{"ToBoxes", "[", 
+     RowBox[{"\[Mu]", ",", "TraditionalForm"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.725738920047719*^9, 3.725738947375762*^9}, {
+  3.725815811131693*^9, 3.7258158149001217`*^9}, {3.725994563252297*^9, 
+  3.725994584109939*^9}}],
+
+Cell[BoxData[
+ RowBox[{"pdulr", "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{"pdulr", ",", "TraditionalForm"}], "]"}], ":=", 
+  RowBox[{"OverscriptBox", "[", 
+   RowBox[{"\"\<\[PartialD]\>\"", ",", "\"\<\[LeftRightArrow]\>\""}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.725978296654224*^9, 3.725978305794746*^9}, {
+  3.725994569732543*^9, 3.7259945895066566`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"pdslr", "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{"pdslr", ",", "TraditionalForm"}], "]"}], ":=", 
+  RowBox[{"OverscriptBox", "[", 
+   RowBox[{"\"\<\[PartialD]\>\"", ",", "\"\<\[LeftRightArrow]\>\""}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7259783171105537`*^9, 3.725978318574831*^9}, {
+  3.7259945714782*^9, 3.725994590530777*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pdlrSlsh", "/:", 
+   RowBox[{"MakeBoxes", "[", 
+    RowBox[{"pdlrSlsh", ",", "TraditionalForm"}], "]"}], "=", 
+   RowBox[{"OverscriptBox", "[", 
+    RowBox[{
+     RowBox[{"OverlayBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"StyleBox", "[", 
+            RowBox[{"\"\</\>\"", ",", "16"}], "]"}], ",", 
+           RowBox[{"StyleBox", "[", 
+            RowBox[{"\"\< \>\"", ",", "12"}], "]"}]}], "}"}], "]"}], ",", 
+        "\"\<\[PartialD]\>\""}], "}"}], "]"}], ",", 
+     "\"\<\[LeftRightArrow]\>\""}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.725984826302371*^9, 3.725984860102157*^9}, {
+  3.72598491853664*^9, 3.7259849560954247`*^9}, {3.725985222425919*^9, 
+  3.7259853864091177`*^9}, {3.725994573221898*^9, 3.7259945932193727`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Mu]", "[", "n_", "]"}], "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{
+    RowBox[{"\[Mu]", "[", "n_", "]"}], ",", "TraditionalForm"}], "]"}], ":=", 
+  
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", 
+    RowBox[{"ToBoxes", "[", 
+     RowBox[{"n", ",", "TraditionalForm"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7257392035609207`*^9, 3.725739272351385*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Rho]", "[", "n_", "]"}], "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{
+    RowBox[{"\[Rho]", "[", "n_", "]"}], ",", "TraditionalForm"}], "]"}], ":=", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{
+    RowBox[{"SubscriptBox", "[", 
+     RowBox[{"\"\<\[Rho]\>\"", ",", 
+      RowBox[{"ToBoxes", "[", 
+       RowBox[{"n", ",", "TraditionalForm"}], "]"}]}], "]"}], ",", "Blue"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7257392035609207`*^9, 3.725739272351385*^9}, {
+  3.725740045340763*^9, 3.725740055637474*^9}, {3.725816269860021*^9, 
+  3.725816274804247*^9}, {3.725966430415135*^9, 3.725966441038951*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SetAttributes", "[", 
+     RowBox[{"#", ",", "Listable"}], "]"}], "&"}], "/@", 
+   RowBox[{"{", 
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7257434517612886`*^9, 3.725743483438141*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDmyIndx", "[", "x_", "]"}], ":=", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"DmyIndxQ", "[", "x", "]"}], "=", "True"}], ";"}], 
+   ")"}]}]], "Input",
+ CellChangeTimes->{{3.725815577538362*^9, 3.7258156103234673`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SetDmyIndx", "[", 
+  RowBox[{"\[Rho]", "[", "_", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.725816309380768*^9, 3.725816317949266*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SetAttributes", "[", 
+  RowBox[{"SetDmyIndx", ",", "Listable"}], "]"}]], "Input",
+ CellChangeTimes->{{3.725815618955789*^9, 3.725815629876278*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SetAttributes", "[", 
+     RowBox[{"#", ",", "Listable"}], "]"}], "&"}], "/@", 
+   RowBox[{"{", 
+    RowBox[{"Dulr", ",", "Dslr", ",", "\[Mu]", ",", "\[Nu]"}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7258152756148577`*^9, 3.725815293513125*^9}, {
+  3.725978046747156*^9, 3.725978050124115*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SetCommutative", "[", "g", "]"}]], "Input",
+ CellChangeTimes->{{3.725815164921661*^9, 3.725815170369865*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SetNonCommutative", "[", 
+  RowBox[{"Dulr", ",", "Dslr", ",", "DlrSlsh"}], "]"}]], "Input",
+ CellChangeTimes->{{3.725814860911296*^9, 3.725814865390917*^9}, {
+  3.7258151385853243`*^9, 3.725815140080894*^9}, {3.725985959394559*^9, 
+  3.725985984444276*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum1", "=", 
+  RowBox[{"Inactive", "[", "Sum", "]"}]}]], "Input",
+ CellChangeTimes->{{3.725740306996211*^9, 3.725740313868164*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"Inactive", "[", "Sum", "]"}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.725740314820978*^9, 3.725796597478355*^9, 
+  3.725799330380856*^9, 3.725799387592657*^9, 3.7257994244892178`*^9, 
+  3.72580706543351*^9, 3.725815155297323*^9, 3.7259642129327393`*^9, 
+  3.725978013406788*^9, 3.725989025809794*^9, 3.7259936066238823`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NCM", "=", "NonCommutativeMultiply"}]], "Input",
+ CellChangeTimes->{{3.725806872884*^9, 3.7258068885820637`*^9}}],
+
+Cell[BoxData[
+ FormBox["NonCommutativeMultiply", TraditionalForm]], "Output",
+ CellChangeTimes->{3.725806889571739*^9, 3.725815189863779*^9, 
+  3.72596421298778*^9, 3.7259780154166737`*^9, 3.725989026940373*^9, 
+  3.725993606729643*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"myOPE", "[", "n1_Integer", "]"}], ":=", 
+   RowBox[{"NCM", "@@@", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Dulr", "[", 
+          RowBox[{"\[Mu]", "[", "i", "]"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", 
+           RowBox[{"j", "-", "1"}]}], "}"}]}], "]"}], "~", "Join", "~", 
+       RowBox[{"{", 
+        RowBox[{"\[Gamma]", "[", 
+         RowBox[{"\[Mu]", "[", "j", "]"}], "]"}], "}"}], "~", "Join", "~", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Dulr", "[", 
+          RowBox[{"\[Mu]", "[", "i", "]"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", 
+           RowBox[{"j", "+", "1"}], ",", "n1"}], "}"}]}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "n1"}], "}"}]}], "]"}]}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.72574266675366*^9, 3.72574267502608*^9}, {
+   3.7257427248134003`*^9, 3.725742914598097*^9}, 3.725743032777335*^9, {
+   3.725743067087194*^9, 3.7257431206330347`*^9}, {3.725743230287779*^9, 
+   3.725743242900427*^9}, {3.7257432856159887`*^9, 3.725743298808375*^9}, {
+   3.7257433426179867`*^9, 3.725743345145925*^9}, {3.7257433910737333`*^9, 
+   3.725743391474442*^9}, {3.725799643424151*^9, 3.725799660714267*^9}, {
+   3.725799742465424*^9, 3.725799744515325*^9}, 3.725806483751586*^9, {
+   3.725977490544656*^9, 3.7259774985766077`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["NCM"], "Input",
+ CellChangeTimes->{{3.7259774669476643`*^9, 3.7259774674768343`*^9}}],
+
+Cell[BoxData[
+ FormBox["NonCommutativeMultiply", TraditionalForm]], "Output",
+ CellChangeTimes->{3.725977468148169*^9, 3.7259779684644833`*^9, 
+  3.725989027724519*^9, 3.725993606833939*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "myOPE", "]"}]], "Input",
+ CellChangeTimes->{{3.725977987317127*^9, 3.725977990286374*^9}, {
+  3.725993660302087*^9, 3.725993660670802*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Options", "[", "myOPE", "]"}], "=", 
+  RowBox[{"{", 
+   RowBox[{"\"\<Sum\>\"", "\[Rule]", "False"}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.725977044334742*^9, 3.725977056575027*^9}, {
+  3.725977161411838*^9, 3.7259771775891647`*^9}, {3.7259772898777246`*^9, 
+  3.72597729534214*^9}, {3.725993658429904*^9, 3.725993658734769*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"\<\"Sum\"\>", "\[Rule]", "False"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.7259772971258583`*^9, 3.725977970348139*^9, 
+  3.725978021441448*^9, 3.72598902806504*^9, 3.725993268247542*^9, 
+  3.725993662699188*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"myOPE", "[", 
+   RowBox[{"n_", ",", 
+    RowBox[{"opts", ":", 
+     RowBox[{"OptionsPattern", "[", "]"}]}]}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"oplst", "=", 
+      RowBox[{"NCM", "@@@", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Flatten", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"\[Gamma]", "[", 
+              RowBox[{
+              "#", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+              "]"}], ",", 
+             RowBox[{"Dulr", "[", 
+              RowBox[{"#", "\[LeftDoubleBracket]", 
+               RowBox[{"2", ";;", 
+                RowBox[{"-", "1"}]}], "\[RightDoubleBracket]"}], "]"}]}], 
+            "}"}], "]"}], "&"}], "/@", 
+         RowBox[{"Permutations", "[", 
+          RowBox[{"\[Mu]", "/@", 
+           RowBox[{"Range", "[", "n", "]"}]}], "]"}]}], ")"}]}]}], "}"}], ",", 
+    TagBox[GridBox[{
+       {"\[Piecewise]", GridBox[{
+          {"oplst", 
+           RowBox[{"!", 
+            RowBox[{"OptionValue", "[", "\"\<Sum\>\"", "]"}]}]},
+          {
+           RowBox[{"Total", "[", "oplst", "]"}], 
+           RowBox[{"OptionValue", "[", "\"\<Sum\>\"", "]"}]}
+         },
+         AllowedDimensions->{2, Automatic},
+         Editable->True,
+         GridBoxAlignment->{
+          "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+           "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+         GridBoxItemSize->{
+          "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, 
+           "Rows" -> {{1.}}, "RowsIndexed" -> {}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.84]}, 
+             Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}, "RowsIndexed" -> {}},
+         Selectable->True]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{
+       "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.35]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}],
+     "Piecewise",
+     DeleteWithContents->True,
+     Editable->False,
+     SelectWithContents->True,
+     Selectable->False]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.725976882065675*^9, 3.72597699774026*^9}, {
+   3.72597730217476*^9, 3.7259774713177347`*^9}, 3.7259777516184053`*^9, {
+   3.7259777862725058`*^9, 3.725977814084937*^9}, {3.725977973353755*^9, 
+   3.725977974040854*^9}, {3.725989886996852*^9, 3.725989907395043*^9}, {
+   3.725993612391377*^9, 3.725993612744111*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"OPEtr", "[", 
+   RowBox[{"n1_", ",", "m1_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"CntrctInxd", "=", 
+         RowBox[{"DeleteDuplicates", "[", 
+          RowBox[{
+           RowBox[{"DeleteDuplicates", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"ArrayReshape", "[", 
+                RowBox[{"#", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"2", ",", 
+                   FractionBox["m1", "2"]}], "}"}]}], "]"}], "&"}], "/@", 
+              RowBox[{"Permutations", "[", 
+               RowBox[{
+                RowBox[{"\[Mu]", "[", 
+                 RowBox[{"Range", "[", "n1", "]"}], "]"}], ",", 
+                RowBox[{"{", "m1", "}"}]}], "]"}]}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"Sort", "/@", "#1"}], ")"}], "\[Equal]", 
+               RowBox[{"(", 
+                RowBox[{"Sort", "/@", "#2"}], ")"}]}], "&"}]}], "]"}], ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Sort", "[", "#1", "]"}], "\[Equal]", 
+             RowBox[{"Sort", "[", "#2", "]"}]}], "&"}]}], "]"}]}], ",", 
+        "gTnsrIndxRplc", ",", "IndxRplc", ",", "mrtctnsr"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"IndxRplc", "=", 
+        RowBox[{"MapIndexed", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"#1", "\[Rule]", 
+            RowBox[{"\[Rho]", "[", 
+             RowBox[{
+              RowBox[{"IntegerPart", "[", 
+               FractionBox[
+                RowBox[{
+                 RowBox[{
+                 "#2", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}],
+                  "-", "1"}], "2"], "]"}], "+", "1"}], "]"}]}], "&"}], ",", 
+          RowBox[{"Flatten", "/@", "CntrctInxd"}], ",", 
+          RowBox[{"{", "2", "}"}]}], "]"}]}], ";", 
+       RowBox[{"gTnsrIndxRplc", "=", 
+        RowBox[{"Flatten", "/@", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"MapIndexed", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Insert", "[", 
+               RowBox[{"#1", ",", 
+                RowBox[{
+                 RowBox[{"mrtctnsr", "[", 
+                  RowBox[{
+                  "#2", "\[LeftDoubleBracket]", "1", 
+                   "\[RightDoubleBracket]"}], "]"}], "\[Rule]", 
+                 RowBox[{"g", "[", 
+                  RowBox[{
+                   RowBox[{"#1", "\[LeftDoubleBracket]", 
+                    RowBox[{"1", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
+                   RowBox[{"#1", "\[LeftDoubleBracket]", 
+                    RowBox[{"2", ",", "1"}], "\[RightDoubleBracket]"}]}], 
+                  "]"}]}], ",", "1"}], "]"}], "&"}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"GatherBy", "[", 
+                 RowBox[{"#", ",", "Last"}], "]"}], "&"}], "/@", "IndxRplc"}],
+               "//", "Transpose"}], ",", 
+             RowBox[{"{", "2", "}"}]}], "]"}], "//", "Transpose"}], ")"}]}]}],
+        ";", 
+       RowBox[{"Nest", "[", 
+        RowBox[{"Total", ",", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"ReplaceAll", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"Times", "@@", 
+                    RowBox[{"(", 
+                    RowBox[{"mrtctnsr", "/@", 
+                    RowBox[{"Range", "[", 
+                    FractionBox["m1", "2"], "]"}]}], ")"}]}], ")"}], "*", 
+                  RowBox[{
+                   RowBox[{"myOPE", "[", "n1", "]"}], "\[LeftDoubleBracket]", 
+                   "i", "\[RightDoubleBracket]"}]}], ",", "#"}], "]"}], "&"}],
+               "/@", "gTnsrIndxRplc"}], "//", "Simplify"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"n1", "!"}]}], "}"}]}], "]"}], "//", "Simplify"}], ",", 
+         "2"}], "]"}]}]}], "]"}], "//.", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"Dulr", "[", "\[Zeta]_", "]"}], 
+       RowBox[{"n_", "?", "EvenQ"}]], "/;", 
+      RowBox[{"DmyIndxQ", "[", "\[Zeta]", "]"}]}], "\[RuleDelayed]", 
+     SuperscriptBox["Dulr", "n"]}]}], "//", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.7259908340428467`*^9, 3.72599094055226*^9}, {
+   3.725991019331294*^9, 3.725991102959893*^9}, {3.7259911652870893`*^9, 
+   3.72599119543055*^9}, {3.725991268752651*^9, 3.7259912721411257`*^9}, {
+   3.725991302850132*^9, 3.725991427329032*^9}, {3.7259914587478247`*^9, 
+   3.7259914667554893`*^9}, {3.72599151021994*^9, 3.725991579938401*^9}, {
+   3.7259916686704273`*^9, 3.725991714609742*^9}, 3.725991750631188*^9, {
+   3.7259926478548517`*^9, 3.7259927161580553`*^9}, {3.725992776121134*^9, 
+   3.725992850877668*^9}, {3.725992887156973*^9, 3.725992942685877*^9}, {
+   3.725992976775838*^9, 3.725992979486059*^9}, {3.7259930408924*^9, 
+   3.725993041442397*^9}, {3.725993211202197*^9, 3.7259932330101357`*^9}, {
+   3.725993290938299*^9, 3.725993291279736*^9}, {3.725993389124167*^9, 
+   3.72599341504447*^9}, {3.725993623224292*^9, 3.725993623578092*^9}, 
+   3.725993903387198*^9, {3.725994864199346*^9, 3.725994864376096*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"TypeSetRplc", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"\[Gamma]", "[", "\[Mu]_", "]"}], "*", 
+        RowBox[{
+         RowBox[{"Dulr", "[", "\[Mu]_", "]"}], "**", "X__"}]}], "/;", 
+       RowBox[{"DmyIndxQ", "[", "\[Mu]", "]"}]}], "\[RuleDelayed]", 
+      RowBox[{"DlrSlsh", "**", "X"}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"\[Gamma]", "[", "\[Mu]_", "]"}], "*", 
+        RowBox[{"X__", "**", 
+         RowBox[{"Dulr", "[", "\[Mu]_", "]"}]}]}], "/;", 
+       RowBox[{"DmyIndxQ", "[", "\[Mu]", "]"}]}], "\[RuleDelayed]", 
+      RowBox[{"X", "**", "DlrSlsh"}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"\[Gamma]", "[", "\[Mu]_", "]"}], "*", 
+        RowBox[{"X__", "**", 
+         RowBox[{"Dulr", "[", "\[Mu]_", "]"}], "**", "Y__"}]}], "/;", 
+       RowBox[{"DmyIndxQ", "[", "\[Mu]", "]"}]}], "\[RuleDelayed]", 
+      RowBox[{"X", "**", "DlrSlsh", "**", "Y"}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"\[Gamma]", "[", "\[Mu]_", "]"}], "*", 
+        RowBox[{"Dulr", "[", "\[Mu]_", "]"}]}], "/;", 
+       RowBox[{"DmyIndxQ", "[", "\[Mu]", "]"}]}], "\[RuleDelayed]", 
+      "DlrSlsh"}], ",", 
+     RowBox[{"NCM", "\[Rule]", "CenterDot"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.725985501332735*^9, 3.725985552578334*^9}, {
+  3.725985591236425*^9, 3.7259856208131313`*^9}, {3.725985660839306*^9, 
+  3.7259856720243998`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{"2", "!"}]], 
+     RowBox[{"Expand", "[", 
+      RowBox[{"OPEtr", "[", 
+       RowBox[{"2", ",", "2"}], "]"}], "]"}]}], "//.", "TypeSetRplc"}], "//.", 
+   RowBox[{
+    RowBox[{"\[Mu]", "[", "_", "]"}], "\[Rule]", "z"}]}], "//.", 
+  RowBox[{
+   RowBox[{"g", "[", 
+    RowBox[{"z", ",", "z"}], "]"}], "\[Rule]", 
+   RowBox[{"-", "1"}]}]}]], "Input",
+ CellChangeTimes->{{3.725978460663823*^9, 3.725978460784124*^9}, {
+  3.725985450943164*^9, 3.7259854914577417`*^9}, {3.7259855225460453`*^9, 
+  3.725985527397447*^9}, {3.7259942951577168`*^9, 3.725994347944295*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   OverscriptBox[
+    OverlayBox[{
+     RowBox[{
+      StyleBox["/",
+       FontSize->16], 
+      StyleBox[" ",
+       FontSize->12]}], "D"}], "\[LeftRightArrow]"]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7259854741789827`*^9, 3.725985492175042*^9}, {
+   3.725985527787486*^9, 3.725985554597341*^9}, 3.725985673717304*^9, 
+   3.72598599273168*^9, 3.7259934340407467`*^9, {3.725994303820898*^9, 
+   3.725994316949293*^9}, 3.725994349504737*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Expand", "[", 
+     RowBox[{
+      FractionBox["1", 
+       RowBox[{"3", "!"}]], 
+      RowBox[{"OPEtr", "[", 
+       RowBox[{"3", ",", "2"}], "]"}]}], "]"}], "//.", "TypeSetRplc"}], "//.", 
+   RowBox[{
+    RowBox[{"\[Mu]", "[", "_", "]"}], "\[Rule]", "z"}]}], "//.", 
+  RowBox[{
+   RowBox[{"g", "[", 
+    RowBox[{"z", ",", "z"}], "]"}], "\[Rule]", 
+   RowBox[{"-", "1"}]}]}]], "Input",
+ CellChangeTimes->{{3.725994328232958*^9, 3.725994359694298*^9}, {
+  3.725994507044507*^9, 3.7259945186035433`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     SuperscriptBox["\[Gamma]", 
+      FormBox["z",
+       TraditionalForm]], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox["\<\"\"\>",
+         TraditionalForm]], ")"}], "2"]}]}], "-", 
+   RowBox[{
+    OverscriptBox[
+     OverlayBox[{
+      RowBox[{
+       StyleBox["/",
+        FontSize->16], 
+       StyleBox[" ",
+        FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+    SuperscriptBox[
+     OverscriptBox["D", "\[LeftRightArrow]"], 
+     FormBox["z",
+      TraditionalForm]]}], "-", 
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["D", "\[LeftRightArrow]"], 
+     FormBox["z",
+      TraditionalForm]], "\[CenterDot]", 
+    OverscriptBox[
+     OverlayBox[{
+      RowBox[{
+       StyleBox["/",
+        FontSize->16], 
+       StyleBox[" ",
+        FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7259943287873096`*^9, 3.7259943604315*^9}, {
+  3.725994515242017*^9, 3.72599451917153*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Expand", "[", 
+       RowBox[{
+        FractionBox["1", 
+         RowBox[{"3", "!"}]], 
+        RowBox[{"OPEtr", "[", 
+         RowBox[{"3", ",", "2"}], "]"}]}], "]"}], "//.", 
+      RowBox[{"Dulr", "\[Rule]", "pdulr"}]}], "//.", "TypeSetRplc"}], "//.", 
+    RowBox[{
+     RowBox[{"\[Mu]", "[", "_", "]"}], "\[Rule]", "z"}]}], "//.", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"z", ",", "z"}], "]"}], "\[Rule]", 
+    RowBox[{"-", "1"}]}]}], "//.", 
+  RowBox[{"CenterDot", "\[Rule]", "Times"}]}]], "Input",
+ CellChangeTimes->{{3.725994614620879*^9, 3.725994626709238*^9}, {
+  3.725994670936635*^9, 3.725994677184716*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     SuperscriptBox["\[Gamma]", 
+      FormBox["z",
+       TraditionalForm]], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       SuperscriptBox[
+        OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+        FormBox["\<\"\"\>",
+         TraditionalForm]], ")"}], "2"]}]}], "-", 
+   RowBox[{"2", " ", 
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      StyleBox[
+       SubscriptBox["\[Rho]", 
+        FormBox["1",
+         TraditionalForm]],
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontColor->RGBColor[0, 0, 1]],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+     FormBox[
+      StyleBox[
+       SubscriptBox["\[Rho]", 
+        FormBox["1",
+         TraditionalForm]],
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontColor->RGBColor[0, 0, 1]],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+     FormBox["z",
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.7259946273182287`*^9, 3.7259946776615133`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Expand", "[", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{"4", "!"}]], 
+     RowBox[{"OPEtr", "[", 
+      RowBox[{"4", ",", "2"}], "]"}]}], "]"}], "//.", 
+   RowBox[{"Dulr", "\[Rule]", "pdulr"}]}], "//.", 
+  RowBox[{
+   RowBox[{"\[Mu]", "[", "_", "]"}], "\[Rule]", "z"}]}]], "Input",
+ CellChangeTimes->{3.725994758900194*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"2", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox["z",
+       TraditionalForm], 
+      FormBox["z",
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["\[Gamma]", 
+     FormBox["z",
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+       FormBox["\<\"\"\>",
+        TraditionalForm]], ")"}], "2"], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+     FormBox["z",
+      TraditionalForm]]}], "+", 
+   RowBox[{
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox["z",
+       TraditionalForm], 
+      FormBox["z",
+       TraditionalForm]}]], " ", 
+    SuperscriptBox["\[Gamma]", 
+     FormBox["z",
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+       FormBox[
+        StyleBox[
+         SubscriptBox["\[Rho]", 
+          FormBox["1",
+           TraditionalForm]],
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontColor->RGBColor[0, 0, 1]],
+        TraditionalForm]], ")"}], "2"], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+     FormBox["z",
+      TraditionalForm]]}], "+", 
+   RowBox[{"3", " ", 
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      StyleBox[
+       SubscriptBox["\[Rho]", 
+        FormBox["1",
+         TraditionalForm]],
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontColor->RGBColor[0, 0, 1]],
+      TraditionalForm]], " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox["z",
+       TraditionalForm], 
+      FormBox["z",
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+     FormBox[
+      StyleBox[
+       SubscriptBox["\[Rho]", 
+        FormBox["1",
+         TraditionalForm]],
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontColor->RGBColor[0, 0, 1]],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+       FormBox["z",
+        TraditionalForm]], ")"}], "2"]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.725994759559041*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Expand", "[", 
+         RowBox[{
+          FractionBox["1", 
+           RowBox[{"4", "!"}]], 
+          RowBox[{"OPEtr", "[", 
+           RowBox[{"4", ",", "2"}], "]"}]}], "]"}], "//.", 
+        RowBox[{"Dulr", "\[Rule]", "pdulr"}]}], "//.", "TypeSetRplc"}], "//.", 
+      RowBox[{
+       RowBox[{"\[Mu]", "[", "_", "]"}], "\[Rule]", "z"}]}], "//.", 
+     RowBox[{
+      RowBox[{"g", "[", 
+       RowBox[{"z", ",", "z"}], "]"}], "\[Rule]", 
+      RowBox[{"-", "1"}]}]}], "//.", 
+    RowBox[{"CenterDot", "\[Rule]", "Times"}]}], "//.", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"pdulr", "[", "\[Mu]_", "]"}], "2"], "/;", 
+     RowBox[{"DmyIndxQ", "[", "\[Mu]", "]"}]}], "\[Rule]", 
+    SuperscriptBox["pdulr", "2"]}]}], "//", "Simplify"}]], "Input",
+ CellChangeTimes->{{3.72599468426431*^9, 3.725994730542145*^9}, {
+  3.72599477398202*^9, 3.7259947850646467`*^9}, {3.725994822237563*^9, 
+  3.72599484315296*^9}, {3.725994875862741*^9, 3.725994880240839*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", "3"}], " ", 
+   SuperscriptBox[
+    OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+    FormBox["z",
+     TraditionalForm]], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[Gamma]", 
+       FormBox["z",
+        TraditionalForm]], " ", 
+      SuperscriptBox[
+       OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], "2"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        StyleBox[
+         SubscriptBox["\[Rho]", 
+          FormBox["1",
+           TraditionalForm]],
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontColor->RGBColor[0, 0, 1]],
+        TraditionalForm]], " ", 
+      SuperscriptBox[
+       OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+       FormBox[
+        StyleBox[
+         SubscriptBox["\[Rho]", 
+          FormBox["1",
+           TraditionalForm]],
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontColor->RGBColor[0, 0, 1]],
+        TraditionalForm]], " ", 
+      SuperscriptBox[
+       OverscriptBox["\[PartialD]", "\[LeftRightArrow]"], 
+       FormBox["z",
+        TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.725994685867137*^9, 3.725994774785845*^9, {3.725994816252365*^9, 
+   3.7259948811459618`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Expand", "[", 
+    RowBox[{"OPEtr", "[", 
+     RowBox[{"3", ",", "2"}], "]"}], "]"}], "//.", "TypeSetRplc"}], "//", 
+  "Simplify"}]], "Input",
+ CellChangeTimes->{{3.725978464366349*^9, 3.72597846451091*^9}, {
+  3.725985531755074*^9, 3.725985544744042*^9}, {3.725989621781707*^9, 
+  3.7259896243844*^9}, {3.725993320158613*^9, 3.725993335695238*^9}, {
+  3.725993448194359*^9, 3.725993452913731*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox["1", "3"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        SubscriptBox["\[Mu]", 
+         FormBox["1",
+          TraditionalForm]],
+        TraditionalForm]], " ", 
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm]}]], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SuperscriptBox[
+         OverscriptBox["D", "\[LeftRightArrow]"], 
+         FormBox["\<\"\"\>",
+          TraditionalForm]], ")"}], "2"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        SubscriptBox["\[Mu]", 
+         FormBox["2",
+          TraditionalForm]],
+        TraditionalForm]], " ", 
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm]}]], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SuperscriptBox[
+         OverscriptBox["D", "\[LeftRightArrow]"], 
+         FormBox["\<\"\"\>",
+          TraditionalForm]], ")"}], "2"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        SubscriptBox["\[Mu]", 
+         FormBox["3",
+          TraditionalForm]],
+        TraditionalForm]], " ", 
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm]}]], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SuperscriptBox[
+         OverscriptBox["D", "\[LeftRightArrow]"], 
+         FormBox["\<\"\"\>",
+          TraditionalForm]], ")"}], "2"]}], "+", 
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm]}]], " ", 
+      RowBox[{
+       OverscriptBox[
+        OverlayBox[{
+         RowBox[{
+          StyleBox["/",
+           FontSize->16], 
+          StyleBox[" ",
+           FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm]]}]}], "+", 
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm]}]], " ", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm]], "\[CenterDot]", 
+       OverscriptBox[
+        OverlayBox[{
+         RowBox[{
+          StyleBox["/",
+           FontSize->16], 
+          StyleBox[" ",
+           FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}], "+", 
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm]}]], " ", 
+      RowBox[{
+       OverscriptBox[
+        OverlayBox[{
+         RowBox[{
+          StyleBox["/",
+           FontSize->16], 
+          StyleBox[" ",
+           FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm]]}]}], "+", 
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm]}]], " ", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm]], "\[CenterDot]", 
+       OverscriptBox[
+        OverlayBox[{
+         RowBox[{
+          StyleBox["/",
+           FontSize->16], 
+          StyleBox[" ",
+           FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}], "+", 
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm]}]], " ", 
+      RowBox[{
+       OverscriptBox[
+        OverlayBox[{
+         RowBox[{
+          StyleBox["/",
+           FontSize->16], 
+          StyleBox[" ",
+           FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm]]}]}], "+", 
+     RowBox[{
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm]}]], " ", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm]], "\[CenterDot]", 
+       OverscriptBox[
+        OverlayBox[{
+         RowBox[{
+          StyleBox["/",
+           FontSize->16], 
+          StyleBox[" ",
+           FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.725978464905746*^9, {3.72598554546113*^9, 3.7259855673400707`*^9}, 
+   3.725985995457775*^9, 3.72598962506332*^9, {3.7259934378137417`*^9, 
+   3.725993453567154*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Expand", "[", 
+      RowBox[{"OPEtr", "[", 
+       RowBox[{"4", ",", "2"}], "]"}], "]"}], "//.", 
+     RowBox[{
+      RowBox[{"\[Mu]", "[", "_", "]"}], "\[Rule]", "z"}]}], "//.", 
+    RowBox[{
+     RowBox[{"g", "[", 
+      RowBox[{"z", ",", "z"}], "]"}], "\[Rule]", 
+     RowBox[{"-", "1"}]}]}], "//.", "TypeSetRplc"}], "//", 
+  "Simplif"}]], "Input",
+ CellChangeTimes->{{3.725993521694827*^9, 3.725993542805853*^9}, 
+   3.725997938280328*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{
+     SuperscriptBox["\[Gamma]", 
+      FormBox["z",
+       TraditionalForm]], " ", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        SuperscriptBox[
+         OverscriptBox["D", "\[LeftRightArrow]"], 
+         FormBox["\<\"\"\>",
+          TraditionalForm]], ")"}], "2"], "\[CenterDot]", 
+      SuperscriptBox[
+       OverscriptBox["D", "\[LeftRightArrow]"], 
+       FormBox["z",
+        TraditionalForm]]}]}]}], "-", 
+   RowBox[{
+    SuperscriptBox["\[Gamma]", 
+     FormBox["z",
+      TraditionalForm]], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox["z",
+       TraditionalForm]], "\[CenterDot]", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox["\<\"\"\>",
+         TraditionalForm]], ")"}], "2"]}]}], "-", 
+   RowBox[{
+    SuperscriptBox["\[Gamma]", 
+     FormBox["z",
+      TraditionalForm]], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["1",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm]], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox["z",
+       TraditionalForm]], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["1",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox["z",
+         TraditionalForm]], ")"}], "2"]}], ")"}], "-", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       OverscriptBox["D", "\[LeftRightArrow]"], 
+       FormBox["z",
+        TraditionalForm]], ")"}], "2"], "\[CenterDot]", 
+    OverscriptBox[
+     OverlayBox[{
+      RowBox[{
+       StyleBox["/",
+        FontSize->16], 
+       StyleBox[" ",
+        FontSize->12]}], "D"}], "\[LeftRightArrow]"]}], "-", 
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["D", "\[LeftRightArrow]"], 
+     FormBox["z",
+      TraditionalForm]], "\[CenterDot]", 
+    OverscriptBox[
+     OverlayBox[{
+      RowBox[{
+       StyleBox["/",
+        FontSize->16], 
+       StyleBox[" ",
+        FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+    SuperscriptBox[
+     OverscriptBox["D", "\[LeftRightArrow]"], 
+     FormBox["z",
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.725993529041376*^9, 3.725993543329338*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"tt1", "=", 
+  RowBox[{
+   RowBox[{"Collect", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"C", "*", 
+       RowBox[{"Expand", "[", 
+        RowBox[{
+         FractionBox["1", 
+          RowBox[{"2", "!"}]], 
+         RowBox[{"OPEtr", "[", 
+          RowBox[{"3", ",", "2"}], "]"}]}], "]"}]}], "//.", "TypeSetRplc"}], 
+     ",", 
+     RowBox[{"g", "[", 
+      RowBox[{"_", ",", "_"}], "]"}], ",", "Simplify"}], "]"}], "//.", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[Gamma]", "\[Rule]", "GA"}], ",", 
+     RowBox[{"g", "\[Rule]", "MT"}]}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.7259978354979057`*^9, 3.725997866826913*^9}, {
+  3.7259998929525948`*^9, 3.725999915257778*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"C", " ", 
+    FormBox[
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox[
+          FormBox[
+           SubscriptBox["\[Mu]", 
+            FormBox["1",
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          FormBox[
+           SubscriptBox["\[Mu]", 
+            FormBox["2",
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm]}]],
+      TraditionalForm],
+     TraditionalForm], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], "2"], " ", 
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["\[Gamma]", "_"], 
+         FormBox[
+          FormBox[
+           SubscriptBox["\[Mu]", 
+            FormBox["3",
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}], "+", 
+      RowBox[{
+       OverscriptBox[
+        OverlayBox[{
+         RowBox[{
+          StyleBox["/",
+           FontSize->16], 
+          StyleBox[" ",
+           FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm]]}], "+", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm]], "\[CenterDot]", 
+       OverscriptBox[
+        OverlayBox[{
+         RowBox[{
+          StyleBox["/",
+           FontSize->16], 
+          StyleBox[" ",
+           FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}], ")"}]}], "+", 
+   RowBox[{"C", " ", 
+    FormBox[
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox[
+          FormBox[
+           SubscriptBox["\[Mu]", 
+            FormBox["1",
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          FormBox[
+           SubscriptBox["\[Mu]", 
+            FormBox["3",
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm]}]],
+      TraditionalForm],
+     TraditionalForm], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], "2"], " ", 
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["\[Gamma]", "_"], 
+         FormBox[
+          FormBox[
+           SubscriptBox["\[Mu]", 
+            FormBox["2",
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}], "+", 
+      RowBox[{
+       OverscriptBox[
+        OverlayBox[{
+         RowBox[{
+          StyleBox["/",
+           FontSize->16], 
+          StyleBox[" ",
+           FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm]]}], "+", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm]], "\[CenterDot]", 
+       OverscriptBox[
+        OverlayBox[{
+         RowBox[{
+          StyleBox["/",
+           FontSize->16], 
+          StyleBox[" ",
+           FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}], ")"}]}], "+", 
+   RowBox[{"C", " ", 
+    FormBox[
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox[
+          FormBox[
+           SubscriptBox["\[Mu]", 
+            FormBox["2",
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          FormBox[
+           SubscriptBox["\[Mu]", 
+            FormBox["3",
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm],
+         TraditionalForm]}]],
+      TraditionalForm],
+     TraditionalForm], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], "2"], " ", 
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["\[Gamma]", "_"], 
+         FormBox[
+          FormBox[
+           SubscriptBox["\[Mu]", 
+            FormBox["1",
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}], "+", 
+      RowBox[{
+       OverscriptBox[
+        OverlayBox[{
+         RowBox[{
+          StyleBox["/",
+           FontSize->16], 
+          StyleBox[" ",
+           FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm]]}], "+", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm]], "\[CenterDot]", 
+       OverscriptBox[
+        OverlayBox[{
+         RowBox[{
+          StyleBox["/",
+           FontSize->16], 
+          StyleBox[" ",
+           FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}], ")"}]}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{{3.725997819999874*^9, 3.725997867354706*^9}, 
+   3.725999468141428*^9, {3.725999902114579*^9, 3.725999915830736*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"OPE3", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"myOPE", "[", 
+     RowBox[{"3", ",", 
+      RowBox[{"\"\<Sum\>\"", "\[Rule]", "True"}]}], "]"}], "//.", 
+    "TypeSetRplc"}], "//.", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[Gamma]", "\[Rule]", "GA"}], ",", 
+     RowBox[{"g", "\[Rule]", "MT"}]}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.7260005826277323`*^9, 3.726000619735978*^9}, {
+  3.726000652092746*^9, 3.726000660037486*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox[
+        SubscriptBox["\[Mu]", 
+         FormBox["1",
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["2",
+         TraditionalForm]],
+       TraditionalForm]], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["3",
+         TraditionalForm]],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox[
+        SubscriptBox["\[Mu]", 
+         FormBox["1",
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["3",
+         TraditionalForm]],
+       TraditionalForm]], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["2",
+         TraditionalForm]],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox[
+        SubscriptBox["\[Mu]", 
+         FormBox["2",
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["1",
+         TraditionalForm]],
+       TraditionalForm]], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["3",
+         TraditionalForm]],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox[
+        SubscriptBox["\[Mu]", 
+         FormBox["2",
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["3",
+         TraditionalForm]],
+       TraditionalForm]], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["1",
+         TraditionalForm]],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox[
+        SubscriptBox["\[Mu]", 
+         FormBox["3",
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["1",
+         TraditionalForm]],
+       TraditionalForm]], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["2",
+         TraditionalForm]],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox[
+       FormBox[
+        SubscriptBox["\[Mu]", 
+         FormBox["3",
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["2",
+         TraditionalForm]],
+       TraditionalForm]], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["1",
+         TraditionalForm]],
+       TraditionalForm]]}]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7260006548018103`*^9, 3.726000660556876*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Names", "[", "\"\<*Delta\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.726000896989871*^9, 3.726000908494907*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"\<\"DifferenceDelta\"\>", ",", "\<\"DiracDelta\"\>", 
+    ",", "\<\"DiscreteDelta\"\>", ",", "\<\"KroneckerDelta\"\>", 
+    ",", "\<\"OPEDelta\"\>", ",", "\<\"OPEIntegrateDelta\"\>", 
+    ",", "\<\"SmallDelta\"\>", ",", "\<\"SUNDelta\"\>", 
+    ",", "\<\"SUNFDelta\"\>"}], "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7260009017483788`*^9, 3.726000908808195*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Assuming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"\[Rho]1", "\[Element]", "Integers"}], "&&", 
+    RowBox[{"\[Rho]2", "\[Element]", "Integers"}], "&&", 
+    RowBox[{"0", "\[LessEqual]", "\[Rho]1", "\[LessEqual]", "3"}], "&&", 
+    RowBox[{"0", "\[LessEqual]", "\[Rho]2", "\[LessEqual]", "3"}]}], ",", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"Collect", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Expand", "[", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"OPE3", "-", "tt1"}], ")"}], "*", 
+              RowBox[{"MT", "[", 
+               RowBox[{
+                RowBox[{"\[Mu]", "[", "1", "]"}], ",", 
+                RowBox[{"\[Mu]", "[", "2", "]"}]}], "]"}]}], "]"}], "//", 
+            "Calc"}], ",", 
+           RowBox[{"DiracGamma", "[", "_", "]"}]}], "]"}], "//.", 
+         RowBox[{"z", "\[Rule]", "3"}]}], "//.", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"\[Mu]", "[", "1", "]"}], "\[Rule]", 
+           RowBox[{"\[Rho]", "[", "1", "]"}]}], ",", 
+          RowBox[{
+           RowBox[{"\[Mu]", "[", "2", "]"}], "\[Rule]", 
+           RowBox[{"\[Rho]", "[", "2", "]"}]}]}], "}"}]}], "//.", 
+       RowBox[{
+        RowBox[{"\[Mu]", "[", "_", "]"}], "\[Rule]", "3"}]}], "//.", 
+      RowBox[{"Pair", "\[Rule]", "KroneckerDelta"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Rho]1", ",", "0", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Rho]2", ",", "0", ",", "3"}], "}"}]}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7260009488479843`*^9, 3.726001155991879*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"16", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["3",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       TemplateBox[{RowBox[{
+           FormBox[
+            StyleBox[
+             SubscriptBox["\[Rho]", 
+              FormBox["1", TraditionalForm]], 
+             RGBColor[0, 0, 1]], TraditionalForm], ",", 
+           FormBox[
+            StyleBox[
+             SubscriptBox["\[Rho]", 
+              FormBox["2", TraditionalForm]], 
+             RGBColor[0, 0, 1]], TraditionalForm]}]},
+        "KroneckerDeltaSeq"], " ", 
+       RowBox[{
+        SuperscriptBox[
+         OverscriptBox["D", "\[LeftRightArrow]"], 
+         FormBox[
+          StyleBox[
+           SubscriptBox["\[Rho]", 
+            FormBox["1",
+             TraditionalForm]],
+           LineColor->RGBColor[0, 0, 1],
+           FrontFaceColor->RGBColor[0, 0, 1],
+           BackFaceColor->RGBColor[0, 0, 1],
+           GraphicsColor->RGBColor[0, 0, 1],
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm]], "\[CenterDot]", 
+        SuperscriptBox[
+         OverscriptBox["D", "\[LeftRightArrow]"], 
+         FormBox[
+          StyleBox[
+           SubscriptBox["\[Rho]", 
+            FormBox["2",
+             TraditionalForm]],
+           LineColor->RGBColor[0, 0, 1],
+           FrontFaceColor->RGBColor[0, 0, 1],
+           BackFaceColor->RGBColor[0, 0, 1],
+           GraphicsColor->RGBColor[0, 0, 1],
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm]]}]}], "+", 
+      RowBox[{
+       TemplateBox[{RowBox[{
+           FormBox[
+            StyleBox[
+             SubscriptBox["\[Rho]", 
+              FormBox["1", TraditionalForm]], 
+             RGBColor[0, 0, 1]], TraditionalForm], ",", 
+           FormBox[
+            StyleBox[
+             SubscriptBox["\[Rho]", 
+              FormBox["2", TraditionalForm]], 
+             RGBColor[0, 0, 1]], TraditionalForm]}]},
+        "KroneckerDeltaSeq"], " ", 
+       RowBox[{
+        SuperscriptBox[
+         OverscriptBox["D", "\[LeftRightArrow]"], 
+         FormBox[
+          StyleBox[
+           SubscriptBox["\[Rho]", 
+            FormBox["2",
+             TraditionalForm]],
+           LineColor->RGBColor[0, 0, 1],
+           FrontFaceColor->RGBColor[0, 0, 1],
+           BackFaceColor->RGBColor[0, 0, 1],
+           GraphicsColor->RGBColor[0, 0, 1],
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm]], "\[CenterDot]", 
+        SuperscriptBox[
+         OverscriptBox["D", "\[LeftRightArrow]"], 
+         FormBox[
+          StyleBox[
+           SubscriptBox["\[Rho]", 
+            FormBox["1",
+             TraditionalForm]],
+           LineColor->RGBColor[0, 0, 1],
+           FrontFaceColor->RGBColor[0, 0, 1],
+           BackFaceColor->RGBColor[0, 0, 1],
+           GraphicsColor->RGBColor[0, 0, 1],
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm]]}]}], "-", 
+      RowBox[{"6", " ", "C", " ", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], "2"]}]}], ")"}]}], "+", 
+   RowBox[{"16", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["1",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox["3",
+         TraditionalForm]], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         StyleBox[
+          SubscriptBox["\[Rho]", 
+           FormBox["1",
+            TraditionalForm]],
+          LineColor->RGBColor[0, 0, 1],
+          FrontFaceColor->RGBColor[0, 0, 1],
+          BackFaceColor->RGBColor[0, 0, 1],
+          GraphicsColor->RGBColor[0, 0, 1],
+          FontColor->RGBColor[0, 0, 1]],
+         TraditionalForm]]}], "+", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         StyleBox[
+          SubscriptBox["\[Rho]", 
+           FormBox["1",
+            TraditionalForm]],
+          LineColor->RGBColor[0, 0, 1],
+          FrontFaceColor->RGBColor[0, 0, 1],
+          BackFaceColor->RGBColor[0, 0, 1],
+          GraphicsColor->RGBColor[0, 0, 1],
+          FontColor->RGBColor[0, 0, 1]],
+         TraditionalForm]], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox["3",
+         TraditionalForm]]}]}], ")"}]}], "+", 
+   RowBox[{"16", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["2",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox["3",
+         TraditionalForm]], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         StyleBox[
+          SubscriptBox["\[Rho]", 
+           FormBox["2",
+            TraditionalForm]],
+          LineColor->RGBColor[0, 0, 1],
+          FrontFaceColor->RGBColor[0, 0, 1],
+          BackFaceColor->RGBColor[0, 0, 1],
+          GraphicsColor->RGBColor[0, 0, 1],
+          FontColor->RGBColor[0, 0, 1]],
+         TraditionalForm]]}], "+", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         StyleBox[
+          SubscriptBox["\[Rho]", 
+           FormBox["2",
+            TraditionalForm]],
+          LineColor->RGBColor[0, 0, 1],
+          FrontFaceColor->RGBColor[0, 0, 1],
+          BackFaceColor->RGBColor[0, 0, 1],
+          GraphicsColor->RGBColor[0, 0, 1],
+          FontColor->RGBColor[0, 0, 1]],
+         TraditionalForm]], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox["3",
+         TraditionalForm]]}]}], ")"}]}], "-", 
+   RowBox[{"16", " ", "C", " ", 
+    TemplateBox[{RowBox[{
+        FormBox["3", TraditionalForm], ",", 
+        FormBox[
+         StyleBox[
+          SubscriptBox["\[Rho]", 
+           FormBox["1", TraditionalForm]], 
+          RGBColor[0, 0, 1]], TraditionalForm]}]},
+     "KroneckerDeltaSeq"], " ", 
+    RowBox[{
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["1",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"16", " ", "C", " ", 
+    TemplateBox[{RowBox[{
+        FormBox["3", TraditionalForm], ",", 
+        FormBox[
+         StyleBox[
+          SubscriptBox["\[Rho]", 
+           FormBox["1", TraditionalForm]], 
+          RGBColor[0, 0, 1]], TraditionalForm]}]},
+     "KroneckerDeltaSeq"], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["1",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm]], "\[CenterDot]", 
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}], "-", 
+   RowBox[{"16", " ", "C", " ", 
+    TemplateBox[{RowBox[{
+        FormBox["3", TraditionalForm], ",", 
+        FormBox[
+         StyleBox[
+          SubscriptBox["\[Rho]", 
+           FormBox["2", TraditionalForm]], 
+          RGBColor[0, 0, 1]], TraditionalForm]}]},
+     "KroneckerDeltaSeq"], " ", 
+    RowBox[{
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["2",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"16", " ", "C", " ", 
+    TemplateBox[{RowBox[{
+        FormBox["3", TraditionalForm], ",", 
+        FormBox[
+         StyleBox[
+          SubscriptBox["\[Rho]", 
+           FormBox["2", TraditionalForm]], 
+          RGBColor[0, 0, 1]], TraditionalForm]}]},
+     "KroneckerDeltaSeq"], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["2",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm]], "\[CenterDot]", 
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}], "-", 
+   RowBox[{"64", " ", "C", " ", 
+    RowBox[{
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox["3",
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"64", " ", "C", " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox["3",
+       TraditionalForm]], "\[CenterDot]", 
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{{3.726001009081091*^9, 3.72600103781669*^9}, {
+   3.726001068138431*^9, 3.726001084202656*^9}, 3.726001121285153*^9, 
+   3.726001157735339*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Collect", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Expand", "[", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"OPE3", "-", "tt1"}], ")"}], "*", 
+           RowBox[{"MT", "[", 
+            RowBox[{
+             RowBox[{"\[Mu]", "[", "1", "]"}], ",", 
+             RowBox[{"\[Mu]", "[", "2", "]"}]}], "]"}]}], "]"}], "//", 
+         "Calc"}], ",", 
+        RowBox[{"DiracGamma", "[", "_", "]"}]}], "]"}], "//.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"\[Mu]", "[", "1", "]"}], "\[Rule]", 
+         RowBox[{"\[Rho]", "[", "1", "]"}]}], ",", 
+        RowBox[{
+         RowBox[{"\[Mu]", "[", "2", "]"}], "\[Rule]", 
+         RowBox[{"\[Rho]", "[", "2", "]"}]}]}], "}"}]}], "//.", 
+     RowBox[{
+      RowBox[{"\[Mu]", "[", "_", "]"}], "\[Rule]", "z"}]}], "//.", 
+    RowBox[{"MT", "\[Rule]", "KroneckerDelta"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Rho]1", ",", "0", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Rho]2", ",", "0", ",", "3"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7260004936093473`*^9, 3.726000495327076*^9}, {
+  3.726000569660205*^9, 3.726000570028625*^9}, {3.7260006237341948`*^9, 
+  3.7260006292539463`*^9}, {3.726000671751747*^9, 3.726000703806815*^9}, {
+  3.726000773314506*^9, 3.7260008060403957`*^9}, {3.726000839244781*^9, 
+  3.726000926400981*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"16", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["z",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["g", "_"], 
+         RowBox[{
+          FormBox[
+           FormBox[
+            FormBox[
+             StyleBox[
+              SubscriptBox["\[Rho]", 
+               FormBox["1",
+                TraditionalForm]],
+              LineColor->RGBColor[0, 0, 1],
+              FrontFaceColor->RGBColor[0, 0, 1],
+              BackFaceColor->RGBColor[0, 0, 1],
+              GraphicsColor->RGBColor[0, 0, 1],
+              FontColor->RGBColor[0, 0, 1]],
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox[
+             StyleBox[
+              SubscriptBox["\[Rho]", 
+               FormBox["2",
+                TraditionalForm]],
+              LineColor->RGBColor[0, 0, 1],
+              FrontFaceColor->RGBColor[0, 0, 1],
+              BackFaceColor->RGBColor[0, 0, 1],
+              GraphicsColor->RGBColor[0, 0, 1],
+              FontColor->RGBColor[0, 0, 1]],
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]}]],
+        TraditionalForm], " ", 
+       RowBox[{
+        SuperscriptBox[
+         OverscriptBox["D", "\[LeftRightArrow]"], 
+         FormBox[
+          StyleBox[
+           SubscriptBox["\[Rho]", 
+            FormBox["1",
+             TraditionalForm]],
+           LineColor->RGBColor[0, 0, 1],
+           FrontFaceColor->RGBColor[0, 0, 1],
+           BackFaceColor->RGBColor[0, 0, 1],
+           GraphicsColor->RGBColor[0, 0, 1],
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm]], "\[CenterDot]", 
+        SuperscriptBox[
+         OverscriptBox["D", "\[LeftRightArrow]"], 
+         FormBox[
+          StyleBox[
+           SubscriptBox["\[Rho]", 
+            FormBox["2",
+             TraditionalForm]],
+           LineColor->RGBColor[0, 0, 1],
+           FrontFaceColor->RGBColor[0, 0, 1],
+           BackFaceColor->RGBColor[0, 0, 1],
+           GraphicsColor->RGBColor[0, 0, 1],
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm]]}]}], "+", 
+      RowBox[{
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["g", "_"], 
+         RowBox[{
+          FormBox[
+           FormBox[
+            FormBox[
+             StyleBox[
+              SubscriptBox["\[Rho]", 
+               FormBox["1",
+                TraditionalForm]],
+              LineColor->RGBColor[0, 0, 1],
+              FrontFaceColor->RGBColor[0, 0, 1],
+              BackFaceColor->RGBColor[0, 0, 1],
+              GraphicsColor->RGBColor[0, 0, 1],
+              FontColor->RGBColor[0, 0, 1]],
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox[
+             StyleBox[
+              SubscriptBox["\[Rho]", 
+               FormBox["2",
+                TraditionalForm]],
+              LineColor->RGBColor[0, 0, 1],
+              FrontFaceColor->RGBColor[0, 0, 1],
+              BackFaceColor->RGBColor[0, 0, 1],
+              GraphicsColor->RGBColor[0, 0, 1],
+              FontColor->RGBColor[0, 0, 1]],
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]}]],
+        TraditionalForm], " ", 
+       RowBox[{
+        SuperscriptBox[
+         OverscriptBox["D", "\[LeftRightArrow]"], 
+         FormBox[
+          StyleBox[
+           SubscriptBox["\[Rho]", 
+            FormBox["2",
+             TraditionalForm]],
+           LineColor->RGBColor[0, 0, 1],
+           FrontFaceColor->RGBColor[0, 0, 1],
+           BackFaceColor->RGBColor[0, 0, 1],
+           GraphicsColor->RGBColor[0, 0, 1],
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm]], "\[CenterDot]", 
+        SuperscriptBox[
+         OverscriptBox["D", "\[LeftRightArrow]"], 
+         FormBox[
+          StyleBox[
+           SubscriptBox["\[Rho]", 
+            FormBox["1",
+             TraditionalForm]],
+           LineColor->RGBColor[0, 0, 1],
+           FrontFaceColor->RGBColor[0, 0, 1],
+           BackFaceColor->RGBColor[0, 0, 1],
+           GraphicsColor->RGBColor[0, 0, 1],
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm]]}]}], "-", 
+      RowBox[{"6", " ", "C", " ", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], "2"]}]}], ")"}]}], "-", 
+   RowBox[{"16", " ", "C", " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["z",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox[
+          StyleBox[
+           SubscriptBox["\[Rho]", 
+            FormBox["1",
+             TraditionalForm]],
+           LineColor->RGBColor[0, 0, 1],
+           FrontFaceColor->RGBColor[0, 0, 1],
+           BackFaceColor->RGBColor[0, 0, 1],
+           GraphicsColor->RGBColor[0, 0, 1],
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    RowBox[{
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["1",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"16", " ", "C", " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["z",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox[
+          StyleBox[
+           SubscriptBox["\[Rho]", 
+            FormBox["1",
+             TraditionalForm]],
+           LineColor->RGBColor[0, 0, 1],
+           FrontFaceColor->RGBColor[0, 0, 1],
+           BackFaceColor->RGBColor[0, 0, 1],
+           GraphicsColor->RGBColor[0, 0, 1],
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["1",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm]], "\[CenterDot]", 
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}], "-", 
+   RowBox[{"16", " ", "C", " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["z",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox[
+          StyleBox[
+           SubscriptBox["\[Rho]", 
+            FormBox["2",
+             TraditionalForm]],
+           LineColor->RGBColor[0, 0, 1],
+           FrontFaceColor->RGBColor[0, 0, 1],
+           BackFaceColor->RGBColor[0, 0, 1],
+           GraphicsColor->RGBColor[0, 0, 1],
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    RowBox[{
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["2",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"16", " ", "C", " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox["z",
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox[
+          StyleBox[
+           SubscriptBox["\[Rho]", 
+            FormBox["2",
+             TraditionalForm]],
+           LineColor->RGBColor[0, 0, 1],
+           FrontFaceColor->RGBColor[0, 0, 1],
+           BackFaceColor->RGBColor[0, 0, 1],
+           GraphicsColor->RGBColor[0, 0, 1],
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["2",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm]], "\[CenterDot]", 
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}], "+", 
+   RowBox[{"16", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["1",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox["z",
+         TraditionalForm]], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         StyleBox[
+          SubscriptBox["\[Rho]", 
+           FormBox["1",
+            TraditionalForm]],
+          LineColor->RGBColor[0, 0, 1],
+          FrontFaceColor->RGBColor[0, 0, 1],
+          BackFaceColor->RGBColor[0, 0, 1],
+          GraphicsColor->RGBColor[0, 0, 1],
+          FontColor->RGBColor[0, 0, 1]],
+         TraditionalForm]]}], "+", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         StyleBox[
+          SubscriptBox["\[Rho]", 
+           FormBox["1",
+            TraditionalForm]],
+          LineColor->RGBColor[0, 0, 1],
+          FrontFaceColor->RGBColor[0, 0, 1],
+          BackFaceColor->RGBColor[0, 0, 1],
+          GraphicsColor->RGBColor[0, 0, 1],
+          FontColor->RGBColor[0, 0, 1]],
+         TraditionalForm]], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox["z",
+         TraditionalForm]]}]}], ")"}]}], "+", 
+   RowBox[{"16", " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       StyleBox[
+        SubscriptBox["\[Rho]", 
+         FormBox["2",
+          TraditionalForm]],
+        LineColor->RGBColor[0, 0, 1],
+        FrontFaceColor->RGBColor[0, 0, 1],
+        BackFaceColor->RGBColor[0, 0, 1],
+        GraphicsColor->RGBColor[0, 0, 1],
+        FontColor->RGBColor[0, 0, 1]],
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox["z",
+         TraditionalForm]], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         StyleBox[
+          SubscriptBox["\[Rho]", 
+           FormBox["2",
+            TraditionalForm]],
+          LineColor->RGBColor[0, 0, 1],
+          FrontFaceColor->RGBColor[0, 0, 1],
+          BackFaceColor->RGBColor[0, 0, 1],
+          GraphicsColor->RGBColor[0, 0, 1],
+          FontColor->RGBColor[0, 0, 1]],
+         TraditionalForm]]}], "+", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox[
+         StyleBox[
+          SubscriptBox["\[Rho]", 
+           FormBox["2",
+            TraditionalForm]],
+          LineColor->RGBColor[0, 0, 1],
+          FrontFaceColor->RGBColor[0, 0, 1],
+          BackFaceColor->RGBColor[0, 0, 1],
+          GraphicsColor->RGBColor[0, 0, 1],
+          FontColor->RGBColor[0, 0, 1]],
+         TraditionalForm]], "\[CenterDot]", 
+       SuperscriptBox[
+        OverscriptBox["D", "\[LeftRightArrow]"], 
+        FormBox["z",
+         TraditionalForm]]}]}], ")"}]}], "-", 
+   RowBox[{"64", " ", "C", " ", 
+    RowBox[{
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox["z",
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"64", " ", "C", " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox["z",
+       TraditionalForm]], "\[CenterDot]", 
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.726000495906658*^9, 3.726000630098659*^9, {3.726000666227309*^9, 
+   3.7260007044706717`*^9}, {3.726000788820682*^9, 3.726000806631721*^9}, {
+   3.726000919729743*^9, 3.726000928175313*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Expand", "[", 
+   RowBox[{"tt1", "*", 
+    RowBox[{"MT", "[", 
+     RowBox[{
+      RowBox[{"\[Mu]", "[", "1", "]"}], ",", 
+      RowBox[{"\[Mu]", "[", "2", "]"}]}], "]"}]}], "]"}], "//", 
+  "Calc"}]], "Input",
+ CellChangeTimes->{
+  3.7259999637857647`*^9, {3.726000058589952*^9, 3.726000061533546*^9}, {
+   3.726000260084373*^9, 3.726000336740452*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"6", " ", "C", " ", 
+    SuperscriptBox[
+     OverscriptBox["D", "\[LeftRightArrow]"], "2"], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["3",
+         TraditionalForm]],
+       TraditionalForm],
+      TraditionalForm]]}], "+", 
+   RowBox[{"C", " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox[
+          SubscriptBox["\[Mu]", 
+           FormBox["1",
+            TraditionalForm]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox[
+          SubscriptBox["\[Mu]", 
+           FormBox["3",
+            TraditionalForm]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    RowBox[{
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["1",
+         TraditionalForm]],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{"C", " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox[
+          SubscriptBox["\[Mu]", 
+           FormBox["1",
+            TraditionalForm]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox[
+          SubscriptBox["\[Mu]", 
+           FormBox["3",
+            TraditionalForm]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["1",
+         TraditionalForm]],
+       TraditionalForm]], "\[CenterDot]", 
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}], "+", 
+   RowBox[{"C", " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox[
+          SubscriptBox["\[Mu]", 
+           FormBox["2",
+            TraditionalForm]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox[
+          SubscriptBox["\[Mu]", 
+           FormBox["3",
+            TraditionalForm]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    RowBox[{
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["2",
+         TraditionalForm]],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{"C", " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox[
+          SubscriptBox["\[Mu]", 
+           FormBox["2",
+            TraditionalForm]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox[
+          SubscriptBox["\[Mu]", 
+           FormBox["3",
+            TraditionalForm]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["2",
+         TraditionalForm]],
+       TraditionalForm]], "\[CenterDot]", 
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}], "+", 
+   RowBox[{"4", " ", "C", " ", 
+    RowBox[{
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"], "\[CenterDot]", 
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["3",
+         TraditionalForm]],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{"4", " ", "C", " ", 
+    RowBox[{
+     SuperscriptBox[
+      OverscriptBox["D", "\[LeftRightArrow]"], 
+      FormBox[
+       SubscriptBox["\[Mu]", 
+        FormBox["3",
+         TraditionalForm]],
+       TraditionalForm]], "\[CenterDot]", 
+     OverscriptBox[
+      OverlayBox[{
+       RowBox[{
+        StyleBox["/",
+         FontSize->16], 
+        StyleBox[" ",
+         FontSize->12]}], "D"}], "\[LeftRightArrow]"]}]}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.726000337383556*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"CovariantD", "[", "\[Mu]", "]"}], ".", 
+    RowBox[{"CovariantD", "[", "\[Nu]", "]"}]}], "*", 
+   RowBox[{"MT", "[", 
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}], "//", "Calc"}]], "Input",
+ CellChangeTimes->{{3.7259993944142103`*^9, 3.725999448314681*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubsuperscriptBox["g", "s", "2"], " ", 
+    RowBox[{
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["c30",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["c31",
+        TraditionalForm],
+       TraditionalForm]]}], " ", 
+    RowBox[{"(", 
+     RowBox[{"-", 
+      RowBox[{
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["c30",
+          TraditionalForm],
+         TraditionalForm]], ".", 
+       SubsuperscriptBox[
+        FormBox["A",
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["c31",
+          TraditionalForm],
+         TraditionalForm]]}]}], ")"}]}], "-", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox["T", 
+     FormBox[
+      FormBox["c30",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubscriptBox["g", "s"], " ", 
+    RowBox[{
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c30",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubscriptBox[
+      OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]]}]}], "-", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox["T", 
+     FormBox[
+      FormBox["c30",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SubscriptBox["g", "s"], " ", 
+    RowBox[{
+     SubscriptBox[
+      OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SubsuperscriptBox[
+      FormBox["A",
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["c30",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{
+    SubscriptBox[
+     OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SubscriptBox[
+     OverscriptBox["\[PartialD]", "\[RightArrow]"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7259994089116383`*^9, 3.72599944920617*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"P", "[", "\[Mu]_", "]"}], "/:", 
+  RowBox[{"MakeBoxes", "[", 
+   RowBox[{
+    RowBox[{"P", "[", "\[Mu]_", "]"}], ",", "TraditionalForm"}], "]"}], ":=", 
+  
+  RowBox[{"SuperscriptBox", "[", 
+   RowBox[{"\"\<P\>\"", ",", 
+    RowBox[{"ToBoxes", "[", 
+     RowBox[{"\[Mu]", ",", "TraditionalForm"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.72598678709068*^9, 3.725986835196138*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"OPEtst2", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{"2", "!"}]], 
+       RowBox[{"myOPE", "[", 
+        RowBox[{"2", ",", 
+         RowBox[{"\"\<Sum\>\"", "\[Rule]", "True"}]}], "]"}]}], "//.", 
+      RowBox[{"\[Gamma]", "\[Rule]", "P"}]}], "//.", 
+     RowBox[{"Dulr", "\[Rule]", "P"}]}], "//.", 
+    RowBox[{"g", "\[Rule]", "MT"}]}], "//.", 
+   RowBox[{
+    RowBox[{"P", "[", "\[Mu]_", "]"}], "\[RuleDelayed]", 
+    RowBox[{"FV", "[", 
+     RowBox[{"P", ",", "\[Mu]"}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.725994208580134*^9, 3.72599421165162*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["P",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm], " ", 
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["P",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.725994212386015*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"OPEtst3", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{"3", "!"}]], 
+       RowBox[{"myOPE", "[", 
+        RowBox[{"3", ",", 
+         RowBox[{"\"\<Sum\>\"", "\[Rule]", "True"}]}], "]"}]}], "//.", 
+      RowBox[{"\[Gamma]", "\[Rule]", "P"}]}], "//.", 
+     RowBox[{"Dulr", "\[Rule]", "P"}]}], "//.", 
+    RowBox[{"g", "\[Rule]", "MT"}]}], "//.", 
+   RowBox[{
+    RowBox[{"P", "[", "\[Mu]_", "]"}], "\[RuleDelayed]", 
+    RowBox[{"FV", "[", 
+     RowBox[{"P", ",", "\[Mu]"}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.7259941085760317`*^9, 3.725994118010235*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["P",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm], " ", 
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["P",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm], " ", 
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["P",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.725994118437673*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"OPEtst4", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{"4", "!"}]], 
+       RowBox[{"myOPE", "[", 
+        RowBox[{"4", ",", 
+         RowBox[{"\"\<Sum\>\"", "\[Rule]", "True"}]}], "]"}]}], "//.", 
+      RowBox[{"\[Gamma]", "\[Rule]", "P"}]}], "//.", 
+     RowBox[{"Dulr", "\[Rule]", "P"}]}], "//.", 
+    RowBox[{"g", "\[Rule]", "MT"}]}], "//.", 
+   RowBox[{
+    RowBox[{"P", "[", "\[Mu]_", "]"}], "\[RuleDelayed]", 
+    RowBox[{"FV", "[", 
+     RowBox[{"P", ",", "\[Mu]"}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.725989453458982*^9, 3.72598947223722*^9}, {
+   3.72599367151828*^9, 3.725993671847208*^9}, {3.725993740088266*^9, 
+   3.725993743313861*^9}, 3.725993803292205*^9, {3.725993889470601*^9, 
+   3.725993910354792*^9}, {3.725994104168784*^9, 3.7259941137047873`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["P",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["1",
+           TraditionalForm]],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm], " ", 
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["P",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["2",
+           TraditionalForm]],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm], " ", 
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["P",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm], " ", 
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["P",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["4",
+           TraditionalForm]],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.725989456525955*^9, 3.725989472664727*^9}, 
+   3.725993559907919*^9, 3.7259936724458714`*^9, 3.725993743915515*^9, 
+   3.72599380376025*^9, {3.725993890041442*^9, 3.7259939108373537`*^9}, {
+   3.7259941045332317`*^9, 3.725994121305835*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"<<", "FeynCalc`"}]], "Input",
+ CellChangeTimes->{{3.725993577366302*^9, 3.72599358029399*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    StyleBox["\<\"FeynCalc \"\>", "Text",
+     StripOnInput->False,
+     FontWeight->Bold], "\[InvisibleSpace]", 
+    StyleBox["\<\"9.2.0. For help, use the \"\>", "Text",
+     StripOnInput->False], "\[InvisibleSpace]", 
+    StyleBox[
+     TagBox[
+      ButtonBox[
+       RowBox[{"documentation", " ", "center"}],
+       BaseStyle->"Link",
+       ButtonData:>"paclet:FeynCalc/",
+       ButtonNote->"paclet:FeynCalc/"],
+      DisplayForm], "Text",
+     StripOnInput->False], "\[InvisibleSpace]", 
+    StyleBox["\<\", check out the \"\>", "Text",
+     StripOnInput->False], "\[InvisibleSpace]", 
+    StyleBox[
+     TagBox[
+      ButtonBox["wiki",
+       BaseStyle->"Hyperlink",
+       ButtonData:>{
+         URL["https://github.com/FeynCalc/feyncalc/wiki"], None},
+       ButtonNote->"https://github.com/FeynCalc/feyncalc/wiki"],
+      DisplayForm], "Text",
+     StripOnInput->False], "\[InvisibleSpace]", 
+    StyleBox["\<\" or write to the \"\>", "Text",
+     StripOnInput->False], "\[InvisibleSpace]", 
+    StyleBox[
+     TagBox[
+      ButtonBox[
+       RowBox[{"mailing", " ", 
+        RowBox[{"list", "."}]}],
+       BaseStyle->"Hyperlink",
+       ButtonData:>{
+         URL["http://www.feyncalc.org/forum/"], None},
+       ButtonNote->"http://www.feyncalc.org/forum/"],
+      DisplayForm], "Text",
+     StripOnInput->False]}],
+   SequenceForm[
+    Style["FeynCalc ", "Text", Bold], 
+    Style["9.2.0. For help, use the ", "Text"], 
+    Style[
+     DisplayForm[
+      ButtonBox[
+      "documentation center", BaseStyle -> "Link", ButtonData :> 
+       "paclet:FeynCalc/", ButtonNote -> "paclet:FeynCalc/"]], "Text"], 
+    Style[", check out the ", "Text"], 
+    Style[
+     DisplayForm[
+      ButtonBox["wiki", ButtonData :> {
+         URL["https://github.com/FeynCalc/feyncalc/wiki"], None}, BaseStyle -> 
+       "Hyperlink", ButtonNote -> 
+       "https://github.com/FeynCalc/feyncalc/wiki"]], "Text"], 
+    Style[" or write to the ", "Text"], 
+    Style[
+     DisplayForm[
+      ButtonBox["mailing list.", ButtonData :> {
+         URL["http://www.feyncalc.org/forum/"], None}, BaseStyle -> 
+       "Hyperlink", ButtonNote -> "http://www.feyncalc.org/forum/"]], "Text"]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.72599358200066*^9, 3.725993675316346*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    StyleBox["\<\"See also the supplied \"\>", "Text",
+     StripOnInput->False], "\[InvisibleSpace]", 
+    StyleBox[
+     TagBox[
+      ButtonBox[
+       RowBox[{"examples", "."}],
+       BaseStyle->"Hyperlink",
+       ButtonFunction:>SystemOpen[
+         FileNameJoin[{FeynCalc`$FeynCalcDirectory, "Examples"}]],
+       Evaluator->Automatic,
+       Method->"Preemptive"],
+      DisplayForm], "Text",
+     StripOnInput->False], "\[InvisibleSpace]", 
+    StyleBox["\<\" If you use FeynCalc in your research, please cite\"\>", 
+     "Text",
+     StripOnInput->False]}],
+   SequenceForm[
+    Style["See also the supplied ", "Text"], 
+    Style[
+     DisplayForm[
+      ButtonBox[
+      "examples.", BaseStyle -> "Hyperlink", ButtonFunction :> SystemOpen[
+         FileNameJoin[{FeynCalc`$FeynCalcDirectory, "Examples"}]], Evaluator -> 
+       Automatic, Method -> "Preemptive"]], "Text"], 
+    Style[" If you use FeynCalc in your research, please cite", "Text"]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.72599358200066*^9, 3.7259936753311567`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  StyleBox["\<\" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, Comput. \
+Phys. Commun., 207C, 432-444, 2016, arXiv:1601.01167\"\>", "Text",
+   StripOnInput->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.72599358200066*^9, 3.725993675345964*^9}],
+
+Cell[BoxData[
+ FormBox[
+  StyleBox["\<\" \[Bullet] R. Mertig, M. B\[ODoubleDot]hm, and A. Denner, \
+Comput. Phys. Commun., 64, 345-359, 1991.\"\>", "Text",
+   StripOnInput->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.72599358200066*^9, 3.725993675360772*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Trtst2", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"C", "*", 
+           FractionBox["1", 
+            RowBox[{"2", "!"}]], 
+           RowBox[{"Expand", "[", 
+            RowBox[{"OPEtr", "[", 
+             RowBox[{"2", ",", "2"}], "]"}], "]"}]}], "//.", 
+          RowBox[{"\[Gamma]", "\[Rule]", "P"}]}], "//.", 
+         RowBox[{
+          RowBox[{"Dulr", "[", "]"}], "\[Rule]", "P"}]}], "//.", 
+        RowBox[{"Dulr", "\[Rule]", "P"}]}], "//.", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"P", "[", "\[Rho]_", "]"}], "2"], "\[RuleDelayed]", 
+        SuperscriptBox["P", "2"]}]}], "//.", 
+      RowBox[{
+       SuperscriptBox["P", "2"], "\[Rule]", 
+       SuperscriptBox["M", "2"]}]}], "//.", 
+     RowBox[{"g", "\[Rule]", "MT"}]}], "//.", 
+    RowBox[{
+     RowBox[{"P", "[", "\[Mu]_", "]"}], "\[RuleDelayed]", 
+     RowBox[{"FV", "[", 
+      RowBox[{"P", ",", "\[Mu]"}], "]"}]}]}], "//", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.725994219164606*^9, 3.725994222284552*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"C", " ", 
+   SuperscriptBox["M", "2"], " ", 
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox[
+          SubscriptBox["\[Mu]", 
+           FormBox["1",
+            TraditionalForm]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox[
+          SubscriptBox["\[Mu]", 
+           FormBox["2",
+            TraditionalForm]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.725994222722292*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Trtst3", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"C", "*", 
+           FractionBox["1", 
+            RowBox[{"3", "!"}]], 
+           RowBox[{"Expand", "[", 
+            RowBox[{"OPEtr", "[", 
+             RowBox[{"3", ",", "2"}], "]"}], "]"}]}], "//.", 
+          RowBox[{"\[Gamma]", "\[Rule]", "P"}]}], "//.", 
+         RowBox[{
+          RowBox[{"Dulr", "[", "]"}], "\[Rule]", "P"}]}], "//.", 
+        RowBox[{"Dulr", "\[Rule]", "P"}]}], "//.", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"P", "[", "\[Rho]_", "]"}], "2"], "\[RuleDelayed]", 
+        SuperscriptBox["P", "2"]}]}], "//.", 
+      RowBox[{
+       SuperscriptBox["P", "2"], "\[Rule]", 
+       SuperscriptBox["M", "2"]}]}], "//.", 
+     RowBox[{"g", "\[Rule]", "MT"}]}], "//.", 
+    RowBox[{
+     RowBox[{"P", "[", "\[Mu]_", "]"}], "\[RuleDelayed]", 
+     RowBox[{"FV", "[", 
+      RowBox[{"P", ",", "\[Mu]"}], "]"}]}]}], "//", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.7259941322576427`*^9, 3.7259941383146687`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"C", " ", 
+   SuperscriptBox["M", "2"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["g", "_"], 
+         RowBox[{
+          FormBox[
+           FormBox[
+            FormBox[
+             SubscriptBox["\[Mu]", 
+              FormBox["1",
+               TraditionalForm]],
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox[
+             SubscriptBox["\[Mu]", 
+              FormBox["2",
+               TraditionalForm]],
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]}]],
+        TraditionalForm],
+       TraditionalForm], " ", 
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["P",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox[
+            SubscriptBox["\[Mu]", 
+             FormBox["3",
+              TraditionalForm]],
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm]}], "+", 
+     RowBox[{
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["g", "_"], 
+         RowBox[{
+          FormBox[
+           FormBox[
+            FormBox[
+             SubscriptBox["\[Mu]", 
+              FormBox["1",
+               TraditionalForm]],
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox[
+             SubscriptBox["\[Mu]", 
+              FormBox["3",
+               TraditionalForm]],
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]}]],
+        TraditionalForm],
+       TraditionalForm], " ", 
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["P",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox[
+            SubscriptBox["\[Mu]", 
+             FormBox["2",
+              TraditionalForm]],
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm]}], "+", 
+     RowBox[{
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["g", "_"], 
+         RowBox[{
+          FormBox[
+           FormBox[
+            FormBox[
+             SubscriptBox["\[Mu]", 
+              FormBox["2",
+               TraditionalForm]],
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox[
+             SubscriptBox["\[Mu]", 
+              FormBox["3",
+               TraditionalForm]],
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]}]],
+        TraditionalForm],
+       TraditionalForm], " ", 
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["P",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox[
+            SubscriptBox["\[Mu]", 
+             FormBox["1",
+              TraditionalForm]],
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.725994133075069*^9, 3.725994138808456*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Trtst4", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"C", "*", 
+           FractionBox["1", 
+            RowBox[{"4", "!"}]], 
+           RowBox[{"Expand", "[", 
+            RowBox[{"OPEtr", "[", 
+             RowBox[{"4", ",", "2"}], "]"}], "]"}]}], "//.", 
+          RowBox[{"\[Gamma]", "\[Rule]", "P"}]}], "//.", 
+         RowBox[{
+          RowBox[{"Dulr", "[", "]"}], "\[Rule]", "P"}]}], "//.", 
+        RowBox[{"Dulr", "\[Rule]", "P"}]}], "//.", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"P", "[", "\[Rho]_", "]"}], "2"], "\[RuleDelayed]", 
+        SuperscriptBox["P", "2"]}]}], "//.", 
+      RowBox[{
+       SuperscriptBox["P", "2"], "\[Rule]", 
+       SuperscriptBox["M", "2"]}]}], "//.", 
+     RowBox[{"g", "\[Rule]", "MT"}]}], "//.", 
+    RowBox[{
+     RowBox[{"P", "[", "\[Mu]_", "]"}], "\[RuleDelayed]", 
+     RowBox[{"FV", "[", 
+      RowBox[{"P", ",", "\[Mu]"}], "]"}]}]}], "//", "Simplify"}]}]], "Input",
+ CellChangeTimes->{{3.725989648990059*^9, 3.725989657937421*^9}, {
+  3.725993568932564*^9, 3.725993571860499*^9}, {3.725993682366702*^9, 
+  3.7259937321135073`*^9}, {3.725993884079054*^9, 3.725993885735961*^9}, {
+  3.725993932808172*^9, 3.7259939395141706`*^9}, {3.725994086955041*^9, 
+  3.725994087120047*^9}, {3.725994127489809*^9, 3.725994127633341*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"C", " ", 
+   SuperscriptBox["M", "2"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["g", "_"], 
+         RowBox[{
+          FormBox[
+           FormBox[
+            FormBox[
+             SubscriptBox["\[Mu]", 
+              FormBox["2",
+               TraditionalForm]],
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            FormBox[
+             SubscriptBox["\[Mu]", 
+              FormBox["3",
+               TraditionalForm]],
+             TraditionalForm],
+            TraditionalForm],
+           TraditionalForm]}]],
+        TraditionalForm],
+       TraditionalForm], " ", 
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["P",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox[
+            SubscriptBox["\[Mu]", 
+             FormBox["1",
+              TraditionalForm]],
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm], " ", 
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["P",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox[
+            SubscriptBox["\[Mu]", 
+             FormBox["4",
+              TraditionalForm]],
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm]}], "+", 
+     RowBox[{
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["P",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox[
+            SubscriptBox["\[Mu]", 
+             FormBox["3",
+              TraditionalForm]],
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         FormBox[
+          FormBox[
+           SuperscriptBox[
+            OverscriptBox["g", "_"], 
+            RowBox[{
+             FormBox[
+              FormBox[
+               FormBox[
+                SubscriptBox["\[Mu]", 
+                 FormBox["1",
+                  TraditionalForm]],
+                TraditionalForm],
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox[
+               FormBox[
+                SubscriptBox["\[Mu]", 
+                 FormBox["2",
+                  TraditionalForm]],
+                TraditionalForm],
+               TraditionalForm],
+              TraditionalForm]}]],
+           TraditionalForm],
+          TraditionalForm], " ", 
+         FormBox[
+          FormBox[
+           SuperscriptBox[
+            FormBox[
+             OverscriptBox[
+              FormBox["P",
+               TraditionalForm], "_"],
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              FormBox[
+               SubscriptBox["\[Mu]", 
+                FormBox["4",
+                 TraditionalForm]],
+               TraditionalForm],
+              TraditionalForm],
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm]}], "+", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           SuperscriptBox[
+            OverscriptBox["g", "_"], 
+            RowBox[{
+             FormBox[
+              FormBox[
+               FormBox[
+                SubscriptBox["\[Mu]", 
+                 FormBox["1",
+                  TraditionalForm]],
+                TraditionalForm],
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox[
+               FormBox[
+                SubscriptBox["\[Mu]", 
+                 FormBox["4",
+                  TraditionalForm]],
+                TraditionalForm],
+               TraditionalForm],
+              TraditionalForm]}]],
+           TraditionalForm],
+          TraditionalForm], " ", 
+         FormBox[
+          FormBox[
+           SuperscriptBox[
+            FormBox[
+             OverscriptBox[
+              FormBox["P",
+               TraditionalForm], "_"],
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              FormBox[
+               SubscriptBox["\[Mu]", 
+                FormBox["2",
+                 TraditionalForm]],
+               TraditionalForm],
+              TraditionalForm],
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm]}], "+", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           SuperscriptBox[
+            OverscriptBox["g", "_"], 
+            RowBox[{
+             FormBox[
+              FormBox[
+               FormBox[
+                SubscriptBox["\[Mu]", 
+                 FormBox["2",
+                  TraditionalForm]],
+                TraditionalForm],
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox[
+               FormBox[
+                SubscriptBox["\[Mu]", 
+                 FormBox["4",
+                  TraditionalForm]],
+                TraditionalForm],
+               TraditionalForm],
+              TraditionalForm]}]],
+           TraditionalForm],
+          TraditionalForm], " ", 
+         FormBox[
+          FormBox[
+           SuperscriptBox[
+            FormBox[
+             OverscriptBox[
+              FormBox["P",
+               TraditionalForm], "_"],
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              FormBox[
+               SubscriptBox["\[Mu]", 
+                FormBox["1",
+                 TraditionalForm]],
+               TraditionalForm],
+              TraditionalForm],
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm]}]}], ")"}]}], "+", 
+     RowBox[{
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["P",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox[
+            SubscriptBox["\[Mu]", 
+             FormBox["2",
+              TraditionalForm]],
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         FormBox[
+          FormBox[
+           SuperscriptBox[
+            OverscriptBox["g", "_"], 
+            RowBox[{
+             FormBox[
+              FormBox[
+               FormBox[
+                SubscriptBox["\[Mu]", 
+                 FormBox["1",
+                  TraditionalForm]],
+                TraditionalForm],
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox[
+               FormBox[
+                SubscriptBox["\[Mu]", 
+                 FormBox["3",
+                  TraditionalForm]],
+                TraditionalForm],
+               TraditionalForm],
+              TraditionalForm]}]],
+           TraditionalForm],
+          TraditionalForm], " ", 
+         FormBox[
+          FormBox[
+           SuperscriptBox[
+            FormBox[
+             OverscriptBox[
+              FormBox["P",
+               TraditionalForm], "_"],
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              FormBox[
+               SubscriptBox["\[Mu]", 
+                FormBox["4",
+                 TraditionalForm]],
+               TraditionalForm],
+              TraditionalForm],
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm]}], "+", 
+        RowBox[{
+         FormBox[
+          FormBox[
+           SuperscriptBox[
+            OverscriptBox["g", "_"], 
+            RowBox[{
+             FormBox[
+              FormBox[
+               FormBox[
+                SubscriptBox["\[Mu]", 
+                 FormBox["3",
+                  TraditionalForm]],
+                TraditionalForm],
+               TraditionalForm],
+              TraditionalForm], 
+             FormBox[
+              FormBox[
+               FormBox[
+                SubscriptBox["\[Mu]", 
+                 FormBox["4",
+                  TraditionalForm]],
+                TraditionalForm],
+               TraditionalForm],
+              TraditionalForm]}]],
+           TraditionalForm],
+          TraditionalForm], " ", 
+         FormBox[
+          FormBox[
+           SuperscriptBox[
+            FormBox[
+             OverscriptBox[
+              FormBox["P",
+               TraditionalForm], "_"],
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              FormBox[
+               SubscriptBox["\[Mu]", 
+                FormBox["1",
+                 TraditionalForm]],
+               TraditionalForm],
+              TraditionalForm],
+             TraditionalForm]],
+           TraditionalForm],
+          TraditionalForm]}]}], ")"}]}]}], ")"}]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.725989580335586*^9, {3.725989636696702*^9, 3.725989658663994*^9}, 
+   3.725993560984981*^9, {3.725993679316684*^9, 3.725993732787142*^9}, 
+   3.725993886591077*^9, {3.725993935864833*^9, 3.725993940108824*^9}, 
+   3.725994090902729*^9, 3.725994128194047*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"MT", "[", 
+       RowBox[{
+        RowBox[{"\[Mu]", "[", "1", "]"}], ",", 
+        RowBox[{"\[Mu]", "[", "2", "]"}]}], "]"}], "*", 
+      RowBox[{"(", 
+       RowBox[{"OPEtst2", "-", "Trtst2"}], ")"}]}], "//", "Calc"}], "//", 
+    "Simplify"}], ")"}], "//.", 
+  RowBox[{"FCI", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SP", "[", "P", "]"}], "\[Rule]", 
+     SuperscriptBox["M", "2"]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.725994235092811*^9, 3.72599423686217*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["M", "2"], "-", 
+   RowBox[{"4", " ", "C", " ", 
+    SuperscriptBox["M", "2"]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.725994237314651*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"MT", "[", 
+       RowBox[{
+        RowBox[{"\[Mu]", "[", "1", "]"}], ",", 
+        RowBox[{"\[Mu]", "[", "2", "]"}]}], "]"}], "*", 
+      RowBox[{"(", 
+       RowBox[{"OPEtst3", "-", "Trtst3"}], ")"}]}], "//", "Calc"}], "//", 
+    "Simplify"}], ")"}], "//.", 
+  RowBox[{"FCI", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SP", "[", "P", "]"}], "\[Rule]", 
+     SuperscriptBox["M", "2"]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.72599415645065*^9, 3.725994158794024*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     SuperscriptBox["M", "2"], "-", 
+     RowBox[{"6", " ", "C", " ", 
+      SuperscriptBox["M", "2"]}]}], ")"}], " ", 
+   FormBox[
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["P",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox[
+       FormBox[
+        SubscriptBox["\[Mu]", 
+         FormBox["3",
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.725994159205336*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"MT", "[", 
+       RowBox[{
+        RowBox[{"\[Mu]", "[", "1", "]"}], ",", 
+        RowBox[{"\[Mu]", "[", "2", "]"}]}], "]"}], "*", 
+      RowBox[{"(", 
+       RowBox[{"OPEtst4", "-", "Trtst4"}], ")"}]}], "//", "Calc"}], "//", 
+    "Simplify"}], ")"}], "//.", 
+  RowBox[{"FCI", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SP", "[", "P", "]"}], "\[Rule]", 
+     SuperscriptBox["M", "2"]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.72599395591223*^9, 3.725994009420223*^9}, {
+  3.72599409628861*^9, 3.7259941255050297`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox["M", "2"], "-", 
+      RowBox[{"8", " ", "C", " ", 
+       SuperscriptBox["M", "2"]}]}], ")"}], " ", 
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["P",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["3",
+           TraditionalForm]],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["P",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox[
+         SubscriptBox["\[Mu]", 
+          FormBox["4",
+           TraditionalForm]],
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm]}], "-", 
+   RowBox[{"C", " ", 
+    SuperscriptBox["M", "4"], " ", 
+    FormBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
+       FormBox[
+        FormBox[
+         FormBox[
+          SubscriptBox["\[Mu]", 
+           FormBox["3",
+            TraditionalForm]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         FormBox[
+          SubscriptBox["\[Mu]", 
+           FormBox["4",
+            TraditionalForm]],
+          TraditionalForm],
+         TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.725993958801054*^9, 3.7259940100312967`*^9}, 
+   3.725994098168158*^9, 3.7259941464934187`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Trtst2", "//.", 
+    RowBox[{"C", "\[Rule]", 
+     FractionBox["1", "4"]}]}], "//.", 
+   RowBox[{
+    RowBox[{"\[Mu]", "[", "_", "]"}], "\[RuleDelayed]", "z"}]}], "//.", 
+  RowBox[{
+   RowBox[{"MT", "[", 
+    RowBox[{"z", ",", "z"}], "]"}], "\[Rule]", 
+   RowBox[{"-", "1"}]}]}]], "Input",
+ CellChangeTimes->{{3.725994246629286*^9, 3.725994252369452*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    SuperscriptBox["M", "2"], "4"]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7259942471442957`*^9, 3.725994253538846*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Trtst3", "//.", 
+    RowBox[{"C", "\[Rule]", 
+     FractionBox["1", "6"]}]}], "//.", 
+   RowBox[{
+    RowBox[{"\[Mu]", "[", "_", "]"}], "\[RuleDelayed]", "z"}]}], "//.", 
+  RowBox[{
+   RowBox[{"MT", "[", 
+    RowBox[{"z", ",", "z"}], "]"}], "\[Rule]", 
+   RowBox[{"-", "1"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.725994166418537*^9, {3.725994244662671*^9, 3.725994244933113*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], " ", 
+   SuperscriptBox["M", "2"], " ", 
+   FormBox[
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["P",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        FormBox["z",
+         TraditionalForm],
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellChangeTimes->{3.72599416806514*^9, 3.725994245229829*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Trtst4", "//.", 
+    RowBox[{"C", "\[Rule]", 
+     FractionBox["1", "8"]}]}], "//.", 
+   RowBox[{
+    RowBox[{"\[Mu]", "[", "_", "]"}], "\[RuleDelayed]", "z"}]}], "//.", 
+  RowBox[{
+   RowBox[{"MT", "[", 
+    RowBox[{"z", ",", "z"}], "]"}], "\[Rule]", 
+   RowBox[{"-", "1"}]}]}]], "Input",
+ CellChangeTimes->{{3.725994047878137*^9, 3.725994092359881*^9}, {
+  3.725994149441947*^9, 3.725994149529805*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox["3", "4"]}], " ", 
+   SuperscriptBox["M", "2"], " ", 
+   FormBox[
+    SuperscriptBox[
+     RowBox[{"(", 
+      FormBox[
+       FormBox[
+        SuperscriptBox[
+         FormBox[
+          OverscriptBox[
+           FormBox["P",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           FormBox["z",
+            TraditionalForm],
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm],
+       TraditionalForm], ")"}], "2"],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.725994050760104*^9, 3.725994073279188*^9}, 
+   3.725994149933213*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"2", "\[Rule]", 
+   FractionBox[
+    RowBox[{"-", 
+     SuperscriptBox["M", "2"]}], "4"]}], ";"}]], "Input",
+ CellChangeTimes->{{3.725988808041122*^9, 3.725988813800638*^9}, 
+   3.725988856120702*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"3", "\[Rule]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"-", "1"}], "2"], 
+    SuperscriptBox["M", "2"], "Pz"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.725988839553813*^9, 3.725988852212881*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"4", "\[Rule]", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"-", "3"}], "4"], 
+    SuperscriptBox["M", "2"], 
+    SuperscriptBox["Pz", "2"]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7259888797397823`*^9, 3.7259888916025553`*^9}, 
+   3.725988945237194*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"5", "\[Rule]", 
+   RowBox[{
+    RowBox[{"-", 
+     FractionBox["4", "4"]}], 
+    SuperscriptBox["M", "2"], 
+    SuperscriptBox["Pz", "3"]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.725988770265541*^9, 3.72598878465473*^9}, 
+   3.725988853994178*^9, {3.72598893640493*^9, 3.725988941528163*^9}, {
+   3.725989000552022*^9, 3.725989002950762*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"6", "\[Rule]", 
+   RowBox[{
+    RowBox[{"-", 
+     FractionBox["5", "4"]}], "*", 
+    SuperscriptBox["M", "2"], 
+    SuperscriptBox["Pz", "4"]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.725988917764855*^9, 3.725988934772719*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"7", "\[Rule]", 
+   RowBox[{
+    RowBox[{"-", 
+     FractionBox["6", "4"]}], "*", 
+    SuperscriptBox["M", "2"], 
+    SuperscriptBox["Pz", "4"]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7259889959166403`*^9, 3.7259889978118763`*^9}}]
+},
+WindowSize->{1436, 856},
+WindowMargins->{{Automatic, 0}, {Automatic, 88}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 167, 3, 48, "Input"],
+Cell[CellGroupData[{
+Cell[750, 27, 115, 2, 48, "Input"],
+Cell[CellGroupData[{
+Cell[890, 33, 697, 11, 30, "Print"],
+Cell[1590, 46, 806, 15, 30, "Print"],
+Cell[2399, 63, 1423, 30, 59, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3871, 99, 120, 2, 48, "Input"],
+Cell[3994, 103, 1341, 50, 1162, "Print"],
+Cell[5338, 155, 668, 12, 59, "Message"]
+}, Open  ]],
+Cell[6021, 170, 495, 12, 48, "Input"],
+Cell[6519, 184, 672, 19, 80, "Input"],
+Cell[7194, 205, 700, 17, 80, "Input"],
+Cell[7897, 224, 628, 16, 80, "Input"],
+Cell[8528, 242, 305, 7, 48, "Input"],
+Cell[8836, 251, 307, 7, 48, "Input"],
+Cell[9146, 260, 812, 21, 80, "Input"],
+Cell[9961, 283, 768, 19, 80, "Input"],
+Cell[10732, 304, 694, 18, 80, "Input"],
+Cell[11429, 324, 370, 8, 48, "Input"],
+Cell[11802, 334, 368, 8, 48, "Input"],
+Cell[12173, 344, 873, 21, 80, "Input"],
+Cell[13049, 367, 425, 11, 48, "Input"],
+Cell[13477, 380, 643, 15, 48, "Input"],
+Cell[14123, 397, 287, 8, 48, "Input"],
+Cell[14413, 407, 268, 8, 48, "Input"],
+Cell[14684, 417, 162, 3, 48, "Input"],
+Cell[14849, 422, 171, 3, 48, "Input"],
+Cell[15023, 427, 365, 10, 48, "Input"],
+Cell[15391, 439, 133, 2, 48, "Input"],
+Cell[15527, 443, 281, 5, 48, "Input"],
+Cell[CellGroupData[{
+Cell[15833, 452, 155, 3, 48, "Input"],
+Cell[15991, 457, 369, 6, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16397, 468, 137, 2, 48, "Input"],
+Cell[16537, 472, 236, 4, 44, "Output"]
+}, Open  ]],
+Cell[16788, 479, 1479, 34, 80, "Input"],
+Cell[CellGroupData[{
+Cell[18292, 517, 99, 1, 48, "Input"],
+Cell[18394, 520, 190, 3, 44, "Output"]
+}, Open  ]],
+Cell[18599, 526, 177, 3, 48, "Input"],
+Cell[CellGroupData[{
+Cell[18801, 533, 367, 7, 48, "Input"],
+Cell[19171, 542, 285, 7, 43, "Output"]
+}, Open  ]],
+Cell[19471, 552, 2996, 77, 147, "Input"],
+Cell[22470, 631, 5393, 127, 551, "Input"],
+Cell[27866, 760, 1512, 39, 142, "Input"],
+Cell[CellGroupData[{
+Cell[29403, 803, 660, 18, 71, "Input"],
+Cell[30066, 823, 499, 14, 53, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30602, 842, 563, 17, 71, "Input"],
+Cell[31168, 861, 1121, 40, 53, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32326, 906, 715, 21, 71, "Input"],
+Cell[33044, 929, 1383, 44, 49, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34464, 978, 379, 12, 71, "Input"],
+Cell[34846, 992, 2651, 90, 49, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37534, 1087, 1098, 30, 105, "Input"],
+Cell[38635, 1119, 1552, 48, 58, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40224, 1172, 445, 10, 48, "Input"],
+Cell[40672, 1184, 6963, 253, 65, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47672, 1442, 517, 16, 48, "Input"],
+Cell[48192, 1460, 3353, 114, 58, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[51582, 1579, 709, 21, 71, "Input"],
+Cell[52294, 1602, 6053, 221, 58, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[58384, 1828, 463, 13, 48, "Input"],
+Cell[58850, 1843, 4309, 165, 49, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63196, 2013, 137, 2, 48, "Input"],
+Cell[63336, 2017, 428, 8, 44, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63801, 2030, 1689, 44, 142, "Input"],
+Cell[65493, 2076, 11249, 352, 98, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[76779, 2433, 1462, 38, 80, "Input"],
+Cell[78244, 2473, 14511, 471, 100, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[92792, 2949, 387, 11, 48, "Input"],
+Cell[93182, 2962, 5254, 204, 53, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[98473, 3171, 317, 8, 48, "Input"],
+Cell[98793, 3181, 2652, 104, 52, "Output"]
+}, Open  ]],
+Cell[101460, 3288, 424, 11, 48, "Input"],
+Cell[CellGroupData[{
+Cell[101909, 3303, 653, 19, 71, "Input"],
+Cell[102565, 3324, 953, 41, 45, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[103555, 3370, 656, 19, 71, "Input"],
+Cell[104214, 3391, 1379, 60, 45, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[105630, 3456, 872, 22, 71, "Input"],
+Cell[106505, 3480, 2026, 82, 45, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[108568, 3567, 118, 2, 48, "Input"],
+Cell[CellGroupData[{
+Cell[108711, 3573, 2345, 64, 39, "Print"],
+Cell[111059, 3639, 1132, 30, 39, "Print"],
+Cell[112194, 3671, 286, 5, 38, "Print"],
+Cell[112483, 3678, 271, 5, 38, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[112803, 3689, 1121, 32, 105, "Input"],
+Cell[113927, 3723, 734, 29, 46, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[114698, 3757, 1125, 32, 105, "Input"],
+Cell[115826, 3791, 3695, 141, 49, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[119558, 3937, 1413, 36, 105, "Input"],
+Cell[120974, 3975, 9647, 344, 49, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[130658, 4324, 578, 18, 51, "Input"],
+Cell[131239, 4344, 206, 6, 46, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[131482, 4355, 578, 18, 51, "Input"],
+Cell[132063, 4375, 626, 25, 49, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[132726, 4405, 628, 19, 51, "Input"],
+Cell[133357, 4426, 1744, 69, 49, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[135138, 4500, 402, 12, 70, "Input"],
+Cell[135543, 4514, 190, 5, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[135770, 4524, 427, 13, 71, "Input"],
+Cell[136200, 4539, 554, 22, 65, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[136791, 4566, 451, 13, 71, "Input"],
+Cell[137245, 4581, 717, 27, 66, "Output"]
+}, Open  ]],
+Cell[137977, 4611, 234, 7, 74, "Input"],
+Cell[138214, 4620, 234, 7, 70, "Input"],
+Cell[138451, 4629, 290, 9, 70, "Input"],
+Cell[138744, 4640, 380, 10, 70, "Input"],
+Cell[139127, 4652, 265, 8, 70, "Input"],
+Cell[139395, 4662, 269, 8, 70, "Input"]
+}
+]
+*)
+

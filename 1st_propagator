@@ -6,74 +6,74 @@
     <Qprop>
       <color_source>0</color_source>
       <spin_source>0</spin_source>
-      <n_count>21</n_count>
-      <resid>6.23505019487442e-07</resid>
+      <n_count>29</n_count>
+      <resid>4.72036433544403e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>0</color_source>
       <spin_source>1</spin_source>
-      <n_count>21</n_count>
-      <resid>5.20123878301542e-07</resid>
+      <n_count>28</n_count>
+      <resid>7.09340292127213e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>0</color_source>
       <spin_source>2</spin_source>
-      <n_count>21</n_count>
-      <resid>5.08048513164998e-07</resid>
+      <n_count>29</n_count>
+      <resid>4.01356486108146e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>0</color_source>
       <spin_source>3</spin_source>
-      <n_count>21</n_count>
-      <resid>5.14073281294491e-07</resid>
+      <n_count>28</n_count>
+      <resid>6.8770992143154e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>1</color_source>
       <spin_source>0</spin_source>
-      <n_count>21</n_count>
-      <resid>6.39784758663365e-07</resid>
+      <n_count>29</n_count>
+      <resid>4.10957697583228e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>1</color_source>
       <spin_source>1</spin_source>
-      <n_count>21</n_count>
-      <resid>5.93020444185047e-07</resid>
+      <n_count>29</n_count>
+      <resid>4.12582443647174e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>1</color_source>
       <spin_source>2</spin_source>
-      <n_count>21</n_count>
-      <resid>6.33577530404901e-07</resid>
+      <n_count>29</n_count>
+      <resid>3.82301291874676e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>1</color_source>
       <spin_source>3</spin_source>
-      <n_count>21</n_count>
-      <resid>6.3850466292281e-07</resid>
+      <n_count>29</n_count>
+      <resid>4.23113180337137e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>2</color_source>
       <spin_source>0</spin_source>
-      <n_count>21</n_count>
-      <resid>5.22531750044789e-07</resid>
+      <n_count>29</n_count>
+      <resid>4.24689381712994e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>2</color_source>
       <spin_source>1</spin_source>
-      <n_count>21</n_count>
-      <resid>5.0706405137589e-07</resid>
+      <n_count>29</n_count>
+      <resid>4.06349768191373e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>2</color_source>
       <spin_source>2</spin_source>
-      <n_count>21</n_count>
-      <resid>5.18536911449766e-07</resid>
+      <n_count>28</n_count>
+      <resid>7.15237217511531e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>2</color_source>
       <spin_source>3</spin_source>
-      <n_count>21</n_count>
-      <resid>5.44477493838167e-07</resid>
+      <n_count>28</n_count>
+      <resid>7.17972753433784e-09</resid>
     </Qprop>
   </QuarkProp4>
 </pion_crrltr>

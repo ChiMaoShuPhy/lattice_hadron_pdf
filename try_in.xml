@@ -10,7 +10,7 @@
            <Source>
             <Source_Smearing>
               <version>1</version>
-              <SourceType>SHELL_SOURCE</SourceType>
+              <SourceType>POINT_SOURCE</SourceType>
               <j_decay>3</j_decay>
               <t_srce>0 0 0 0</t_srce>
               <SmearingParam>
@@ -22,15 +22,15 @@
             </Source_Smearing>
             <LinkSmearing>
               <LinkSmearingType>STOUT_SMEAR</LinkSmearingType>
-              <link_smear_fact>0.08</link_smear_fact>
-              <link_smear_num>10</link_smear_num>
+              <link_smear_fact>0.0</link_smear_fact>
+              <link_smear_num>0</link_smear_num>
               <no_smear_dir>3</no_smear_dir>
             </LinkSmearing>
           </Source>
           <Sink>
             <Sink_Smearing>
               <version>1</version>
-              <SinkType>SHELL_SINK</SinkType>
+              <SinkType>POINT_SINK</SinkType>
               <j_decay>3</j_decay>
               <t_srce>0 0 0 0</t_srce>
               <SmearingParam>
@@ -50,7 +50,7 @@
       <elem>
         <displacement>
           <dir>2</dir>
-          <steps>-1</steps>
+          <steps>0</steps>
         </displacement>
       </elem>
       <elem>
@@ -86,7 +86,7 @@
             </FermionAction>
             <InvertParam>
               <invType>CG_INVERTER</invType>
-              <RsdCG> 1e-6 </RsdCG>
+              <RsdCG> 1e-8 </RsdCG>
               <MaxCG> 100 </MaxCG>
               <CloverParams>
                 <Mass>-0.0743</Mass>
@@ -99,7 +99,7 @@
                   <nu>1.265</nu>
                 </AnisoParam>
               </CloverParams>
-              <RsdTarget>1.0e-4</RsdTarget>
+              <RsdTarget>1.0e-8</RsdTarget>
               <Delta>0.1</Delta>
               <MaxIter>10000000</MaxIter>
               <AntiPeriodicT>true</AntiPeriodicT>

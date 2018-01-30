@@ -1,6 +1,3 @@
-// 2017 July 2 23:09
-//tested in Mathematica, based on w'=shift(w,+1,mu) => w'[mu][n]=w[mu][n+1] and U^chroma = U^text_book
-
 #ifndef GAUGE_LINK_H
 #define GAUGE_LINK_H
 
@@ -30,7 +27,7 @@ LatticeColorMatrix gauge_link(const multi1d<LatticeColorMatrix> &U, const int si
             gaugelink = gauge_shift(U, gaugelink, 1, dir);
         }
         return U[dir] * gaugelink;
-
+        //  return gaugelink;
     }
     else
     {
@@ -41,5 +38,6 @@ LatticeColorMatrix gauge_link(const multi1d<LatticeColorMatrix> &U, const int si
         return gaugelink;
     }
 }
+
 
 #endif
