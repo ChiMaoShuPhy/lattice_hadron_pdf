@@ -3,6 +3,7 @@
 #include "actions/ferm/invert/syssolver_linop_cg.h"
 #include "gauge_link.h"
 #include "multi_shift.h"
+#include "nucleon.h"
 
 using namespace std;
 using namespace QDP;
@@ -84,10 +85,23 @@ int main(int argc, char **argv)
   int dir;
   int steps;
 
-  int gamma;
-
   Real wvf_param;
   int wvfIntPar;
+  
+  /*
+   *  Meson parameters. . .
+   */
+  int gamma;
+  bool meson;
+
+  /*
+   *  Nucleon parameters. . .
+   */
+  Nucleon_system nucleon;
+  string file_dir;
+  string spin;
+  multi1d<int> pN(4);
+  bool baryon;
 
   //================= set parameters =====================
 
@@ -101,13 +115,34 @@ int main(int argc, char **argv)
     read(xml_in, "/chroma/Param/InlineMeasurements/elem/Param/Source/Source_Smearing/t_srce", t_srce);
     read(xml_in, "/chroma/Param/InlineMeasurements/elem/displacement/dir", dir);
     read(xml_in, "/chroma/Param/InlineMeasurements/elem/displacement/steps", steps);
-    read(xml_in, "/chroma/Param/InlineMeasurements/elem/gamma", gamma);
   }
   catch (const string &e)
   {
     QDPIO::cerr << "Parsing XML: " << e << endl;
     QDP_abort(1);
   }
+  try
+    {
+      read(xml_in, "/chroma/Param/InlineMeasurements/elem/meson/gamma", gamma);
+      QDPIO::cout << "Performing meson measurement(s)" << endl;
+      meson = true;
+    }
+  catch (const string &e)
+    {
+      meson = false;
+    }
+    try
+    {
+      read(xml_in, "/chroma/Param/InlineMeasurements/elem/nucleon/spin", spin);
+      read(xml_in, "/chroma/Param/InlineMeasurements/elem/nucleon/pmom", pN);
+      read(xml_in, "/chroma/Param/InlineMeasurements/elem/nucleon/file_dir", file_dir);
+      QDPIO::cout << "Performing nucleon measurement(s)" << endl;
+      baryon = true;
+    }
+  catch (const string &e)
+    {
+      baryon = false;
+    }
 
   Layout::setLattSize(nrow);
   Layout::create();
@@ -244,50 +279,58 @@ int main(int argc, char **argv)
     QDP_abort(1);
   }
 
-  //=========================meson-correlation function========================
+  if(meson) {
+    //=========================meson-correlation function========================
 
-  LatticePropagator anti_quark_prpgtr = Gamma(gamma) * quark_prpgtr * Gamma(gamma);
-  LatticeComplex tr_prpgtrs = trace(Gamma(gamma) * adj(anti_quark_prpgtr) * Gamma(gamma) * FH_quark_prpgtr);
+    LatticePropagator anti_quark_prpgtr = Gamma(gamma) * quark_prpgtr * Gamma(gamma);
+    LatticeComplex tr_prpgtrs = trace(Gamma(gamma) * adj(anti_quark_prpgtr) * Gamma(gamma) * FH_quark_prpgtr);
 
-  //=========================HDF5 Output========================
+    //=========================HDF5 Output========================
  
-  LatticePropagatorReImPrt quark_prpgtr_Re = real(quark_prpgtr);
-  LatticePropagatorReImPrt quark_prpgtr_Im = imag(quark_prpgtr);
+    LatticePropagatorReImPrt quark_prpgtr_Re = real(quark_prpgtr);
+    LatticePropagatorReImPrt quark_prpgtr_Im = imag(quark_prpgtr);
 
-  LatticePropagatorReImPrt quark_prpgtr_shftd_Re = real(quark_prpgtr_Delta);
-  LatticePropagatorReImPrt quark_prpgtr_shftd_Im = imag(quark_prpgtr_Delta);
+    LatticePropagatorReImPrt quark_prpgtr_shftd_Re = real(quark_prpgtr_Delta);
+    LatticePropagatorReImPrt quark_prpgtr_shftd_Im = imag(quark_prpgtr_Delta);
 
-  LatticeColorMatrixReImPrt gaugelink_Re = real(gaugelink);
-  LatticeColorMatrixReImPrt gaugelink_Im = imag(gaugelink);
+    LatticeColorMatrixReImPrt gaugelink_Re = real(gaugelink);
+    LatticeColorMatrixReImPrt gaugelink_Im = imag(gaugelink);
 
-  LatticePropagatorReImPrt FH_src_Re = real(FH_src);
-  LatticePropagatorReImPrt FH_src_Im = imag(FH_src);
+    LatticePropagatorReImPrt FH_src_Re = real(FH_src);
+    LatticePropagatorReImPrt FH_src_Im = imag(FH_src);
 
-  LatticePropagatorReImPrt FH_quark_prpgtrRe = real(FH_quark_prpgtr);
-  LatticePropagatorReImPrt FH_quark_prpgtrIm = imag(FH_quark_prpgtr);
+    LatticePropagatorReImPrt FH_quark_prpgtrRe = real(FH_quark_prpgtr);
+    LatticePropagatorReImPrt FH_quark_prpgtrIm = imag(FH_quark_prpgtr);
 
-  LatticeDouble tr_prpgtrs_Re = real(tr_prpgtrs);
-  LatticeDouble tr_prpgtrs_Im = imag(tr_prpgtrs);
+    LatticeDouble tr_prpgtrs_Re = real(tr_prpgtrs);
+    LatticeDouble tr_prpgtrs_Im = imag(tr_prpgtrs);
 
-  string pi_mtrx_elmnt = "<pi(y,t)|q-bar(x).ga_3.W[x,x+"+to_string(steps)+"_stps_in_"+to_string(dir)+"].q(x+"+to_string(steps)+"_stps_in_"+to_string(dir)+")|pi(0,0)>";
-  string meson_interp = "ubar Gamma(" + to_string(gamma)+") u";
+    string pi_mtrx_elmnt = "<pi(y,t)|q-bar(x).ga_3.W[x,x+"+to_string(steps)+"_stps_in_"+to_string(dir)+"].q(x+"+to_string(steps)+"_stps_in_"+to_string(dir)+")|pi(0,0)>";
+    string meson_interp = "ubar Gamma(" + to_string(gamma)+") u";
   
   
   
-  cout<<"==========================\n"<<endl;
+    cout<<"==========================\n"<<endl;
 
-  cout<<"nrow = "<<nrow[0]<<" "<<nrow[1]
-      <<" "<<nrow[2]<<" "<<nrow[3]<<"\n"<<endl;
+    cout<<"nrow = "<<nrow[0]<<" "<<nrow[1]
+	<<" "<<nrow[2]<<" "<<nrow[3]<<"\n"<<endl;
 
-  cout<<"bndry_cndtn = "<<bndry_cndtns[0]<<" "<<bndry_cndtns[1]
-      <<" "<<bndry_cndtns[2]<<" "<<bndry_cndtns[3]<<"\n"<<endl;
+    cout<<"bndry_cndtn = "<<bndry_cndtns[0]<<" "<<bndry_cndtns[1]
+	<<" "<<bndry_cndtns[2]<<" "<<bndry_cndtns[3]<<"\n"<<endl;
 
-  cout<<"meson_interp = "<< meson_interp <<"\n"<< endl;
+    cout<<"meson_interp = "<< meson_interp <<"\n"<< endl;
   
-  cout<< pi_mtrx_elmnt <<"\n"<<endl;
+    cout<< pi_mtrx_elmnt <<"\n"<<endl;
 
-   cout<<"=========================="<<endl;
+    cout<<"=========================="<<endl;
+  }
 
+
+  if(baryon){
+    nucleon.initialize(t_srce,pN,nrow,file_dir,"nucleon",spin);
+
+  }
+  
   END_CODE();
   finalize();
   exit(0);

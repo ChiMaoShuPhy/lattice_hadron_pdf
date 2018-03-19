@@ -7,73 +7,73 @@
       <color_source>0</color_source>
       <spin_source>0</spin_source>
       <n_count>32</n_count>
-      <resid>1.12300988101679e-09</resid>
+      <resid>1.1230098805263e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>0</color_source>
       <spin_source>1</spin_source>
       <n_count>32</n_count>
-      <resid>9.70590150101634e-10</resid>
+      <resid>9.70590150780222e-10</resid>
     </Qprop>
     <Qprop>
       <color_source>0</color_source>
       <spin_source>2</spin_source>
       <n_count>32</n_count>
-      <resid>9.29525113228706e-10</resid>
+      <resid>9.2952511287283e-10</resid>
     </Qprop>
     <Qprop>
       <color_source>0</color_source>
       <spin_source>3</spin_source>
       <n_count>32</n_count>
-      <resid>1.18424243266664e-09</resid>
+      <resid>1.1842424313418e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>1</color_source>
       <spin_source>0</spin_source>
       <n_count>32</n_count>
-      <resid>1.21961091658123e-09</resid>
+      <resid>1.21961091450593e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>1</color_source>
       <spin_source>1</spin_source>
       <n_count>32</n_count>
-      <resid>1.00454536789545e-09</resid>
+      <resid>1.00454536660392e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>1</color_source>
       <spin_source>2</spin_source>
       <n_count>32</n_count>
-      <resid>1.00520622822744e-09</resid>
+      <resid>1.00520623092845e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>1</color_source>
       <spin_source>3</spin_source>
       <n_count>32</n_count>
-      <resid>1.20294193694952e-09</resid>
+      <resid>1.20294193992068e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>2</color_source>
       <spin_source>0</spin_source>
       <n_count>32</n_count>
-      <resid>9.29982123838671e-10</resid>
+      <resid>9.29982124322602e-10</resid>
     </Qprop>
     <Qprop>
       <color_source>2</color_source>
       <spin_source>1</spin_source>
       <n_count>32</n_count>
-      <resid>9.94554689607661e-10</resid>
+      <resid>9.94554686836298e-10</resid>
     </Qprop>
     <Qprop>
       <color_source>2</color_source>
       <spin_source>2</spin_source>
       <n_count>32</n_count>
-      <resid>1.12985175496945e-09</resid>
+      <resid>1.12985175592534e-09</resid>
     </Qprop>
     <Qprop>
       <color_source>2</color_source>
       <spin_source>3</spin_source>
       <n_count>32</n_count>
-      <resid>1.07050993481995e-09</resid>
+      <resid>1.07050993347606e-09</resid>
     </Qprop>
   </QuarkProp4>
 </FH_meson_crrltr>

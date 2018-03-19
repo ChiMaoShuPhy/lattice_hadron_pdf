@@ -135,8 +135,16 @@
         </save>
       </elem>
       <elem>
-	<annotation>Pion PDF</annotation>
-	<gamma>15</gamma>
+	<meson>
+	  <annotation>Pion (meson) PDF</annotation>
+	  <gamma>15</gamma>
+	</meson>
+	<nucleon>
+	  <annotation>Nucleon PDF</annotation>
+	  <spin>Avg</spin>
+	  <pmom>0 0 0 0</pmom>
+	  <file_dir>./data/</file_dir>
+	</nucleon>
       </elem>
     </InlineMeasurements>
     <nrow>4 4 4 32</nrow>
