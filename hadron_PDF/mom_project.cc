@@ -42,11 +42,15 @@ int mom_project::calcPhase()
   std::cout << "Layout::lattSize()[1]= " << Layout::lattSize()[1]<< std::endl;
   std::cout << "Layout::lattSize()[2]= " << Layout::lattSize()[2]<< std::endl;
   std::cout << "Layout::lattSize()[3]= " << Layout::lattSize()[3]<< std::endl;
+
+  std::cout << "Getting coordinates ..." << std::endl;
   
   for(mu=0; mu<Nd; ++mu){
     my_coord[mu]=Layout::latticeCoordinate(mu);
   };
 
+  std::cout << "Calculating p.x ..." << std::endl;
+  
   for(mu=0; mu < Nd; ++mu){
     if (mu == Nd - 1) continue;
     p_dot_x += LatticeReal(my_coord[mu] - src[mu])*twopi*Real(p[mu]) / Layout::lattSize()[mu];

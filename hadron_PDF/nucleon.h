@@ -24,7 +24,7 @@ class Nucleon_system
 public:
   
   // Default constructor -- forward declaration
-  Nucleon_system() {
+  Nucleon_system(){
   };
   
   // UDD blocks
@@ -138,8 +138,8 @@ private:
                   // . . .
                   // 123 all quarks have different sources.
   
-  LatticeSpinMatrixD ProjG;
-  LatticeSpinMatrixD ProjS;
+  SpinMatrixD ProjG;
+  SpinMatrixD ProjS;
 
 };
 

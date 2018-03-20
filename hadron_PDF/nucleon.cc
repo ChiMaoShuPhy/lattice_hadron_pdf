@@ -7,6 +7,8 @@
 
 #include "nucleon.h"
 
+#define PASS(ln) cout << "====== PASS  " << ln << " ======" << endl
+
 using namespace std;
 using namespace QDP;
 
@@ -38,36 +40,44 @@ int Nucleon_system::initialize(const multi1d<int>& src,const multi1d<int>& mom, 
     
     dirname = directory;
     basename = base;
+
+    PASS(42);
     
-    ProjS = 0.0;
-    // LatticeComplexD a;
-    // if (spin=="Avg"){
-    //     a = 0.5;
-    //     pokeSpin(ProjS,a,0,0);
-    //     pokeSpin(ProjS,a,1,1);
-    // } else if (spin=="Suu") {
-    //     a = 1.0;
-    //     pokeSpin(ProjS,a,0,0);
-    // } else if (spin=="Sdd") {
-    //     a = 1.0;
-    //     pokeSpin(ProjS,a,1,1);
-    // } else if (spin=="Sud") {
-    //     a = 1.0;
-    //     pokeSpin(ProjS,a,0,1);
-    // } else if (spin=="Sdu") {
-    //     a = 1.0;
-    //     pokeSpin(ProjS,a,1,0);
-    // }
+    //    LatticeSpinMatrixD ProjS = zero;
+    Complex a;
+    std::cout << "#####  " << spin << "!!!!!" << std::endl;
+    if (spin=="Avg"){
+      std::cout << "here I am" << std::endl;
+        a = 0.5;
+        pokeSpin(ProjS,a,0,0);
+        pokeSpin(ProjS,a,1,1);
+    } else if (spin=="Suu") {
+        a = 1.0;
+        pokeSpin(ProjS,a,0,0);
+    } else if (spin=="Sdd") {
+        a = 1.0;
+        pokeSpin(ProjS,a,1,1);
+    } else if (spin=="Sud") {
+        a = 1.0;
+        pokeSpin(ProjS,a,0,1);
+    } else if (spin=="Sdu") {
+        a = 1.0;
+        pokeSpin(ProjS,a,1,0);
+    } else {
+      std::cout << "Nothing!!!" << std::endl;
+    }
     
-    // ProjG = 0.0;
-    // a = 0.7071067811865475244008444;
-    // pokeSpin(ProjG,a,0,1);
-    // pokeSpin(ProjG,-a,1,0);
+    ProjG = 0.0;
+    a = 0.7071067811865475244008444;
+    pokeSpin(ProjG,a,0,1);
+    pokeSpin(ProjG,-a,1,0);
 
     std::cout << p_mom[0] << " " << p_mom[1] << " " << p_mom[2] << " " << p_mom[3] << std::endl;
     std::cout << srce_pt[0] << " " << srce_pt[1] << " " << srce_pt[2] << " " << srce_pt[3] << std::endl;
-    
+
+    std::cout << "Entering Pxyz initialization" << std::endl;
     Pxyz.initialize(p_mom,srce_pt);
+    std::cout << "Pxyz initialization complete!" << std::endl;
     
     return 0;
 }
