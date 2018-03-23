@@ -3,241 +3,231 @@
 
 <chroma>
   <Input><chroma>
-<Param> 
-  <InlineMeasurements>
-  
-    <elem>
-      <Name>MAKE_SOURCE</Name>
-      <Frequency>1</Frequency>
-      <Param>
-        <version>6</version>
-        <Source>
-          <version>1</version>
-          <SourceType>POINT_SOURCE</SourceType>
-          <j_decay>3</j_decay>
-          <t_srce>0 0 0 0</t_srce>
-
-          <SmearingParam>
-            <wvf_kind>GAUGE_INV_GAUSSIAN</wvf_kind>
-            <wvf_param>4</wvf_param>
-            <wvfIntPar>2</wvfIntPar>
-            <no_smear_dir>3</no_smear_dir>
-          </SmearingParam>
-
-          <LinkSmearing>
-            <LinkSmearingType>STOUT_SMEAR</LinkSmearingType>
-            <link_smear_fact>0.08</link_smear_fact>
-            <link_smear_num>10</link_smear_num>
-            <no_smear_dir>3</no_smear_dir>
-          </LinkSmearing>
-
-          <Displacement>
+  <Param>
+    <InlineMeasurements>
+      <elem>
+        <Name>MAKE_SOURCE</Name>
+        <Frequency>1</Frequency>
+        <Param>
+          <version>6</version>
+          <Source>
             <version>1</version>
-	    <dir>3</dir>
-            <steps>3</steps>
-            <DisplacementType>NONE</DisplacementType>
-          </Displacement>
-        </Source>
-      </Param>
-      <NamedObject>
-        <gauge_id>default_gauge_field</gauge_id>
-        <source_id>t160z0y0x0</source_id>
-      </NamedObject>
-    </elem>
-
-    <elem>
-      <Name>PROPAGATOR</Name>
-      <Frequency>1</Frequency>
-      <Param>
-        <version>10</version>
-        <quarkSpinType>FULL</quarkSpinType>
-        <obsvP>false</obsvP>
-        <numRetries>1</numRetries>
-        <FermionAction>
-          <FermAct>CLOVER</FermAct>
-          <Mass>-0.0743</Mass>
-          <clovCoeffR>1.58932722549812</clovCoeffR>
-          <clovCoeffT>0.902783591772098</clovCoeffT>
-          <AnisoParam>
-            <anisoP>true</anisoP>
-            <t_dir>3</t_dir>
-            <xi_0>4.3</xi_0>
-            <nu>1.265</nu>
-          </AnisoParam>
-          <FermState>
-            <Name>STOUT_FERM_STATE</Name>
-            <rho>0.14</rho>
-            <n_smear>2</n_smear>
-            <orthog_dir>3</orthog_dir>
-            <FermionBC>
-              <FermBC>SIMPLE_FERMBC</FermBC>
-              <boundary>1 1 1 -1</boundary>
-            </FermionBC>
-          </FermState>
-        </FermionAction>
-        <InvertParam>
-          <invType>CG_INVERTER</invType>
-          <RsdCG> 1e-3 </RsdCG>
-          <MaxCG> 100 </MaxCG>
-          <CloverParams>
-         <Mass>-0.0743</Mass>
-         <clovCoeffR>1.58932722549812</clovCoeffR>
-         <clovCoeffT>0.902783591772098</clovCoeffT>
-         <AnisoParam>
-           <anisoP>true</anisoP>
-           <t_dir>3</t_dir>
-           <xi_0>4.3</xi_0>
-           <nu>1.265</nu>
-         </AnisoParam>
-          </CloverParams>
-          <RsdTarget>1.0e-6</RsdTarget>
-          <Delta>0.1</Delta>
-          <MaxIter>10000000</MaxIter>
-          <AntiPeriodicT>true</AntiPeriodicT>
-          <SolverType>BICGSTAB</SolverType>
-          <Verbose>false</Verbose>
-          <AsymmetricLinop>false</AsymmetricLinop>
-          <CudaReconstruct>RECONS_12</CudaReconstruct>
-          <CudaSloppyPrecision>HALF</CudaSloppyPrecision>
-          <CudaSloppyReconstruct>RECONS_12</CudaSloppyReconstruct>
-          <AxialGaugeFix>false</AxialGaugeFix>
-        </InvertParam>
-       </Param>
-       <NamedObject>
-        <gauge_id>default_gauge_field</gauge_id>
-        <source_id>t160z0y0x0</source_id>
-        <prop_id>t160z0y0x0_pt_pt</prop_id>
-       </NamedObject>
-    </elem>
-
-    <comment>
+            <SourceType>POINT_SOURCE</SourceType>
+            <j_decay>3</j_decay>
+            <t_srce>0 0 0 0</t_srce>
+            <SmearingParam>
+              <wvf_kind>GAUGE_INV_GAUSSIAN</wvf_kind>
+              <wvf_param>4</wvf_param>
+              <wvfIntPar>2</wvfIntPar>
+              <no_smear_dir>3</no_smear_dir>
+            </SmearingParam>
+            <LinkSmearing>
+              <LinkSmearingType>STOUT_SMEAR</LinkSmearingType>
+              <link_smear_fact>0.08</link_smear_fact>
+              <link_smear_num>10</link_smear_num>
+              <no_smear_dir>3</no_smear_dir>
+            </LinkSmearing>
+            <Displacement>
+              <version>1</version>
+              <dir>3</dir>
+              <steps>3</steps>
+              <DisplacementType>NONE</DisplacementType>
+            </Displacement>
+          </Source>
+        </Param>
+        <NamedObject>
+          <gauge_id>default_gauge_field</gauge_id>
+          <source_id>t160z0y0x0</source_id>
+        </NamedObject>
+      </elem>
+      <elem>
+        <Name>PROPAGATOR</Name>
+        <Frequency>1</Frequency>
+        <Param>
+          <version>10</version>
+          <quarkSpinType>FULL</quarkSpinType>
+          <obsvP>false</obsvP>
+          <numRetries>1</numRetries>
+          <FermionAction>
+            <FermAct>CLOVER</FermAct>
+            <Mass>-0.0743</Mass>
+            <clovCoeffR>1.58932722549812</clovCoeffR>
+            <clovCoeffT>0.902783591772098</clovCoeffT>
+            <AnisoParam>
+              <anisoP>true</anisoP>
+              <t_dir>3</t_dir>
+              <xi_0>4.3</xi_0>
+              <nu>1.265</nu>
+            </AnisoParam>
+            <FermState>
+              <Name>STOUT_FERM_STATE</Name>
+              <rho>0.14</rho>
+              <n_smear>2</n_smear>
+              <orthog_dir>3</orthog_dir>
+              <FermionBC>
+                <FermBC>SIMPLE_FERMBC</FermBC>
+                <boundary>1 1 1 -1</boundary>
+              </FermionBC>
+            </FermState>
+          </FermionAction>
+          <InvertParam>
+            <invType>CG_INVERTER</invType>
+            <RsdCG> 1e-3 </RsdCG>
+            <MaxCG> 100 </MaxCG>
+            <CloverParams>
+              <Mass>-0.0743</Mass>
+              <clovCoeffR>1.58932722549812</clovCoeffR>
+              <clovCoeffT>0.902783591772098</clovCoeffT>
+              <AnisoParam>
+                <anisoP>true</anisoP>
+                <t_dir>3</t_dir>
+                <xi_0>4.3</xi_0>
+                <nu>1.265</nu>
+              </AnisoParam>
+            </CloverParams>
+            <RsdTarget>1.0e-6</RsdTarget>
+            <Delta>0.1</Delta>
+            <MaxIter>10000000</MaxIter>
+            <AntiPeriodicT>true</AntiPeriodicT>
+            <SolverType>BICGSTAB</SolverType>
+            <Verbose>false</Verbose>
+            <AsymmetricLinop>false</AsymmetricLinop>
+            <CudaReconstruct>RECONS_12</CudaReconstruct>
+            <CudaSloppyPrecision>HALF</CudaSloppyPrecision>
+            <CudaSloppyReconstruct>RECONS_12</CudaSloppyReconstruct>
+            <AxialGaugeFix>false</AxialGaugeFix>
+          </InvertParam>
+        </Param>
+        <NamedObject>
+          <gauge_id>default_gauge_field</gauge_id>
+          <source_id>t160z0y0x0</source_id>
+          <prop_id>t160z0y0x0_pt_pt</prop_id>
+        </NamedObject>
+      </elem>
+      <elem>
+        <Name>SINK_SMEAR</Name>
+        <Frequency>1</Frequency>
+        <Param>
+          <version>5</version>
+          <Sink>
+            <version>2</version>
+            <SinkType>POINT_SINK</SinkType>
+            <j_decay>3</j_decay>
+            <Displacement>
+              <version>1</version>
+              <DisplacementType>NONE</DisplacementType>
+            </Displacement>
+          </Sink>
+        </Param>
+        <NamedObject>
+          <gauge_id>default_gauge_field</gauge_id>
+          <prop_id>t160z0y0x0_pt_pt</prop_id>
+          <smeared_prop_id>t160z0y0x0_sh_pt</smeared_prop_id>
+        </NamedObject>
+      </elem>
+      <elem>
+        <annotation>Save the prop</annotation>
+        <Name>QIO_WRITE_NAMED_OBJECT</Name>
+        <Frequency>1</Frequency>
+        <NamedObject>
+          <object_id>t160z0y0x0_sh_pt</object_id>
+          <object_type>LatticePropagatorF</object_type>
+        </NamedObject>
+        <File>
+          <file_name>./props/testProp</file_name>
+          <file_volfmt>SINGLEFILE</file_volfmt>
+        </File>
+      </elem>
+      <elem>
+        <annotation> NOW DO SOME NUCLEON MEASUREMENTS </annotation>
+        <Name>NUCLEON_SYSTEM</Name>
+        <Frequency>1</Frequency>
+        <Param>
+          <file_dir>./data/</file_dir>
+          <ConsistencyTests>true</ConsistencyTests>
+          <t_length>16</t_length>
+        </Param>
+        <NamedObject>
+          <gauge_id>default_gauge_field</gauge_id>
+          <smeared_prop_id>t160z0y0x0_sh_pt</smeared_prop_id>
+        </NamedObject>
+        <xml_file/>
+      </elem>
+    </InlineMeasurements>
+    <InlineMeasurements2>
     <elem>
       <propagator>
-      <Name>PROPAGATOR</Name>
-      <Frequency>1</Frequency>
-      <Param>
-        <version>10</version>
-        <quarkSpinType>FULL</quarkSpinType>
-        <obsvP>false</obsvP>
-        <numRetries>1</numRetries>
-        <FermionAction>
-          <FermAct>CLOVER</FermAct>
-          <Mass>-0.0743</Mass>
-          <clovCoeffR>1.58932722549812</clovCoeffR>
-          <clovCoeffT>0.902783591772098</clovCoeffT>
-          <AnisoParam>
-            <anisoP>true</anisoP>
-            <t_dir>3</t_dir>
-            <xi_0>4.3</xi_0>
-            <nu>1.265</nu>
-          </AnisoParam>
-          <FermState>
-            <Name>STOUT_FERM_STATE</Name>
-            <rho>0.14</rho>
-            <n_smear>2</n_smear>
-            <orthog_dir>3</orthog_dir>
-            <FermionBC>
-              <FermBC>SIMPLE_FERMBC</FermBC>
-              <boundary>1 1 1 -1</boundary>
-            </FermionBC>
-          </FermState>
-        </FermionAction>
-        <InvertParam>
-          <invType>CG_INVERTER</invType>
-          <RsdCG> 1e-3 </RsdCG>
-          <MaxCG> 100 </MaxCG>
-          <CloverParams>
-         <Mass>-0.0743</Mass>
-         <clovCoeffR>1.58932722549812</clovCoeffR>
-         <clovCoeffT>0.902783591772098</clovCoeffT>
-         <AnisoParam>
-           <anisoP>true</anisoP>
-           <t_dir>3</t_dir>
-           <xi_0>4.3</xi_0>
-           <nu>1.265</nu>
-         </AnisoParam>
-          </CloverParams>
-          <RsdTarget>1.0e-6</RsdTarget>
-          <Delta>0.1</Delta>
-          <MaxIter>10000000</MaxIter>
-          <AntiPeriodicT>true</AntiPeriodicT>
-          <SolverType>BICGSTAB</SolverType>
-          <Verbose>false</Verbose>
-          <AsymmetricLinop>false</AsymmetricLinop>
-          <CudaReconstruct>RECONS_12</CudaReconstruct>
-          <CudaSloppyPrecision>HALF</CudaSloppyPrecision>
-          <CudaSloppyReconstruct>RECONS_12</CudaSloppyReconstruct>
-          <AxialGaugeFix>false</AxialGaugeFix>
-        </InvertParam>
-       </Param>
-       <NamedObject>
-        <gauge_id>default_gauge_field</gauge_id>
-        <source_id>t160z0y0x0</source_id>
-        <prop_id>t160z0y0x0_pt_pt</prop_id>
-       </NamedObject>
+        <Name>PROPAGATOR</Name>
+        <Frequency>1</Frequency>
+        <Param>
+          <version>10</version>
+          <quarkSpinType>FULL</quarkSpinType>
+          <obsvP>false</obsvP>
+          <numRetries>1</numRetries>
+          <FermionAction>
+            <FermAct>CLOVER</FermAct>
+            <Mass>-0.0743</Mass>
+            <clovCoeffR>1.58932722549812</clovCoeffR>
+            <clovCoeffT>0.902783591772098</clovCoeffT>
+            <AnisoParam>
+              <anisoP>true</anisoP>
+              <t_dir>3</t_dir>
+              <xi_0>4.3</xi_0>
+              <nu>1.265</nu>
+            </AnisoParam>
+            <FermState>
+              <Name>STOUT_FERM_STATE</Name>
+              <rho>0.14</rho>
+              <n_smear>2</n_smear>
+              <orthog_dir>3</orthog_dir>
+              <FermionBC>
+                <FermBC>SIMPLE_FERMBC</FermBC>
+                <boundary>1 1 1 -1</boundary>
+              </FermionBC>
+            </FermState>
+          </FermionAction>
+          <InvertParam>
+            <invType>CG_INVERTER</invType>
+            <RsdCG> 1e-3 </RsdCG>
+            <MaxCG> 100 </MaxCG>
+            <CloverParams>
+              <Mass>-0.0743</Mass>
+              <clovCoeffR>1.58932722549812</clovCoeffR>
+              <clovCoeffT>0.902783591772098</clovCoeffT>
+              <AnisoParam>
+                <anisoP>true</anisoP>
+                <t_dir>3</t_dir>
+                <xi_0>4.3</xi_0>
+                <nu>1.265</nu>
+              </AnisoParam>
+            </CloverParams>
+            <RsdTarget>1.0e-6</RsdTarget>
+            <Delta>0.1</Delta>
+            <MaxIter>10000000</MaxIter>
+            <AntiPeriodicT>true</AntiPeriodicT>
+            <SolverType>BICGSTAB</SolverType>
+            <Verbose>false</Verbose>
+            <AsymmetricLinop>false</AsymmetricLinop>
+            <CudaReconstruct>RECONS_12</CudaReconstruct>
+            <CudaSloppyPrecision>HALF</CudaSloppyPrecision>
+            <CudaSloppyReconstruct>RECONS_12</CudaSloppyReconstruct>
+            <AxialGaugeFix>false</AxialGaugeFix>
+          </InvertParam>
+        </Param>
+        <NamedObject>
+          <gauge_id>default_gauge_field</gauge_id>
+          <source_id>t160z0y0x0</source_id>
+          <prop_id>t160z0y0x0_pt_pt</prop_id>
+        </NamedObject>
       </propagator>
-    </elem>
-    </comment>
-    
-   <elem>
-      <Name>SINK_SMEAR</Name>
-      <Frequency>1</Frequency>
-      <Param>
-        <version>5</version>
-        <Sink>
-          <version>2</version>
-          <SinkType>POINT_SINK</SinkType>
-          <j_decay>3</j_decay>
-
-          <Displacement>
-            <version>1</version>
-            <DisplacementType>NONE</DisplacementType>
-          </Displacement>
-        </Sink>
-     </Param>
-      <NamedObject>
-        <gauge_id>default_gauge_field</gauge_id>
-        <prop_id>t160z0y0x0_pt_pt</prop_id>
-        <smeared_prop_id>t160z0y0x0_sh_pt</smeared_prop_id>
-      </NamedObject>
-    </elem>
-    <elem>
-      <annotation>Save the prop</annotation>
-      <Name>QIO_WRITE_NAMED_OBJECT</Name>
-      <Frequency>1</Frequency>
-      <NamedObject>
-           <object_id>t160z0y0x0_sh_pt</object_id>
-           <object_type>LatticePropagatorF</object_type>
-      </NamedObject>
-      <File>
-           <file_name>./props/testProp</file_name>
-           <file_volfmt>SINGLEFILE</file_volfmt>
-      </File>
-    </elem>
-
-    <elem>
-      <annotation> NOW DO SOME NUCLEON MEASUREMENTS </annotation>
-      <Name>NUCLEON_SYSTEM</Name>
-      <Frequency>1</Frequency>
-      <Param>
-         <file_dir>./data/</file_dir>
-         <ConsistencyTests>true</ConsistencyTests>
-	 <t_length>16</t_length>
-      </Param>
-      <NamedObject>
-	 <gauge_id>default_gauge_field</gauge_id>
-         <smeared_prop_id>t160z0y0x0_sh_pt</smeared_prop_id>
-      </NamedObject>
-      <xml_file/>
-    </elem>
-    
-  </InlineMeasurements>
-   <nrow>4 4 4 32</nrow>
-</Param>
-<Cfg>
- <cfg_type>SZINQIO</cfg_type>
- <cfg_file>./cfgs/wilson_k0.1665_b5.32144_4by32_cfg_4000.lime</cfg_file>
-</Cfg>
+      </elem>
+    </InlineMeasurements2>
+    <nrow>4 4 4 32</nrow>
+  </Param>
+  <Cfg>
+    <cfg_type>SZINQIO</cfg_type>
+    <cfg_file>./cfgs/wilson_k0.1665_b5.32144_4by32_cfg_4000.lime</cfg_file>
+  </Cfg>
 </chroma>
 
   </Input>
@@ -247,7 +237,7 @@
       <qdp>1.44.0</qdp>
       <basePrecision>64</basePrecision>
     </code_version>
-    <run_date>23 Mar 18 15:43:18 CET</run_date>
+    <run_date>23 Mar 18 16:02:55 CET</run_date>
     <Setgeom>
       <latt_size>4 4 4 32</latt_size>
       <logical_size>1 1 1 1</logical_size>
@@ -375,7 +365,7 @@
     <t_plaq>0.551980135395447</t_plaq>
     <plane_01_plaq>0.551918630546987</plane_01_plaq>
     <plane_02_plaq>0.548342208916462</plane_02_plaq>
-    <plane_12_plaq>0.556590328137307</plane_12_plaq>
+    <plane_12_plaq>0.556590328137308</plane_12_plaq>
     <plane_03_plaq>0.550455965409046</plane_03_plaq>
     <plane_13_plaq>0.551251595299183</plane_13_plaq>
     <plane_23_plaq>0.554232845478113</plane_23_plaq>
@@ -391,7 +381,7 @@
       </elem>
       <elem>
         <re>-0.11496190491721</re>
-        <im>-0.0573472987326353</im>
+        <im>-0.0573472987326352</im>
       </elem>
       <elem>
         <re>0.055728351564488</re>
@@ -409,7 +399,7 @@
             <qdp>1.44.0</qdp>
             <basePrecision>64</basePrecision>
           </code_version>
-          <run_date>23 Mar 18 15:43:18 CET</run_date>
+          <run_date>23 Mar 18 16:02:55 CET</run_date>
           <Setgeom>
             <latt_size>4 4 4 32</latt_size>
             <logical_size>1 1 1 1</logical_size>
@@ -574,7 +564,7 @@
           <t_plaq>0.551980135395447</t_plaq>
           <plane_01_plaq>0.551918630546987</plane_01_plaq>
           <plane_02_plaq>0.548342208916462</plane_02_plaq>
-          <plane_12_plaq>0.556590328137307</plane_12_plaq>
+          <plane_12_plaq>0.556590328137308</plane_12_plaq>
           <plane_03_plaq>0.550455965409046</plane_03_plaq>
           <plane_13_plaq>0.551251595299183</plane_13_plaq>
           <plane_23_plaq>0.554232845478113</plane_23_plaq>
@@ -590,7 +580,7 @@
             </elem>
             <elem>
               <re>-0.11496190491721</re>
-              <im>-0.0573472987326353</im>
+              <im>-0.0573472987326352</im>
             </elem>
             <elem>
               <re>0.055728351564488</re>
@@ -612,7 +602,7 @@
             <qdp>1.44.0</qdp>
             <basePrecision>64</basePrecision>
           </code_version>
-          <run_date>23 Mar 18 15:43:18 CET</run_date>
+          <run_date>23 Mar 18 16:02:55 CET</run_date>
           <Setgeom>
             <latt_size>4 4 4 32</latt_size>
             <logical_size>1 1 1 1</logical_size>
@@ -797,7 +787,7 @@
           <t_plaq>0.551980135395447</t_plaq>
           <plane_01_plaq>0.551918630546987</plane_01_plaq>
           <plane_02_plaq>0.548342208916462</plane_02_plaq>
-          <plane_12_plaq>0.556590328137307</plane_12_plaq>
+          <plane_12_plaq>0.556590328137308</plane_12_plaq>
           <plane_03_plaq>0.550455965409046</plane_03_plaq>
           <plane_13_plaq>0.551251595299183</plane_13_plaq>
           <plane_23_plaq>0.554232845478113</plane_23_plaq>
@@ -813,7 +803,7 @@
             </elem>
             <elem>
               <re>-0.11496190491721</re>
-              <im>-0.0573472987326353</im>
+              <im>-0.0573472987326352</im>
             </elem>
             <elem>
               <re>0.055728351564488</re>
@@ -822,7 +812,7 @@
           </pollp>
         </Observables>
         <Source_file_info><make_source>
-      <id>580405398</id>
+      <id>580406575</id>
     </make_source>
 
         </Source_file_info>
@@ -985,7 +975,7 @@
             <color_source>0</color_source>
             <spin_source>2</spin_source>
             <n_count>27</n_count>
-            <resid>0.00120559464290654</resid>
+            <resid>0.00120559464290655</resid>
           </Qprop>
           <Qprop>
             <color_source>0</color_source>
@@ -1003,7 +993,7 @@
             <color_source>1</color_source>
             <spin_source>1</spin_source>
             <n_count>26</n_count>
-            <resid>0.00125738403905295</resid>
+            <resid>0.00125738403905296</resid>
           </Qprop>
           <Qprop>
             <color_source>1</color_source>
@@ -1033,7 +1023,7 @@
             <color_source>2</color_source>
             <spin_source>2</spin_source>
             <n_count>26</n_count>
-            <resid>0.00146135763562294</resid>
+            <resid>0.00146135763562295</resid>
           </Qprop>
           <Qprop>
             <color_source>2</color_source>
@@ -1046,7 +1036,7 @@
           <ncg_had>321</ncg_had>
         </Relaxation_Iterations>
         <Prop_correlator>
-          <prop_corr>4.17227581943526 0.912219584222626 0.361151995000975 0.157910589464276 0.0721627237313305 0.0317999446165031 0.0147060545911884 0.00717763432586142 0.00364790110110864 0.00182120829820569 0.000877583053478408 0.000408780956942491 0.000197954720361934 9.11786623532511e-05 4.23401837148132e-05 2.35064868871265e-05 1.77589691417272e-05 2.184811410663e-05 3.82651794433674e-05 7.50767349904324e-05 0.00015235062802256 0.000301208612956481 0.000621485518167193 0.00122286408751303 0.00253801660407819 0.00574783313487458 0.0127555910697227 0.0298949742390348 0.0754009119264157 0.178918750590888 0.37836676527412 0.924756761620578</prop_corr>
+          <prop_corr>4.17227581943526 0.912219584222626 0.361151995000975 0.157910589464276 0.0721627237313305 0.0317999446165031 0.0147060545911884 0.00717763432586142 0.00364790110110863 0.00182120829820569 0.000877583053478407 0.00040878095694249 0.000197954720361934 9.1178662353251e-05 4.23401837148131e-05 2.35064868871265e-05 1.77589691417272e-05 2.184811410663e-05 3.82651794433673e-05 7.50767349904323e-05 0.00015235062802256 0.00030120861295648 0.000621485518167193 0.00122286408751303 0.00253801660407819 0.00574783313487458 0.0127555910697227 0.0298949742390348 0.0754009119264157 0.178918750590888 0.37836676527412 0.924756761620578</prop_corr>
         </Prop_correlator>
       </propagator>
     </elem>
@@ -1186,7 +1176,7 @@
           <t_plaq>0.551980135395447</t_plaq>
           <plane_01_plaq>0.551918630546987</plane_01_plaq>
           <plane_02_plaq>0.548342208916462</plane_02_plaq>
-          <plane_12_plaq>0.556590328137307</plane_12_plaq>
+          <plane_12_plaq>0.556590328137308</plane_12_plaq>
           <plane_03_plaq>0.550455965409046</plane_03_plaq>
           <plane_13_plaq>0.551251595299183</plane_13_plaq>
           <plane_23_plaq>0.554232845478113</plane_23_plaq>
@@ -1202,7 +1192,7 @@
             </elem>
             <elem>
               <re>-0.11496190491721</re>
-              <im>-0.0573472987326353</im>
+              <im>-0.0573472987326352</im>
             </elem>
             <elem>
               <re>0.055728351564488</re>
@@ -1211,7 +1201,7 @@
           </pollp>
         </Observables>
         <Prop_file_info><propagator>
-      <id>580405400</id>
+      <id>580406578</id>
     </propagator>
 
         </Prop_file_info>
@@ -1409,10 +1399,10 @@
 
         </Prop_record_info>
         <Forward_prop_correlator>
-          <forward_prop_corr>4.17227581943526 0.912219584222626 0.361151995000975 0.157910589464276 0.0721627237313305 0.0317999446165031 0.0147060545911884 0.00717763432586142 0.00364790110110864 0.00182120829820569 0.000877583053478408 0.000408780956942491 0.000197954720361934 9.11786623532511e-05 4.23401837148132e-05 2.35064868871265e-05 1.77589691417272e-05 2.184811410663e-05 3.82651794433674e-05 7.50767349904324e-05 0.00015235062802256 0.000301208612956481 0.000621485518167193 0.00122286408751303 0.00253801660407819 0.00574783313487458 0.0127555910697227 0.0298949742390348 0.0754009119264157 0.178918750590888 0.37836676527412 0.924756761620578</forward_prop_corr>
+          <forward_prop_corr>4.17227581943526 0.912219584222626 0.361151995000975 0.157910589464276 0.0721627237313305 0.0317999446165031 0.0147060545911884 0.00717763432586142 0.00364790110110863 0.00182120829820569 0.000877583053478407 0.00040878095694249 0.000197954720361934 9.1178662353251e-05 4.23401837148131e-05 2.35064868871265e-05 1.77589691417272e-05 2.184811410663e-05 3.82651794433673e-05 7.50767349904323e-05 0.00015235062802256 0.00030120861295648 0.000621485518167193 0.00122286408751303 0.00253801660407819 0.00574783313487458 0.0127555910697227 0.0298949742390348 0.0754009119264157 0.178918750590888 0.37836676527412 0.924756761620578</forward_prop_corr>
         </Forward_prop_correlator>
         <SinkSmearedProp_correlator>
-          <sink_smeared_prop_corr>4.17227581943526 0.912219584222626 0.361151995000975 0.157910589464276 0.0721627237313305 0.0317999446165031 0.0147060545911884 0.00717763432586142 0.00364790110110864 0.00182120829820569 0.000877583053478408 0.000408780956942491 0.000197954720361934 9.11786623532511e-05 4.23401837148132e-05 2.35064868871265e-05 1.77589691417272e-05 2.184811410663e-05 3.82651794433674e-05 7.50767349904324e-05 0.00015235062802256 0.000301208612956481 0.000621485518167193 0.00122286408751303 0.00253801660407819 0.00574783313487458 0.0127555910697227 0.0298949742390348 0.0754009119264157 0.178918750590888 0.37836676527412 0.924756761620578</sink_smeared_prop_corr>
+          <sink_smeared_prop_corr>4.17227581943526 0.912219584222626 0.361151995000975 0.157910589464276 0.0721627237313305 0.0317999446165031 0.0147060545911884 0.00717763432586142 0.00364790110110863 0.00182120829820569 0.000877583053478407 0.00040878095694249 0.000197954720361934 9.1178662353251e-05 4.23401837148131e-05 2.35064868871265e-05 1.77589691417272e-05 2.184811410663e-05 3.82651794433673e-05 7.50767349904323e-05 0.00015235062802256 0.00030120861295648 0.000621485518167193 0.00122286408751303 0.00253801660407819 0.00574783313487458 0.0127555910697227 0.0298949742390348 0.0754009119264157 0.178918750590888 0.37836676527412 0.924756761620578</sink_smeared_prop_corr>
         </SinkSmearedProp_correlator>
       </sink_smear>
     </elem>
@@ -1423,3 +1413,28 @@
       </qio_write_named_obj>
     </elem>
     <elem>
+      <my_measurement>
+        <update_no>0</update_no>
+        <ProgramInfo>
+          <code_version>
+            <chroma>3.43.0</chroma>
+            <qdp>1.44.0</qdp>
+            <basePrecision>64</basePrecision>
+          </code_version>
+          <run_date>23 Mar 18 16:03:01 CET</run_date>
+          <Setgeom>
+            <latt_size>4 4 4 32</latt_size>
+            <logical_size>1 1 1 1</logical_size>
+            <subgrid_size>4 4 4 32</subgrid_size>
+            <total_volume>2048</total_volume>
+            <subgrid_volume>2048</subgrid_volume>
+          </Setgeom>
+        </ProgramInfo>
+        <Input>
+          <file_dir>./data/</file_dir>
+          <gauge_id>default_gauge_field</gauge_id>
+        </Input>
+      </my_measurement>
+    </elem>
+  </InlineObservables>
+</chroma>

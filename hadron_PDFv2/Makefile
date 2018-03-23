@@ -1,5 +1,5 @@
-CHROMA=/Users/tomluu/Research/lqcd/code/usqcd/install/chroma
-CONFIG=$(CHROMA)/bin/chroma-config
+CHROMA=/Users/xiaonuxiong/USQCD/build/chroma
+CONFIG=$(CHROMA)/chroma-config
 CXX=$(shell $(CONFIG) --cxx)
 CXXFLAGS=$(shell $(CONFIG) --cxxflags) -I.
 LDFLAGS=$(shell $(CONFIG) --ldflags)

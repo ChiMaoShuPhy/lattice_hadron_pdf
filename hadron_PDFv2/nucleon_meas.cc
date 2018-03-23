@@ -317,7 +317,7 @@ namespace Chroma
   LatticePropagator quark_src = zero;
   quark_src = getPointSource(t_srce, j_decay);
 
-  XMLReader rd(xml_in, "/chroma/Param/InlineMeasurements/elem/propagator/Param");
+  XMLReader rd(xml_in, "/chroma/Param/InlineMeasurements2/elem/propagator/Param");
 
   SimpleFermBCParams bc_prmtrs;
 
