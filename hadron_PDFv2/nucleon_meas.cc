@@ -466,7 +466,7 @@ namespace Chroma
     //    nucleon.calcDirect(prop_PD);
     //    nucleon.writeMass();
 //    nucleon.calcExchange(prop_PD,prop_PD);
-    nucleon.calcBlock(prop_PDd,prop_PDu,111);    
+    nucleon.calcBlock(prop_PDu,prop_PDd,112);    
     nucleon.calcMassFromBlocks();
     //    nucleon.calc_G1pG1p_A1p();
     nucleon.free();
