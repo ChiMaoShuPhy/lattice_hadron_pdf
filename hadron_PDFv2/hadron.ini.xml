@@ -141,7 +141,7 @@
         <Frequency>1</Frequency>
         <Param>
           <file_dir>./data/</file_dir>
-          <ConsistencyTests>true</ConsistencyTests>
+          <ConsistencyTests>false</ConsistencyTests>
           <t_length>16</t_length>
         </Param>
         <NamedObject>

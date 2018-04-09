@@ -25,7 +25,7 @@ int readwrite::writeCorrelator(const multi1d<DComplex>& corr, std::string name, 
  
   if(Layout::primaryNode()) {
     typere=name;
-    gpltypere=name+"_gpl";
+    gpltypere=name+".gpl";
     outre.open(typere.c_str(),std::ios::out|std::ios::app);
     gplout.open(gpltypere.c_str(),std::ios::out|std::ios::app);
     outre << srce_pt[0];
@@ -146,7 +146,7 @@ int readwrite::writeAvgCorrelator(const multi1d<DComplex>& corr, std::string nam
   int Navg;
 
   if(Layout::primaryNode()) {
-    typeAvg=name+"_avg";
+    typeAvg=name+".avg";
     inAvg.open(typeAvg.c_str(),std::ios::in);
 
     if(! inAvg ) { /* file does not exist */

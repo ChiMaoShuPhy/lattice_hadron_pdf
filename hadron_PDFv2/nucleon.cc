@@ -176,6 +176,8 @@ int Nucleon_system::calcBlock(const LatticePropagator& propU, const LatticePropa
   /* Resize the udd blocks accordingly */
   blockG1pU.resize(4,3,4,3,4,3,lat_size[3]);
   blockG1pD.resize(4,3,4,3,4,3,lat_size[3]);
+  blockX1U.resize(4,3,4,3,4,3,lat_size[3]);
+  blockX1D.resize(4,3,4,3,4,3,lat_size[3]);
 
   /* Set size of correlators */
   corrU.resize( lat_size[3] );
@@ -187,6 +189,13 @@ int Nucleon_system::calcBlock(const LatticePropagator& propU, const LatticePropa
   QDPIO::cout << "Nucleon_system :: Calculating G1+ nucleon blocks . . . ";
   calcNucleon_blocks(blockG1pU,0,1,0);
   calcNucleon_blocks(blockG1pD,0,1,1);
+  QDPIO::cout << "Finished." << endl;
+
+  QDPIO::cout << "Nucleon_system :: Calculating X1 nucleon blocks . . . ";
+  calcNucleon_blocks(blockX1U,2,3,0);
+  blockG1pU = blockG1pU+blockX1U;
+  calcNucleon_blocks(blockX1D,2,3,1);
+  blockG1pD = blockG1pD+blockX1D;
   QDPIO::cout << "Finished." << endl;
 
   S1.resize(0,0);
@@ -383,18 +392,20 @@ int Nucleon_system::calcMassFromBlocks()
 	eabc = epsilon(a,b,c);
 	corrU += eabc * invsqrt2 * (blockG1pU[0][a][1][b][0][c] - blockG1pU[1][a][0][b][0][c]);
 	corrD += eabc * invsqrt2 * (blockG1pD[0][a][1][b][1][c] - blockG1pD[1][a][0][b][1][c]);
+ 	corrU += eabc * invsqrt2 * (blockG1pU[2][a][3][b][0][c] - blockG1pU[3][a][2][b][0][c]);
+	corrD += eabc * invsqrt2 * (blockG1pD[2][a][3][b][1][c] - blockG1pD[3][a][2][b][1][c]);
 	if( doChecks ) {
 	}
       };
   };  
 
    /* blockG1pU */
-  rw.writeCorrelator(corrU,dirname+"nucleonG1pU"+basename,-1, lat_size[3], srce_pt);
-  rw. writeAvgCorrelator(corrU,dirname+"nucleonG1pU"+basename,-1, lat_size[3], srce_pt[3]);
+  rw.writeCorrelator(corrU,dirname+"nucleonCg5_up"+basename,-1, lat_size[3], srce_pt);
+  //  rw. writeAvgCorrelator(corrU,dirname+"nucleonCg5_up"+basename,-1, lat_size[3], srce_pt[3]);
 
   /* blockG1pD */
-  rw.writeCorrelator(corrD,dirname+"nucleonG1pD"+basename,-1, lat_size[3], srce_pt);
-  rw.writeAvgCorrelator(corrD,dirname+"nucleonG1pD"+basename,-1, lat_size[3], srce_pt[3]);
+  rw.writeCorrelator(corrD,dirname+"nucleonCg5_down"+basename,-1, lat_size[3], srce_pt);
+  //  rw.writeAvgCorrelator(corrD,dirname+"nucleonCg5_down"+basename,-1, lat_size[3], srce_pt[3]);
 
   if( doChecks )
     {
@@ -420,7 +431,7 @@ int Nucleon_system::calcNucleon_blocks(udd<DComplex>& block, int mu1, int mu2, i
 {
   /* 
      Calculates all the positive parity G1 nucleon blocks.
-     Note:  these blocks are open, in that only one contraction over epsilon color indices are performed!!!
+     Note:  these blocks are open, in that only one contraction over epsilon color indices is performed!!!
   */
   int alpha, beta, gamma;
   int a, b, c;

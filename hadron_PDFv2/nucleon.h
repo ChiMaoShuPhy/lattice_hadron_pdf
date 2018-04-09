@@ -31,6 +31,9 @@ public:
   udd<DComplex> blockG1pU; //G1p_e1_r1;
   udd<DComplex> blockG1pD; //G1p_e1_r2;
 
+  udd<DComplex> blockX1U;
+  udd<DComplex> blockX1D;
+
   // initialization routine
   int initialize(const multi1d<int>& src,const multi1d<int>& mom, const multi1d<int>& latsize,std::string dirname, std::string basename, std::string spin);
   

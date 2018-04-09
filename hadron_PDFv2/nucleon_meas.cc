@@ -262,7 +262,7 @@ namespace Chroma
     std::string sinksmear;
     read(input_smeared_prop_xml,"/SinkSmear/PropSink/Sink/SinkType",sinksmear);
 
-    std::string basename="_"; //;+srcesmear+"_"+sinksmear+"_"+traj;
+    std::string basename=""; //;+srcesmear+"_"+sinksmear+"_"+traj;
     std::string dirname=params.filedir;
 
 
@@ -441,7 +441,8 @@ namespace Chroma
 
     /* First things first:  Need to convert prop from DeGrand-Rossi to Dirac-Pauli */
     const SpinMatrixD U =  PauliToDRMat();
-    LatticePropagator prop_PD = transpose(U) * smeared_prop * U;
+    LatticePropagator prop_PDu = transpose(U) * quark_prpgtr * U;
+    LatticePropagator prop_PDd = transpose(U) * FH_quark_prpgtr * U;
     multi1d<int> pN(4);
   
     pN[0]=0;pN[1]=0;pN[2]=0;pN[3]=0;
@@ -465,9 +466,9 @@ namespace Chroma
     //    nucleon.calcDirect(prop_PD);
     //    nucleon.writeMass();
 //    nucleon.calcExchange(prop_PD,prop_PD);
-    nucleon.calcBlock(prop_PD);    
+    nucleon.calcBlock(prop_PDd,prop_PDu,111);    
     nucleon.calcMassFromBlocks();
-    nucleon.calc_G1pG1p_A1p();
+    //    nucleon.calc_G1pG1p_A1p();
     nucleon.free();
 
 
