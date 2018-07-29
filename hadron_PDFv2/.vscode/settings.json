@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.cu": "cpp",
+        "*.cc": "cpp",
+        "__locale": "cpp",
+        "ios": "cpp",
+        "ostream": "cpp"
+    }
+}

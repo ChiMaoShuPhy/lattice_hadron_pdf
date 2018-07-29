@@ -1,6 +1,7 @@
 #include "nucleon_meas.h"
 #include "chroma.h"
 #include "spin_matrix.h"
+#include "barspinmat_w.cc"
 #include <iostream>
 #include <string>
 
@@ -12,6 +13,9 @@
 
 using namespace QDP;
 using namespace std;
+using namespace BaryonSpinMats;
+
+typedef OLattice<PSpinMatrix<PColorMatrix<RScalar<double>, Nc>, Ns>> LatticePropagatorReImPrt;
 
 namespace Chroma 
 { 
@@ -348,6 +352,8 @@ namespace Chroma
   gaugeStartup(gauge_file_xml, gauge_xml, u, cfg);
   unitarityCheck(u);
 
+  //rgauge(u);
+
   //======================================================
   //
   //  BEFORE rgauge
@@ -395,7 +401,10 @@ namespace Chroma
 
     //  LatticePropagator FH_src = Gamma(8)* gaugelink * quark_prpgtr_Delta; Wrong!, QDP does not support Gamma multiply with ColorMatrix
 
-    FH_src = gaugelink * (Gamma(8) * quark_prpgtr_Delta);
+   FH_src = gaugelink * (Gamma(8) * quark_prpgtr_Delta);
+//drop gamma(8) for test: zero dispalcement FH_prpgtr should be identical to quark prpgtr
+//    FH_src = gaugelink * ( quark_prpgtr_Delta );
+
 
     //======================Feynman-Hellman Source=========================
 
@@ -439,12 +448,68 @@ namespace Chroma
     // Write out the input
     params.write(xml_out, "Input");
 
+    SpinMatrix cg5P_pstv = Cg5();
+  
+  //!!!! IMPORTNT
+    SpinMatrix T_unpol = Tunpol();
+    
+    LatticeComplex d_tr_prpgtrs_1 =
+      trace(T_unpol * traceColor(quark_prpgtr * traceSpin(quarkContract13(FH_quark_prpgtr * cg5P_pstv, cg5P_pstv * quark_prpgtr))));
+
+    LatticeComplex d_tr_prpgtrs_2 =
+      trace(T_unpol * traceColor(quark_prpgtr * quarkContract13(FH_quark_prpgtr * cg5P_pstv, cg5P_pstv * quark_prpgtr)));
+
+    LatticeDouble d_tr_prpgtrs_Re = real(d_tr_prpgtrs_1 + d_tr_prpgtrs_2);
+    LatticeDouble d_tr_prpgtrs_Im = imag(d_tr_prpgtrs_1 + d_tr_prpgtrs_2);
+
+
     /* First things first:  Need to convert prop from DeGrand-Rossi to Dirac-Pauli */
     const SpinMatrixD U =  PauliToDRMat();
-    LatticePropagator prop_PDu = transpose(U) * quark_prpgtr * U;
-    LatticePropagator prop_PDd = transpose(U) * FH_quark_prpgtr * U;
-    multi1d<int> pN(4);
+    LatticePropagator prop_PDu = adj(U) * quark_prpgtr * U;
+    LatticePropagator prop_PDd = adj(U) * FH_quark_prpgtr * U;
   
+    SpinMatrix cg5P_pstv_PlDrc = adj(U) * Cg5() * U;
+    SpinMatrix T_unpol_PlDrc = adj(U) * Tunpol() * U;
+
+
+    LatticeComplex d_tr_prpgtrs_PlDrc_1 =
+      trace(T_unpol_PlDrc * traceColor(prop_PDu * traceSpin(quarkContract13(prop_PDd * cg5P_pstv_PlDrc, cg5P_pstv_PlDrc * prop_PDu))));
+
+    LatticeComplex d_tr_prpgtrs_PlDrc_2 =
+      trace(T_unpol_PlDrc * traceColor(prop_PDu * quarkContract13(prop_PDd * cg5P_pstv_PlDrc, cg5P_pstv_PlDrc * prop_PDu)));
+
+    LatticeDouble d_tr_prpgtrs_PlDrc_Re = real(d_tr_prpgtrs_PlDrc_1 + d_tr_prpgtrs_PlDrc_2);
+    LatticeDouble d_tr_prpgtrs_PlDrc_Im = imag(d_tr_prpgtrs_PlDrc_1 + d_tr_prpgtrs_PlDrc_2);
+
+    multi1d<int> pN(4);
+
+//==================out put quark_prpgtr, FH_quark_prpgtr ==================//
+LatticePropagatorReImPrt FH_quark_prpgtrRe = real(FH_quark_prpgtr);
+LatticePropagatorReImPrt FH_quark_prpgtrIm = imag(FH_quark_prpgtr);
+LatticePropagatorReImPrt quark_prpgtr_Re = real(quark_prpgtr);
+LatticePropagatorReImPrt quark_prpgtr_Im = imag(quark_prpgtr);
+HDF5Writer proton_PDF_file;
+proton_PDF_file.open("proton_PDF_Tom.h5", HDF5Base::ate);
+proton_PDF_file.set_stripesize(1048576);
+  proton_PDF_file.push("FH_quark_prpgtr");
+    proton_PDF_file.write("Re", FH_quark_prpgtrRe, HDF5Base::trunc);
+    proton_PDF_file.write("Im", FH_quark_prpgtrIm, HDF5Base::trunc);
+  proton_PDF_file.pop();
+  proton_PDF_file.push("quark_prpgtrs");
+    proton_PDF_file.write("Re", quark_prpgtr_Re, HDF5Base::trunc);
+    proton_PDF_file.write("Im", quark_prpgtr_Im, HDF5Base::trunc);
+  proton_PDF_file.pop();
+  proton_PDF_file.push("d_tr_prpgtrs_Tom");
+    proton_PDF_file.write("Re", d_tr_prpgtrs_Re, HDF5Base::trunc);
+    proton_PDF_file.write("Im", d_tr_prpgtrs_Im, HDF5Base::trunc);
+  proton_PDF_file.pop();
+    proton_PDF_file.push("d_tr_prpgtrs_PlDrc_Tom");
+    proton_PDF_file.write("Re", d_tr_prpgtrs_PlDrc_Re, HDF5Base::trunc);
+    proton_PDF_file.write("Im", d_tr_prpgtrs_PlDrc_Im, HDF5Base::trunc);
+  proton_PDF_file.pop(); 
+proton_PDF_file.close();
+
+
     pN[0]=0;pN[1]=0;pN[2]=0;pN[3]=0;
     
     
@@ -466,7 +531,11 @@ namespace Chroma
     //    nucleon.calcDirect(prop_PD);
     //    nucleon.writeMass();
 //    nucleon.calcExchange(prop_PD,prop_PD);
-    nucleon.calcBlock(prop_PDu,prop_PDd,112);    
+//for 3 point function
+//    nucleon.calcBlock(prop_PDu,prop_PDd,112);
+//for 2 point function
+     nucleon.calcBlock(prop_PDu,prop_PDu,112);    
+
     nucleon.calcMassFromBlocks();
     //    nucleon.calc_G1pG1p_A1p();
     nucleon.free();

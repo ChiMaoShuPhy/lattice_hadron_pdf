@@ -1,0 +1,29 @@
+how to smearing
+
+1. smear the source eta' = smear(eta,sigma,N), eta: point source, GAUGE_INV_GASS
+2. calculate the propagator
+   S' = D^{-1} eta'
+3. build F-H source and calculate the F-H propagator
+   S_FH(Delta_x) = D^{-1} W(Delta_x)
+4. smear the F-H propagator at sink
+   S'_FH(Delta_x) = smear(S_FH(Delta_x),sigma,N)
+5. calculate the 2-pt function (e.g nucleon)
+   C'^{3pt}(Delta_x) = C[S',S',S'_FH(Delta_x)]
+
+
+how to choose smearing paramaters (sigma, N)
+For configurations in {cfg_1,cfg_2,....,cfg_T}
+  For i = 1, i<=M, i++
+      1. smear the source eta'_i=smear(eta,sigma_i, N_i) , eta: point source
+      2. calculate the propagator S_i = D^{-1} eta_i'
+      3. smear the propagator S'_i = smear(S_i, sigma_i, N_i)
+      4. calculate the 2-point function (e.g nucleon)
+         C^{2pt}_i  = C[S_i,S_i]
+         C'^{2pt}_i = C'[S'_i,S'_i]
+5.Avergae over configurations compute C-mean^{2pt}_i and C'-mean^{2pt}_i
+          
+
+5. compare {C-mean^{2pt}_i , C'-mean^{2pt}_i} for i=1,2,3,...,M
+   choose i when {C-mean^{2pt}_i , C'-mean^{2pt}_i} are separated enough and noise is well controlled. -> good sigma_i, N_i
+
+

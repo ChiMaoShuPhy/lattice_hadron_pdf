@@ -1,0 +1,880 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[     35372,        879]
+NotebookOptionsPosition[     32664,        780]
+NotebookOutlinePosition[     33055,        797]
+CellTagsIndexPosition[     33012,        794]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7346132880466337`*^9, 3.734613293827402*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"/Users/xiaonuxiong/Nustore Files/Nutstore/PDF Euclidean \
+Lattice/Hadron_Structure_Lattice/PDF/pion_proton_PDF\"\>", 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.734613294334219*^9, 3.7407703745240593`*^9, 
+  3.7407705481321583`*^9, 3.740776481582769*^9, 3.740914909292194*^9, 
+  3.741181219128029*^9, 3.741191704107009*^9, 3.741245754432465*^9, 
+  3.7415961447897*^9}]
+}, Open  ]],
+
+Cell[BoxData["\"\<ls *.lime>>cfg_file_name_JURECA.txt\>\""], "Input",
+ CellChangeTimes->{{3.740819039127421*^9, 3.740819048172727*^9}, {
+  3.741182051616868*^9, 3.741182079145047*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["For test", "Section",
+ CellChangeTimes->{{3.741181698033538*^9, 3.741181700593752*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"cfgs", "=", 
+  RowBox[{"StringSplit", "[", 
+   RowBox[{
+    RowBox[{"Import", "[", "\"\<.//cfg_file_name.txt\>\"", "]"}], ",", 
+    "\"\<\\n\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.73461326162683*^9, 3.73461338083267*^9}, {
+  3.740770575070684*^9, 3.7407705759980593`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"\<\"wilson_k0.1665_b5.32144_4by32_cfg_4000.lime\"\>", 
+    ",", "\<\"wilson_k0.1665_b5.32144_4by32_cfg_4010.lime\"\>", 
+    ",", "\<\"wilson_k0.1665_b5.32144_4by32_cfg_4210.lime\"\>"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{{3.734613271042995*^9, 3.734613381651805*^9}, 
+   3.73461879885116*^9, 3.7346401262307253`*^9, {3.74077054943332*^9, 
+   3.740770576617201*^9}, 3.740776481712365*^9, 3.741188961175132*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cfgnames", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"StringReplace", "[", 
+      RowBox[{"#", ",", 
+       RowBox[{"\"\<.lime\>\"", "\[Rule]", "\"\<\>\""}]}], "]"}], "&"}], "/@",
+     "cfgs"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.73461417350845*^9, 3.734614212531292*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"L32T96xmlsTest", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"Import", "[", 
+          RowBox[{"\"\<xml_in_template.xml\>\"", ",", "\"\<Text\>\""}], "]"}],
+          ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<4 4 4 32\>\"", "\[Rule]", "\"\<4 4 4 32\>\""}], ",", 
+           RowBox[{"\"\<Sobol_Seed\>\"", "\[Rule]", 
+            RowBox[{"ToString", "[", 
+             RowBox[{"RandomInteger", "[", 
+              RowBox[{"{", 
+               RowBox[{"1", ",", 
+                SuperscriptBox["10", "4"]}], "}"}], "]"}], "]"}]}], ",", 
+           RowBox[{
+           "\"\<./wilson_k0.1665_b5.32144_4by32_cfg_4000.lime\>\"", "\[Rule]", 
+            RowBox[{"\"\<./\>\"", "<>", "#"}]}]}], "}"}]}], "]"}], "&"}], "[", 
+      RowBox[{"cfgs", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "cfgs", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.740771688648027*^9, 3.740771694200943*^9}, {
+  3.740771779891172*^9, 3.740771783092119*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"Export", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+      "cfgnames", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+      "<>", "\"\<.txt\>\""}], ",", 
+     RowBox[{
+     "L32T96xmlsTest", "\[LeftDoubleBracket]", "i", 
+      "\[RightDoubleBracket]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", 
+     RowBox[{"Length", "[", "cfgnames", "]"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.734619782875061*^9, 3.734619854806571*^9}, {
+   3.734635168881194*^9, 3.7346351695653133`*^9}, 3.740771699565022*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"\<\"wilson_k0.1665_b5.32144_4by32_cfg_4000.txt\"\>", 
+    ",", "\<\"wilson_k0.1665_b5.32144_4by32_cfg_4010.txt\"\>", 
+    ",", "\<\"wilson_k0.1665_b5.32144_4by32_cfg_4210.txt\"\>"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.734619855233629*^9, 3.7346347276741457`*^9, {3.734635073826264*^9, 
+   3.7346350933484697`*^9}, 3.734635172903183*^9, 3.734640143341804*^9, 
+   3.740770714235021*^9, 3.7407717007482233`*^9, 3.740771738633786*^9, 
+   3.7407718163307047`*^9, 3.740776481869907*^9, 3.74118896784328*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"runstr2pt", "=", 
+  RowBox[{"StringJoin", "[", 
+   RowBox[{"Riffle", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"\"\<./pion_proton_2pt -i \>\"", "<>", 
+        RowBox[{
+        "cfgnames", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        "<>", "\"\<.txt\>\""}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", "cfgnames", "]"}]}], "}"}]}], "]"}], ",", 
+     "\"\<\\n\>\""}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.741188981675022*^9, 3.74118898866755*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"./pion_proton_2pt -i wilson_k0.1665_b5.32144_4by32_cfg_4000.txt\
+\\n./pion_proton_2pt -i \
+wilson_k0.1665_b5.32144_4by32_cfg_4010.txt\\n./pion_proton_2pt -i \
+wilson_k0.1665_b5.32144_4by32_cfg_4210.txt\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7411889837804728`*^9, 3.741188989265745*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"runstr", "=", 
+  RowBox[{"StringJoin", "[", 
+   RowBox[{"Riffle", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"\"\<./pion_proton_PDF -i \>\"", "<>", 
+        RowBox[{
+        "cfgnames", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        "<>", "\"\<.txt\>\""}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "[", "cfgnames", "]"}]}], "}"}]}], "]"}], ",", 
+     "\"\<\\n\>\""}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7346143694333344`*^9, 3.734614412974453*^9}, {
+  3.7346145357760077`*^9, 3.7346145518444643`*^9}, {3.734615168529516*^9, 
+  3.734615169199946*^9}, {3.734618577448224*^9, 3.734618577663808*^9}, {
+  3.734618829961012*^9, 3.734618834532576*^9}, {3.734619594964032*^9, 
+  3.734619597388097*^9}, {3.734619636629187*^9, 3.7346196408372393`*^9}, {
+  3.734619678485118*^9, 3.7346196793779078`*^9}, {3.734619966977975*^9, 
+  3.734619970440773*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"./pion_proton_PDF -i wilson_k0.1665_b5.32144_4by32_cfg_4000.txt\
+\\n./pion_proton_PDF -i \
+wilson_k0.1665_b5.32144_4by32_cfg_4010.txt\\n./pion_proton_PDF -i \
+wilson_k0.1665_b5.32144_4by32_cfg_4210.txt\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{{3.734614410541559*^9, 3.73461441334097*^9}, {
+   3.734614547991418*^9, 3.7346145525244017`*^9}, 3.734618578507729*^9, {
+   3.734618825729608*^9, 3.734618834945684*^9}, {3.734619951192421*^9, 
+   3.734619971429282*^9}, 3.7346347572931213`*^9, 3.734640144720749*^9, 
+   3.740770718687483*^9, 3.74077173169248*^9, 3.740776482054831*^9, 
+   3.7411889708928347`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<run2pt.txt\>\"", ",", "runstr2pt"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7346143252446547`*^9, 3.734614336307444*^9}, {
+  3.7346143667581882`*^9, 3.73461436691654*^9}, {3.734614555844295*^9, 
+  3.734614556457183*^9}, {3.741188993504668*^9, 3.7411889963075237`*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"run2pt.txt\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.734614557083646*^9, 3.734614854509012*^9, 3.734619923427286*^9, {
+   3.7346199536598*^9, 3.7346199762610807`*^9}, 3.74077072231606*^9, 
+   3.740776484232357*^9, 3.741188996770409*^9}]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["For real run on JURECA", "Section",
+ CellChangeTimes->{{3.741181698033538*^9, 3.741181700593752*^9}, {
+  3.741181750823604*^9, 3.741181755350276*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cfgs", "=", 
+   RowBox[{"StringSplit", "[", 
+    RowBox[{
+     RowBox[{"Import", "[", "\"\<.//cfg_file_name_JURECA.txt\>\"", "]"}], 
+     ",", "\"\<\\n\>\""}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.73461326162683*^9, 3.73461338083267*^9}, {
+  3.740770575070684*^9, 3.7407705759980593`*^9}, {3.741182331278624*^9, 
+  3.741182337452488*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cfgnames", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"StringReplace", "[", 
+      RowBox[{"#", ",", 
+       RowBox[{"\"\<.lime\>\"", "\[Rule]", "\"\<\>\""}]}], "]"}], "&"}], "/@",
+     "cfgs"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.73461417350845*^9, 3.734614212531292*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"L32T96xmls", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"Import", "[", 
+          RowBox[{"\"\<xml_in_template_JURECA.xml\>\"", ",", "\"\<Text\>\""}],
+           "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<4 4 4 32\>\"", "\[Rule]", "\"\<32 32 32 96\>\""}], 
+           ",", 
+           RowBox[{"\"\<Sobol_Seed\>\"", "\[Rule]", 
+            RowBox[{"ToString", "[", 
+             RowBox[{"RandomInteger", "[", 
+              RowBox[{"{", 
+               RowBox[{"1", ",", 
+                SuperscriptBox["10", "4"]}], "}"}], "]"}], "]"}]}], ",", 
+           RowBox[{
+           "\"\<./wilson_k0.1665_b5.32144_4by32_cfg_4000.lime\>\"", "\[Rule]", 
+            RowBox[{
+            "\"\<../../Cnfgrtns/0120-Mpi270-L32-T96/cfg/\>\"", "<>", 
+             "#"}]}]}], "}"}]}], "]"}], "&"}], "[", 
+      RowBox[{"cfgs", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+      "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "cfgs", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.734613903607135*^9, 3.734613961626967*^9}, {
+  3.734615394002499*^9, 3.734615396142103*^9}, {3.734619711546369*^9, 
+  3.73461975417988*^9}, {3.734634679531765*^9, 3.7346347079784718`*^9}, {
+  3.734635030448132*^9, 3.734635049460368*^9}, {3.7407354051152573`*^9, 
+  3.740735517991189*^9}, {3.740770664495606*^9, 3.740770676023901*^9}, {
+  3.740771666977203*^9, 3.740771678338358*^9}, {3.741195366420973*^9, 
+  3.741195368434918*^9}, {3.741200094589418*^9, 3.741200119959421*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringReplace", "[", 
+  RowBox[{
+   RowBox[{"cfgnames", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+    ",", 
+   RowBox[{
+    RowBox[{"\"\<Mpi270-L32-T96_cfg_\>\"", "~~", "X__"}], "\[RuleDelayed]", 
+    RowBox[{"\"\<Mpi270-L32-T96_cfg_\>\"", "<>", 
+     RowBox[{"ToString", "[", 
+      RowBox[{
+       RowBox[{"ToExpression", "[", "X", "]"}], "-", "1"}], "]"}]}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.741193918840289*^9, 3.741194017130217*^9}, {
+  3.741194086473214*^9, 3.74119410036535*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"Mpi270-L32-T96_cfg_999\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.741193919392455*^9, {3.741193952559976*^9, 3.741194017745343*^9}, {
+   3.7411940947839537`*^9, 3.7411941010747547`*^9}, 3.741195385681046*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringReplace", "[", 
+  RowBox[{
+   RowBox[{"cfgnames", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}],
+    ",", 
+   RowBox[{
+    RowBox[{"\"\<cfg_\>\"", "~~", "X__"}], "\[RuleDelayed]", 
+    RowBox[{"\"\<cfg_\>\"", "<>", 
+     RowBox[{"ToString", "[", 
+      RowBox[{
+       RowBox[{"ToExpression", "[", "X", "]"}], "-", "1000"}], "]"}]}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7411935475740833`*^9, 3.7411935477259693`*^9}, {
+  3.741194107190043*^9, 3.741194112933709*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"Mpi270-L32-T96_cfg_1\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.741193548033855*^9, {3.7411941093287983`*^9, 3.7411941132475*^9}, 
+   3.741195407754477*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{
+         "cfgnames", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+         ",", 
+         RowBox[{
+          RowBox[{"\"\<cfg_\>\"", "~~", "X__"}], "\[RuleDelayed]", 
+          RowBox[{"\"\<cfg_\>\"", "<>", 
+           RowBox[{"ToString", "[", 
+            RowBox[{
+             RowBox[{"ToExpression", "[", "X", "]"}], "-", "1000"}], 
+            "]"}]}]}]}], "]"}], "<>", "\"\<_JURECA.txt\>\""}], ",", 
+      RowBox[{
+      "L32T96xmls", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+     "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", 
+      RowBox[{"Length", "[", "cfgnames", "]"}]}], "}"}]}], "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.734619782875061*^9, 3.734619854806571*^9}, {
+   3.734635168881194*^9, 3.7346351695653133`*^9}, 3.740771699565022*^9, {
+   3.7411818098048143`*^9, 3.741181811473669*^9}, {3.74118238092249*^9, 
+   3.741182388838189*^9}, {3.741191600912129*^9, 3.7411916114476423`*^9}, {
+   3.7411917352099457`*^9, 3.741191808053691*^9}, {3.741191872696127*^9, 
+   3.741191880870165*^9}, {3.741193436060845*^9, 3.741193503668962*^9}, {
+   3.741194120170001*^9, 3.7411941448678427`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"runstr", "=", 
+   RowBox[{"StringReplace", "[", 
+    RowBox[{
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"Riffle", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"\"\<./pion_proton_2pt -i \>\"", "<>", 
+           RowBox[{
+           "cfgnames", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+            "<>", "\"\<_JURECA.txt\>\""}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "cfgnames", "]"}]}], "}"}]}], "]"}], ",", 
+        "\"\<\\n\>\""}], "]"}], "]"}], ",", 
+     RowBox[{
+      RowBox[{"Shortest", "[", 
+       RowBox[{"\"\<cfg_\>\"", "~~", "X__", "~~", "\"\<_JURECA\>\""}], "]"}], 
+      "\[RuleDelayed]", 
+      RowBox[{"\"\<cfg_[\>\"", "~~", "X", "~~", "\"\<]_JURECA\>\""}]}]}], 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7346143694333344`*^9, 3.734614412974453*^9}, {
+   3.7346145357760077`*^9, 3.7346145518444643`*^9}, {3.734615168529516*^9, 
+   3.734615169199946*^9}, {3.734618577448224*^9, 3.734618577663808*^9}, {
+   3.734618829961012*^9, 3.734618834532576*^9}, {3.734619594964032*^9, 
+   3.734619597388097*^9}, {3.734619636629187*^9, 3.7346196408372393`*^9}, {
+   3.734619678485118*^9, 3.7346196793779078`*^9}, {3.734619966977975*^9, 
+   3.734619970440773*^9}, {3.741182404102557*^9, 3.7411824051504183`*^9}, {
+   3.741188940008746*^9, 3.741188942258464*^9}, {3.7411912674273777`*^9, 
+   3.741191338665433*^9}, {3.741191387957254*^9, 3.7411913893245087`*^9}, 
+   3.74119157018447*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<run.txt\>\"", ",", "runstr"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7346143252446547`*^9, 3.734614336307444*^9}, {
+  3.7346143667581882`*^9, 3.73461436691654*^9}, {3.734614555844295*^9, 
+  3.734614556457183*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"run.txt\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.734614557083646*^9, 3.734614854509012*^9, 3.734619923427286*^9, {
+   3.7346199536598*^9, 3.7346199762610807`*^9}, 3.74077072231606*^9, 
+   3.740776484232357*^9, 3.741191574367628*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StringJoin", "@@", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{
+    "\"\<srun -N32 --ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_\>\"", "<>", 
+     RowBox[{"ToString", "[", "i", "]"}], "<>", "\"\<_JURECA.txt\\n\>\""}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "0", ",", "99"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7412456739050617`*^9, 3.741245761663196*^9}, {
+  3.741246121849249*^9, 3.7412461355127153`*^9}, {3.741246436111059*^9, 
+  3.741246462080126*^9}, {3.741246603313429*^9, 3.741246607913405*^9}, {
+  3.741250350573173*^9, 3.741250360018927*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"srun -N32 --ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_0_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_1_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_2_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_3_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_4_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_5_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_6_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_7_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_8_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_9_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_10_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_11_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_12_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_13_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_14_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_15_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_16_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_17_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_18_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_19_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_20_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_21_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_22_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_23_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_24_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_25_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_26_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_27_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_28_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_29_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_30_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_31_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_32_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_33_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_34_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_35_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_36_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_37_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_38_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_39_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_40_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_41_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_42_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_43_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_44_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_45_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_46_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_47_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_48_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_49_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_50_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_51_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_52_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_53_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_54_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_55_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_56_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_57_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_58_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_59_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_60_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_61_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_62_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_63_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_64_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_65_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_66_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_67_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_68_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_69_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_70_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_71_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_72_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_73_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_74_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_75_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_76_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_77_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_78_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_79_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_80_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_81_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_82_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_83_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_84_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_85_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_86_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_87_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_88_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_89_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_90_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_91_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_92_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_93_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_94_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_95_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_96_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_97_JURECA.txt\\nsrun -N32 \
+--ntasks-per-node=8 ./pion_proton_2_pt -i \
+./Mpi270-L32-T96_cfg_98_JURECA.txt\\nsrun -N32 --ntasks-per-node=8 \
+./pion_proton_2_pt -i ./Mpi270-L32-T96_cfg_99_JURECA.txt\\n\"\>", 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.741246453818777*^9, {3.7412465979642477`*^9, 3.7412466104831133`*^9}, {
+   3.741250354069805*^9, 3.741250360392252*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["For smearing", "Section",
+ CellChangeTimes->{{3.7411817102459908`*^9, 3.7411817143491373`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SmrWdth", "=", 
+   RowBox[{"{", 
+    RowBox[{"2.0", ",", "3.0", ",", "4.0", ",", "5.0"}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7409057476755733`*^9, 3.740905783918075*^9}, {
+   3.741181227563465*^9, 3.741181266149131*^9}, 3.741181401771432*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SmrItrtns", "=", 
+   RowBox[{"{", 
+    RowBox[{"20", ",", "30", ",", "40", ",", "50"}], "}"}]}], ";"}]], "Input",\
+
+ CellChangeTimes->{{3.740905766518015*^9, 3.740905793462345*^9}, {
+  3.741181271167736*^9, 3.741181298437484*^9}, {3.741181339957423*^9, 
+  3.741181342309697*^9}, {3.741181398299436*^9, 3.741181399147686*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SmrPrmtrs", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Outer", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"#1", ",", "#2"}], "}"}], "&"}], ",", "SmrWdth", ",", 
+       "SmrItrtns"}], "]"}], ",", "1"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.741181306446101*^9, 3.7411813740195293`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SmrPrmtrs", "//", "Length"}]], "Input",
+ CellChangeTimes->{{3.7411813767462893`*^9, 3.741181378106563*^9}}],
+
+Cell[BoxData[
+ FormBox["16", TraditionalForm]], "Output",
+ CellChangeTimes->{{3.741181378640223*^9, 3.741181406140046*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ParamString", "=", 
+   RowBox[{"StringJoin", "@@", 
+    RowBox[{"StringRiffle", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"\"\<\\t<SinkSmearing_\>\"", "<>", 
+         RowBox[{"ToString", "[", "i", "]"}], "<>", 
+         "\"\<>\n            <version>1</version>\n            \
+\\t<SinkType>SHELL_SINK</SinkType>\n            \\t<j_decay>3</j_decay>\n     \
+       \\t<SmearingParam>\n                \
+\\t\\t<wvf_kind>GAUGE_INV_GAUSSIAN</wvf_kind>\n                \
+\\t\\t<wvf_param>\>\"", "<>", 
+         RowBox[{"ToString", "[", 
+          RowBox[{"SmrPrmtrs", "\[LeftDoubleBracket]", 
+           RowBox[{
+            RowBox[{"i", "+", "1"}], ",", "1"}], "\[RightDoubleBracket]"}], 
+          "]"}], "<>", 
+         "\"\<</wvf_param>\n                \\t\\t<wvfIntPar>\>\"", "<>", 
+         RowBox[{"ToString", "[", 
+          RowBox[{"SmrPrmtrs", "\[LeftDoubleBracket]", 
+           RowBox[{
+            RowBox[{"i", "+", "1"}], ",", "2"}], "\[RightDoubleBracket]"}], 
+          "]"}], "<>", 
+         "\"\<</wvfIntPar>\n                \
+\\t\\t<no_smear_dir>3</no_smear_dir>\n            \\t</SmearingParam>\n\
+\\t</SinkSmearing_\>\"", "<>", 
+         RowBox[{"ToString", "[", "i", "]"}], "<>", "\"\<>\>\""}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "0", ",", 
+          RowBox[{
+           RowBox[{"Length", "[", "SmrPrmtrs", "]"}], "-", "1"}]}], "}"}]}], 
+       "]"}], ",", "\"\<\\n\>\""}], "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7409055806248903`*^9, 3.740905586400279*^9}, {
+   3.740905807175807*^9, 3.740905821507584*^9}, {3.740906012644953*^9, 
+   3.740906136101696*^9}, {3.740906341972794*^9, 3.7409063485120983`*^9}, {
+   3.740906681107291*^9, 3.7409066991631117`*^9}, {3.740906732452848*^9, 
+   3.740906829330064*^9}, {3.740906981088139*^9, 3.74090700747677*^9}, {
+   3.740907057102063*^9, 3.7409070720240927`*^9}, {3.740907141400317*^9, 
+   3.740907200097259*^9}, 3.7409077585849543`*^9, {3.7409078624020367`*^9, 
+   3.740907892622459*^9}, {3.7409079251251183`*^9, 3.740907947929263*^9}, {
+   3.740914922001028*^9, 3.7409149275214243`*^9}, {3.7409150029637337`*^9, 
+   3.740915003115266*^9}, {3.740936372061619*^9, 3.740936377196362*^9}, {
+   3.741181446312606*^9, 3.741181492211966*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SmrXML", "=", 
+   RowBox[{
+   "\"\<<?xml version=\\\"1.0\\\"?>\n<sinks>\n    <elem>\n\t\t\
+<nmbr_snks>3</nmbr_snks>\n    </elem>\n    <elem>\n\>\"", "<>", "ParamString",
+     "<>", "\"\<\n    </elem>\n</sinks>\>\""}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.740905487070057*^9, 3.740905487807526*^9}, {
+   3.740905527333438*^9, 3.740905547242511*^9}, 3.7409063514148293`*^9, {
+   3.7409066084274883`*^9, 3.740906622124428*^9}, {3.740906660254155*^9, 
+   3.740906721438005*^9}, {3.740907018570766*^9, 3.740907028340344*^9}, {
+   3.740907308015416*^9, 3.740907309383314*^9}, {3.7409077880140953`*^9, 
+   3.740907851342601*^9}, {3.740907920529292*^9, 3.740907922351654*^9}, {
+   3.740907955428846*^9, 3.740907956769918*^9}, {3.7409352737219143`*^9, 
+   3.740935296359797*^9}, {3.740935326482621*^9, 3.740935352346147*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.740907314402671*^9, 3.740907323150329*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"/Users/xiaonuxiong/Nustore Files/Nutstore/PDF Euclidean \
+Lattice/Hadron_Structure_Lattice/PDF/pion_proton_PDF\"\>", 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{3.7409073236719027`*^9, 3.74090776253286*^9, 
+  3.740907795833157*^9, 3.7409149354130783`*^9, 3.740915005890337*^9, 
+  3.740936106522399*^9, 3.741181496906406*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<snk_smr.txt\>\"", ",", "SmrXML"}], "]"}]], "Input",
+ CellChangeTimes->{{3.740907325367383*^9, 3.740907366840115*^9}, 
+   3.7409077077878103`*^9, 3.7409099063949127`*^9}],
+
+Cell[BoxData[
+ FormBox["\<\"snk_smr.txt\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.7409073673334627`*^9, {3.740907708774667*^9, 3.740907729378553*^9}, 
+   3.740907763746814*^9, 3.740907796955339*^9, 3.740907961182144*^9, 
+   3.740914936223752*^9, 3.740915006643918*^9, 3.740936107633305*^9, 
+   3.741181497904738*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["2", 
+    RowBox[{"-", "10"}]], 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      FractionBox[
+       RowBox[{"3", "*", "n", "*", "\[Pi]"}], "2"], ")"}], "2"], "/", 
+    RowBox[{"(", 
+     RowBox[{"0.005", "\[Pi]"}], ")"}]}]}], "//.", 
+  RowBox[{"n", "\[Rule]", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "2"], ",", "1", ",", "2", ",", "4"}], 
+    "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.741372290574313*^9, 3.7413723452578278`*^9}, {
+  3.74137237537604*^9, 3.741372379943839*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+   "0.34514567727426926`", ",", "1.380582709097077`", ",", 
+    "5.522330836388308`", ",", "22.089323345553233`"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{{3.741372319453106*^9, 3.74137234584367*^9}, 
+   3.741372380528637*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1276, 756},
+WindowMargins->{{68, Automatic}, {49, Automatic}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[422, 15, 172, 3, 39, "Input"],
+Cell[597, 20, 405, 7, 35, "Output"]
+}, Open  ]],
+Cell[1017, 30, 184, 2, 39, "Input"],
+Cell[CellGroupData[{
+Cell[1226, 36, 93, 1, 80, "Section"],
+Cell[CellGroupData[{
+Cell[1344, 41, 306, 7, 60, "Input"],
+Cell[1653, 50, 484, 9, 53, "Output"]
+}, Open  ]],
+Cell[2152, 62, 315, 9, 60, "Input"],
+Cell[2470, 73, 1231, 31, 241, "Input"],
+Cell[CellGroupData[{
+Cell[3726, 108, 608, 16, 60, "Input"],
+Cell[4337, 126, 581, 11, 53, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4955, 142, 587, 15, 60, "Input"],
+Cell[5545, 159, 332, 5, 121, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5914, 169, 981, 21, 60, "Input"],
+Cell[6898, 192, 646, 10, 121, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7581, 207, 322, 5, 60, "Input"],
+Cell[7906, 214, 281, 5, 53, "Output"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[8236, 225, 156, 2, 62, "Section"],
+Cell[8395, 229, 384, 9, 39, "Input"],
+Cell[8782, 240, 315, 9, 39, "Input"],
+Cell[9100, 251, 1700, 39, 184, "Input"],
+Cell[CellGroupData[{
+Cell[10825, 294, 537, 13, 39, "Input"],
+Cell[11365, 309, 252, 4, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11654, 318, 515, 13, 39, "Input"],
+Cell[12172, 333, 200, 4, 35, "Output"]
+}, Open  ]],
+Cell[12387, 340, 1346, 32, 66, "Input"],
+Cell[13736, 374, 1563, 33, 118, "Input"],
+Cell[CellGroupData[{
+Cell[15324, 411, 268, 5, 39, "Input"],
+Cell[15595, 418, 278, 5, 35, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15910, 428, 628, 14, 92, "Input"],
+Cell[16541, 444, 9399, 154, 2136, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25989, 604, 101, 1, 100, "Section"],
+Cell[26093, 607, 293, 7, 48, "Input"],
+Cell[26389, 616, 360, 8, 48, "Input"],
+Cell[26752, 626, 381, 11, 48, "Input"],
+Cell[CellGroupData[{
+Cell[27158, 641, 131, 2, 48, "Input"],
+Cell[27292, 645, 123, 2, 43, "Output"]
+}, Open  ]],
+Cell[27430, 650, 2303, 45, 375, "Input"],
+Cell[29736, 697, 855, 14, 310, "Input"],
+Cell[CellGroupData[{
+Cell[30616, 715, 170, 3, 48, "Input"],
+Cell[30789, 720, 359, 6, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31185, 731, 223, 4, 48, "Input"],
+Cell[31411, 737, 333, 6, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31781, 748, 555, 18, 73, "Input"],
+Cell[32339, 768, 297, 8, 43, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

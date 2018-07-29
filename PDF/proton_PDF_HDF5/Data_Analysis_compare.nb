@@ -1,0 +1,453 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[     15765,        452]
+NotebookOptionsPosition[     14621,        408]
+NotebookOutlinePosition[     15016,        425]
+CellTagsIndexPosition[     14973,        422]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData["Quit"], "Input",
+ CellChangeTimes->{{3.725539484270484*^9, 3.725539484959667*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.705760640546487*^9, 3.705760649245377*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"/Users/xiaonuxiong/Dropbox/PDF Euclidean \
+Lattice/Hadron_Structure_Lattice/PDF/proton_PDF_HDF5\"\>", 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.705760649944145*^9, 3.706639442369989*^9, 3.707476381909349*^9, 
+   3.70755191009597*^9, 3.7076353391362143`*^9, 3.707636824438384*^9, 
+   3.707758213544374*^9, 3.707812527065201*^9, 3.708018973962532*^9, 
+   3.725350119635661*^9, {3.725539487977661*^9, 3.725539489167404*^9}, {
+   3.725626691728545*^9, 3.725626706595131*^9}, 3.725631566008964*^9, 
+   3.7256399820248404`*^9, 3.725640165640423*^9, 3.7256402750651627`*^9, 
+   3.7256410503621798`*^9, 3.725643585836741*^9, 3.7256564491350307`*^9, 
+   3.725700419461087*^9, 3.725700909852065*^9, 3.725701436885186*^9, 
+   3.725785341958517*^9, 3.726307807970208*^9, 3.726310595425934*^9, 
+   3.726344755093708*^9, 3.732347193674914*^9, 3.7324306430480137`*^9, 
+   3.732432071962291*^9, 3.7325285666489964`*^9, 3.732528874543899*^9, {
+   3.7325624971040688`*^9, 3.732562505190021*^9}, 3.732820497557276*^9, 
+   3.7328739951452227`*^9, 3.7330739009879713`*^9, 3.733073935232533*^9, 
+   3.733128715107237*^9, 3.7333372488959703`*^9, 3.73634368938083*^9, 
+   3.738770574059121*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Gamma]E0", "=", 
+   RowBox[{"(", GridBox[{
+      {"0", "0", "0", "I"},
+      {"0", "0", "I", "0"},
+      {"0", 
+       RowBox[{"-", "I"}], "0", "0"},
+      {
+       RowBox[{"-", "I"}], "0", "0", "0"}
+     }], ")"}]}], ";", 
+  RowBox[{"\[Gamma]E1", "=", 
+   RowBox[{"(", GridBox[{
+      {"0", "0", "0", 
+       RowBox[{"-", "1"}]},
+      {"0", "0", "1", "0"},
+      {"0", "1", "0", "0"},
+      {
+       RowBox[{"-", "1"}], "0", "0", "0"}
+     }], ")"}]}], ";", 
+  RowBox[{"\[Gamma]E2", "=", 
+   RowBox[{"(", GridBox[{
+      {"0", "0", "I", "0"},
+      {"0", "0", "0", 
+       RowBox[{"-", "I"}]},
+      {
+       RowBox[{"-", "I"}], "0", "0", "0"},
+      {"0", "I", "0", "0"}
+     }], ")"}]}], ";", 
+  RowBox[{"\[Gamma]E3", "=", 
+   RowBox[{"(", GridBox[{
+      {"0", "0", "1", "0"},
+      {"0", "0", "0", "1"},
+      {"1", "0", "0", "0"},
+      {"0", "1", "0", "0"}
+     }], ")"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"H", "=", "ConjugateTranspose"}], ";"}]], "Input",
+ CellChangeTimes->{{3.72564137145625*^9, 3.725641375872422*^9}, {
+  3.7256414718059387`*^9, 3.725641487111169*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "quark propagator calculated from transformed gauge configuration, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["S", "F"], "[", 
+     RowBox[{
+      SubscriptBox["n", "x"], ",", 
+      SubscriptBox["n", "y"], ",", 
+      SubscriptBox["n", "z"], ",", 
+      SubscriptBox["n", "t"]}], "]"}], " ", "=", " ", 
+    RowBox[{"(", GridBox[{
+       {
+        SuperscriptBox[
+         SubscriptBox["T", "01"], 
+         RowBox[{
+          SubscriptBox["a", "n"], 
+          SubscriptBox["b", "src"]}]], "...", "...", 
+        SuperscriptBox[
+         SubscriptBox["T", "03"], 
+         RowBox[{
+          SubscriptBox["a", "n"], 
+          SubscriptBox["b", "src"]}]]},
+       {"...", "...", "...", "..."},
+       {"...", "...", "...", "..."},
+       {
+        SuperscriptBox[
+         SubscriptBox["T", "31"], 
+         RowBox[{
+          SubscriptBox["a", "n"], 
+          SubscriptBox["b", "src"]}]], "...", "...", 
+        SuperscriptBox[
+         SubscriptBox["T", "33"], 
+         RowBox[{
+          SubscriptBox["a", "n"], 
+          SubscriptBox["b", "src"]}]]}
+      }], ")"}], " "}], TraditionalForm]]],
+ " is the propagator ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"src", "\[Rule]", " ", 
+    RowBox[{"LatticeSite", " ", "[", 
+     RowBox[{
+      SubscriptBox["n", "x"], ",", 
+      SubscriptBox["n", "y"], ",", 
+      SubscriptBox["n", "z"], ",", 
+      SubscriptBox["n", "t"]}], "]"}]}], TraditionalForm]]],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"SFTrnsfmdF", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        SubscriptBox["n", "x"], ",", 
+        SubscriptBox["n", "y"], ",", 
+        SubscriptBox["n", "z"], ",", 
+        SubscriptBox["n", "t"]}], "}"}], "]"}], "\[LeftDoubleBracket]", 
+     RowBox[{"\[Alpha]", ",", "\[Beta]"}], "\[RightDoubleBracket]"}], "=", 
+    SubscriptBox["T", "\[Alpha]\[Beta]"]}], TraditionalForm]]],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["T", "\[Alpha]\[Beta]"], TraditionalForm]]],
+ " is an 3\[Times]3 SU(3) color matrix ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     SubscriptBox["\[Alpha]", "n"], ",", 
+     SubscriptBox["\[Beta]", "src"]}]}], TraditionalForm]]],
+ " are Dirac Spinor indices and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"a", ",", "b"}], TraditionalForm]]],
+ " are color indices)  "
+}], "Subtitle",
+ CellGroupingRules->{"TitleGrouping", Inherited},
+ CellChangeTimes->{{3.708086065839361*^9, 3.7080861441953993`*^9}, {
+   3.70808625143326*^9, 3.708086252107943*^9}, 3.708086988220398*^9, {
+   3.708102693292859*^9, 3.708102812181559*^9}, {3.708102882460631*^9, 
+   3.7081029937434893`*^9}, {3.708103029735848*^9, 3.708103210018227*^9}, {
+   3.708103254326831*^9, 3.7081032591648397`*^9}, {3.708103551568356*^9, 
+   3.708103560757443*^9}, {3.725643982094989*^9, 3.725644041912719*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"Nx", ",", "Ny", ",", "Nz", ",", "Nt"}], "}"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "4", ",", "4", ",", "32"}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7257124165972147`*^9, 3.725712473877812*^9}, 
+   3.726310881555016*^9, {3.726344869719214*^9, 3.7263448892490797`*^9}, {
+   3.732347741066351*^9, 3.732347744554261*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MmntmPrjctdtrPrpgtrs", "[", 
+   RowBox[{"TrPrpgtrs_", ",", 
+    RowBox[{"P_", "?", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Head", "[", "#", "]"}], "\[Equal]", "List"}], ")"}], "&&", 
+        
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Length", "[", 
+           RowBox[{"#", "_"}], "]"}], "\[Equal]", "3"}], ")"}]}], "&"}], 
+      ")"}]}]}], "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"ParallelSum", "[", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["E", 
+        RowBox[{
+         RowBox[{"-", "I"}], "*", "2", "\[Pi]", "*", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+            "P", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], "*", 
+            
+            FractionBox[
+             RowBox[{"i", "-", "1"}], "Nx"]}], "+", 
+           RowBox[{
+            RowBox[{
+            "P", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], "*", 
+            
+            FractionBox[
+             RowBox[{"j", "-", "1"}], "Ny"]}], "+", 
+           RowBox[{
+            RowBox[{
+            "P", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], "*", 
+            
+            FractionBox[
+             RowBox[{"k", "-", "1"}], "Nz"]}]}], ")"}]}]], "*", 
+       RowBox[{"TrPrpgtrs", "\[LeftDoubleBracket]", 
+        RowBox[{"i", ",", "j", ",", "k", ",", "t"}], 
+        "\[RightDoubleBracket]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "Nx"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "Ny"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "Nz"}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"t", ",", "Nt"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.725712757613652*^9, 3.725712899276647*^9}, 
+   3.725712991285158*^9, {3.725713042194129*^9, 3.7257130474869823`*^9}, {
+   3.7257175633041487`*^9, 3.725717587739884*^9}, {3.725717895228223*^9, 
+   3.725717945580244*^9}, {3.726344899857481*^9, 3.7263449254665527`*^9}, {
+   3.732346978727022*^9, 3.73234698273342*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PDFtags", "=", 
+  RowBox[{
+   RowBox[{"StringReplace", "[", 
+    RowBox[{
+     RowBox[{"Import", "[", 
+      RowBox[{"\"\<proton_PDF.h5\>\"", ",", 
+       RowBox[{"{", "\"\<Groups\>\"", "}"}]}], "]"}], ",", 
+     RowBox[{
+      RowBox[{"\"\</<\>\"", "~~", "X__", "~~", "\"\<>\>\"", "~~", "Y__"}], ":>", 
+      RowBox[{"\"\</<\>\"", "~~", "X", "~~", "\"\<>\>\""}]}]}], "]"}], "//", 
+   "Union"}]}]], "Input",
+ CellChangeTimes->{3.732347482958248*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+  "{", "\<\"/<P(y,t)|q-bar(x).ga_3.W[x,x+1_stps_in_2].q(x+1_stps_in_2)|P(0,0)>\
+\"\>", "}"}], TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.732347483447876*^9, 3.732355638570187*^9, 3.732355674701458*^9, 
+   3.732355768606386*^9, 3.732359068542672*^9, {3.732361045238522*^9, 
+   3.732361073239246*^9}, 3.732378330544333*^9, 3.7323785389446487`*^9, 
+   3.732379090126524*^9, 3.732430659418895*^9, 3.732432080072806*^9, 
+   3.732528592842947*^9, 3.7325288796400127`*^9, 3.732533695429606*^9, 
+   3.732562697961124*^9, 3.732820512478747*^9, 3.732874000564541*^9, 
+   3.73287610989642*^9, 3.7329567973594437`*^9, 3.733074100063813*^9, 
+   3.733076561135071*^9, 3.733076604426889*^9, 3.733128722331132*^9, 
+   3.734727820034418*^9, 3.736343697546599*^9, 3.736343756400478*^9, 
+   3.738770583947935*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"u1in3TrcdPrpgtrs", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Transpose", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Import", "[", 
+         RowBox[{"\"\<proton_PDF.h5\>\"", ",", 
+          RowBox[{"{", 
+           RowBox[{"\"\<Datasets\>\"", ",", 
+            RowBox[{"#", "<>", "\"\</u_tr_prpgtrs/Re\>\""}]}], "}"}]}], "]"}],
+         "+", 
+        RowBox[{"I", "*", 
+         RowBox[{"Import", "[", 
+          RowBox[{"\"\<proton_PDF.h5\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<Datasets\>\"", ",", 
+             RowBox[{"#", "<>", "\"\</u_tr_prpgtrs/Im\>\""}]}], "}"}]}], 
+          "]"}]}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "3", ",", "2", ",", "1"}], "}"}]}], "]"}], "&"}], 
+    "[", 
+    RowBox[{"PDFtags", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+     "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.732956819445651*^9, 3.732956828592846*^9}, 
+   3.73307609624824*^9, 3.734769202773054*^9, {3.738770704384653*^9, 
+   3.738770706693108*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"d1in3TrcdPrpgtrs", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Transpose", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Import", "[", 
+         RowBox[{"\"\<proton_PDF.h5\>\"", ",", 
+          RowBox[{"{", 
+           RowBox[{"\"\<Datasets\>\"", ",", 
+            RowBox[{"#", "<>", "\"\</d_tr_prpgtrs/Re\>\""}]}], "}"}]}], "]"}],
+         "+", 
+        RowBox[{"I", "*", 
+         RowBox[{"Import", "[", 
+          RowBox[{"\"\<proton_PDF.h5\>\"", ",", 
+           RowBox[{"{", 
+            RowBox[{"\"\<Datasets\>\"", ",", 
+             RowBox[{"#", "<>", "\"\</d_tr_prpgtrs/Im\>\""}]}], "}"}]}], 
+          "]"}]}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "3", ",", "2", ",", "1"}], "}"}]}], "]"}], "&"}], 
+    "[", 
+    RowBox[{"PDFtags", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+     "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.732347520039072*^9, 3.732347546199869*^9}, 
+   3.7323476549347467`*^9, {3.7323476938939047`*^9, 3.7323476960113783`*^9}, {
+   3.732347763299321*^9, 3.7323477781717463`*^9}, {3.732348759204722*^9, 
+   3.7323487635564404`*^9}, {3.732956821245452*^9, 3.732956832221457*^9}, 
+   3.733076098841695*^9, 3.7387707130166693`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Transpose", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Fourier", "[", 
+       RowBox[{
+        RowBox[{"d1in3TrcdPrpgtrs", "\[LeftDoubleBracket]", 
+         RowBox[{"All", ",", "All", ",", "All", ",", "i"}], 
+         "\[RightDoubleBracket]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "1", ",", "4"}], "}"}], "}"}], ",", 
+        RowBox[{"FourierParameters", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", 
+           RowBox[{"-", "1"}]}], "}"}]}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "32"}], "}"}]}], "]"}], "]"}], 
+   "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], "//", 
+  "Im"}]], "Input",
+ CellChangeTimes->{{3.7387738965962143`*^9, 3.7387739403807592`*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+   "2.4040310950619224`*^-14", ",", "1.043136360842148`*^-15", ",", 
+    "3.457854289880484`*^-17", ",", "1.5069528677239736`*^-18", ",", 
+    "4.9170348265705654`*^-20", ",", "1.7509293548411917`*^-21", ",", 
+    "4.6780381363622056`*^-23", ",", "3.829697489580381`*^-24", ",", 
+    "7.399841941217377`*^-24", ",", 
+    RowBox[{"-", "3.5107676110320776`*^-24"}], ",", 
+    RowBox[{"-", "7.270087120553973`*^-23"}], ",", "3.14561335008729`*^-20", 
+    ",", "1.1259902053049154`*^-18", ",", "1.1126914369702527`*^-17", ",", 
+    RowBox[{"-", "2.376323072963696`*^-16"}], ",", 
+    RowBox[{"-", "1.942498312452326`*^-14"}], ",", 
+    RowBox[{"-", "4.2154856493446326`*^-13"}], ",", 
+    RowBox[{"-", "8.747188834751539`*^-12"}], ",", 
+    RowBox[{"-", "3.141516043813324`*^-10"}], ",", 
+    RowBox[{"-", "1.2338707432895886`*^-8"}], ",", 
+    RowBox[{"-", "2.738662148554467`*^-7"}], ",", 
+    RowBox[{"-", "6.604071911175069`*^-6"}], ",", 
+    RowBox[{"-", "0.00021229026122807903`"}], ",", 
+    RowBox[{"-", "0.01540717008666034`"}], ",", 
+    RowBox[{"-", "0.0028125762419436416`"}], ",", 
+    RowBox[{"-", "0.00012424288281533458`"}], ",", 
+    RowBox[{"-", "5.698950539256967`*^-6"}], ",", 
+    RowBox[{"-", "2.585168082740919`*^-7"}], ",", 
+    RowBox[{"-", "8.991788400637434`*^-9"}], ",", 
+    RowBox[{"-", "2.650463845257473`*^-10"}], ",", 
+    RowBox[{"-", "1.0998579097874805`*^-11"}], ",", 
+    RowBox[{"-", "4.284045766950884`*^-13"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.738770733695293*^9, {3.7387738990993567`*^9, 3.738773940815076*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1276, 756},
+WindowMargins->{{Automatic, -195}, {-269, Automatic}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[400, 13, 96, 1, 39, "Input"],
+Cell[CellGroupData[{
+Cell[521, 18, 170, 3, 39, "Input"],
+Cell[694, 23, 1212, 19, 35, "Output"]
+}, Open  ]],
+Cell[1921, 45, 936, 35, 102, "Input"],
+Cell[2860, 82, 200, 4, 39, "Input"],
+Cell[CellGroupData[{
+Cell[3085, 90, 2837, 85, 305, "Subtitle",
+ CellGroupingRules->{"TitleGrouping", Inherited}],
+Cell[5925, 177, 402, 9, 39, "Input"],
+Cell[6330, 188, 2133, 60, 87, "Input"],
+Cell[CellGroupData[{
+Cell[8488, 252, 473, 12, 39, "Input"],
+Cell[8964, 266, 839, 15, 35, "Output"]
+}, Open  ]],
+Cell[9818, 284, 1052, 28, 92, "Input"],
+Cell[10873, 314, 1233, 30, 92, "Input"],
+Cell[CellGroupData[{
+Cell[12131, 348, 827, 22, 66, "Input"],
+Cell[12961, 372, 1632, 32, 140, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

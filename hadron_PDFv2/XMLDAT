@@ -14,23 +14,23 @@
             <version>1</version>
             <SourceType>POINT_SOURCE</SourceType>
             <j_decay>3</j_decay>
-            <t_srce>0 0 0 0</t_srce>
+            <t_srce>1 1 0 2</t_srce>
             <SmearingParam>
               <wvf_kind>GAUGE_INV_GAUSSIAN</wvf_kind>
-              <wvf_param>4</wvf_param>
-              <wvfIntPar>2</wvfIntPar>
+              <wvf_param>2.8284</wvf_param>
+              <wvfIntPar>20</wvfIntPar>
               <no_smear_dir>3</no_smear_dir>
             </SmearingParam>
             <LinkSmearing>
               <LinkSmearingType>STOUT_SMEAR</LinkSmearingType>
-              <link_smear_fact>0.08</link_smear_fact>
-              <link_smear_num>10</link_smear_num>
+              <link_smear_fact>0.0</link_smear_fact>
+              <link_smear_num>0</link_smear_num>
               <no_smear_dir>3</no_smear_dir>
             </LinkSmearing>
             <Displacement>
               <version>1</version>
-              <dir>3</dir>
-              <steps>3</steps>
+              <dir>2</dir>
+              <steps>1</steps>
               <DisplacementType>NONE</DisplacementType>
             </Displacement>
           </Source>
@@ -72,8 +72,8 @@
           </FermionAction>
           <InvertParam>
             <invType>CG_INVERTER</invType>
-            <RsdCG> 1e-3 </RsdCG>
-            <MaxCG> 100 </MaxCG>
+            <RsdCG> 1e-14 </RsdCG>
+            <MaxCG> 400 </MaxCG>
             <CloverParams>
               <Mass>-0.0743</Mass>
               <clovCoeffR>1.58932722549812</clovCoeffR>
@@ -85,7 +85,7 @@
                 <nu>1.265</nu>
               </AnisoParam>
             </CloverParams>
-            <RsdTarget>1.0e-6</RsdTarget>
+            <RsdTarget>1.0e-8</RsdTarget>
             <Delta>0.1</Delta>
             <MaxIter>10000000</MaxIter>
             <AntiPeriodicT>true</AntiPeriodicT>
@@ -144,7 +144,7 @@
         <Frequency>1</Frequency>
         <Param>
           <file_dir>./data/</file_dir>
-          <ConsistencyTests>true</ConsistencyTests>
+          <ConsistencyTests>false</ConsistencyTests>
           <t_length>16</t_length>
         </Param>
         <NamedObject>
@@ -155,42 +155,17 @@
       </elem>
     </InlineMeasurements>
     <InlineMeasurements2>
-    <elem>
-      <propagator>
-        <Name>PROPAGATOR</Name>
-        <Frequency>1</Frequency>
-        <Param>
-          <version>10</version>
-          <quarkSpinType>FULL</quarkSpinType>
-          <obsvP>false</obsvP>
-          <numRetries>1</numRetries>
-          <FermionAction>
-            <FermAct>CLOVER</FermAct>
-            <Mass>-0.0743</Mass>
-            <clovCoeffR>1.58932722549812</clovCoeffR>
-            <clovCoeffT>0.902783591772098</clovCoeffT>
-            <AnisoParam>
-              <anisoP>true</anisoP>
-              <t_dir>3</t_dir>
-              <xi_0>4.3</xi_0>
-              <nu>1.265</nu>
-            </AnisoParam>
-            <FermState>
-              <Name>STOUT_FERM_STATE</Name>
-              <rho>0.14</rho>
-              <n_smear>2</n_smear>
-              <orthog_dir>3</orthog_dir>
-              <FermionBC>
-                <FermBC>SIMPLE_FERMBC</FermBC>
-                <boundary>1 1 1 -1</boundary>
-              </FermionBC>
-            </FermState>
-          </FermionAction>
-          <InvertParam>
-            <invType>CG_INVERTER</invType>
-            <RsdCG> 1e-3 </RsdCG>
-            <MaxCG> 100 </MaxCG>
-            <CloverParams>
+      <elem>
+        <propagator>
+          <Name>PROPAGATOR</Name>
+          <Frequency>1</Frequency>
+          <Param>
+            <version>10</version>
+            <quarkSpinType>FULL</quarkSpinType>
+            <obsvP>false</obsvP>
+            <numRetries>1</numRetries>
+            <FermionAction>
+              <FermAct>CLOVER</FermAct>
               <Mass>-0.0743</Mass>
               <clovCoeffR>1.58932722549812</clovCoeffR>
               <clovCoeffT>0.902783591772098</clovCoeffT>
@@ -200,26 +175,51 @@
                 <xi_0>4.3</xi_0>
                 <nu>1.265</nu>
               </AnisoParam>
-            </CloverParams>
-            <RsdTarget>1.0e-6</RsdTarget>
-            <Delta>0.1</Delta>
-            <MaxIter>10000000</MaxIter>
-            <AntiPeriodicT>true</AntiPeriodicT>
-            <SolverType>BICGSTAB</SolverType>
-            <Verbose>false</Verbose>
-            <AsymmetricLinop>false</AsymmetricLinop>
-            <CudaReconstruct>RECONS_12</CudaReconstruct>
-            <CudaSloppyPrecision>HALF</CudaSloppyPrecision>
-            <CudaSloppyReconstruct>RECONS_12</CudaSloppyReconstruct>
-            <AxialGaugeFix>false</AxialGaugeFix>
-          </InvertParam>
-        </Param>
-        <NamedObject>
-          <gauge_id>default_gauge_field</gauge_id>
-          <source_id>t160z0y0x0</source_id>
-          <prop_id>t160z0y0x0_pt_pt</prop_id>
-        </NamedObject>
-      </propagator>
+              <FermState>
+                <Name>STOUT_FERM_STATE</Name>
+                <rho>0.14</rho>
+                <n_smear>2</n_smear>
+                <orthog_dir>3</orthog_dir>
+                <FermionBC>
+                  <FermBC>SIMPLE_FERMBC</FermBC>
+                  <boundary>1 1 1 -1</boundary>
+                </FermionBC>
+              </FermState>
+            </FermionAction>
+            <InvertParam>
+              <invType>CG_INVERTER</invType>
+              <RsdCG> 1e-14 </RsdCG>
+              <MaxCG> 400 </MaxCG>
+              <CloverParams>
+                <Mass>-0.0743</Mass>
+                <clovCoeffR>1.58932722549812</clovCoeffR>
+                <clovCoeffT>0.902783591772098</clovCoeffT>
+                <AnisoParam>
+                  <anisoP>true</anisoP>
+                  <t_dir>3</t_dir>
+                  <xi_0>4.3</xi_0>
+                  <nu>1.265</nu>
+                </AnisoParam>
+              </CloverParams>
+              <RsdTarget>1.0e-8</RsdTarget>
+              <Delta>0.1</Delta>
+              <MaxIter>10000000</MaxIter>
+              <AntiPeriodicT>true</AntiPeriodicT>
+              <SolverType>BICGSTAB</SolverType>
+              <Verbose>false</Verbose>
+              <AsymmetricLinop>false</AsymmetricLinop>
+              <CudaReconstruct>RECONS_12</CudaReconstruct>
+              <CudaSloppyPrecision>HALF</CudaSloppyPrecision>
+              <CudaSloppyReconstruct>RECONS_12</CudaSloppyReconstruct>
+              <AxialGaugeFix>false</AxialGaugeFix>
+            </InvertParam>
+          </Param>
+          <NamedObject>
+            <gauge_id>default_gauge_field</gauge_id>
+            <source_id>t160z0y0x0</source_id>
+            <prop_id>t160z0y0x0_pt_pt</prop_id>
+          </NamedObject>
+        </propagator>
       </elem>
     </InlineMeasurements2>
     <nrow>4 4 4 32</nrow>
@@ -237,7 +237,7 @@
       <qdp>1.44.0</qdp>
       <basePrecision>64</basePrecision>
     </code_version>
-    <run_date>23 Mar 18 16:02:55 CET</run_date>
+    <run_date>26 May 18 19:23:12 CEST</run_date>
     <Setgeom>
       <latt_size>4 4 4 32</latt_size>
       <logical_size>1 1 1 1</logical_size>
@@ -399,7 +399,7 @@
             <qdp>1.44.0</qdp>
             <basePrecision>64</basePrecision>
           </code_version>
-          <run_date>23 Mar 18 16:02:55 CET</run_date>
+          <run_date>26 May 18 19:23:12 CEST</run_date>
           <Setgeom>
             <latt_size>4 4 4 32</latt_size>
             <logical_size>1 1 1 1</logical_size>
@@ -422,29 +422,29 @@
       <version>1</version>
       <SourceType>POINT_SOURCE</SourceType>
       <j_decay>3</j_decay>
-      <t_srce>0 0 0 0</t_srce>
+      <t_srce>1 1 0 2</t_srce>
       <SmearingParam>
         <wvf_kind>GAUGE_INV_GAUSSIAN</wvf_kind>
-        <wvf_param>4</wvf_param>
-        <wvfIntPar>2</wvfIntPar>
+        <wvf_param>2.8284</wvf_param>
+        <wvfIntPar>20</wvfIntPar>
         <no_smear_dir>3</no_smear_dir>
       </SmearingParam>
       <LinkSmearing>
         <LinkSmearingType>STOUT_SMEAR</LinkSmearingType>
-        <link_smear_fact>0.08</link_smear_fact>
-        <link_smear_num>10</link_smear_num>
+        <link_smear_fact>0.0</link_smear_fact>
+        <link_smear_num>0</link_smear_num>
         <no_smear_dir>3</no_smear_dir>
       </LinkSmearing>
       <Displacement>
         <version>1</version>
-        <dir>3</dir>
-        <steps>3</steps>
+        <dir>2</dir>
+        <steps>1</steps>
         <DisplacementType>NONE</DisplacementType>
       </Displacement>
     </Source>
 
             <j_decay>3</j_decay>
-            <t_source>0</t_source>
+            <t_source>2</t_source>
           </Param>
           <NamedObject>
             <gauge_id>default_gauge_field</gauge_id>
@@ -589,7 +589,7 @@
           </pollp>
         </Observables>
         <Source_correlator>
-          <source_corr>12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</source_corr>
+          <source_corr>0 0 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</source_corr>
         </Source_correlator>
       </make_source>
     </elem>
@@ -602,7 +602,7 @@
             <qdp>1.44.0</qdp>
             <basePrecision>64</basePrecision>
           </code_version>
-          <run_date>23 Mar 18 16:02:55 CET</run_date>
+          <run_date>26 May 18 19:23:12 CEST</run_date>
           <Setgeom>
             <latt_size>4 4 4 32</latt_size>
             <logical_size>1 1 1 1</logical_size>
@@ -639,8 +639,8 @@
     </FermionAction>
 <InvertParam>
       <invType>CG_INVERTER</invType>
-      <RsdCG> 1e-3 </RsdCG>
-      <MaxCG> 100 </MaxCG>
+      <RsdCG> 1e-14 </RsdCG>
+      <MaxCG> 400 </MaxCG>
       <CloverParams>
         <Mass>-0.0743</Mass>
         <clovCoeffR>1.58932722549812</clovCoeffR>
@@ -652,7 +652,7 @@
           <nu>1.265</nu>
         </AnisoParam>
       </CloverParams>
-      <RsdTarget>1.0e-6</RsdTarget>
+      <RsdTarget>1.0e-8</RsdTarget>
       <Delta>0.1</Delta>
       <MaxIter>10000000</MaxIter>
       <AntiPeriodicT>true</AntiPeriodicT>
@@ -812,7 +812,7 @@
           </pollp>
         </Observables>
         <Source_file_info><make_source>
-      <id>580406575</id>
+      <id>585944592</id>
     </make_source>
 
         </Source_file_info>
@@ -824,28 +824,28 @@
           <version>1</version>
           <SourceType>POINT_SOURCE</SourceType>
           <j_decay>3</j_decay>
-          <t_srce>0 0 0 0</t_srce>
+          <t_srce>1 1 0 2</t_srce>
           <SmearingParam>
             <wvf_kind>GAUGE_INV_GAUSSIAN</wvf_kind>
-            <wvf_param>4</wvf_param>
-            <wvfIntPar>2</wvfIntPar>
+            <wvf_param>2.8284</wvf_param>
+            <wvfIntPar>20</wvfIntPar>
             <no_smear_dir>3</no_smear_dir>
           </SmearingParam>
           <LinkSmearing>
             <LinkSmearingType>STOUT_SMEAR</LinkSmearingType>
-            <link_smear_fact>0.08</link_smear_fact>
-            <link_smear_num>10</link_smear_num>
+            <link_smear_fact>0.0</link_smear_fact>
+            <link_smear_num>0</link_smear_num>
             <no_smear_dir>3</no_smear_dir>
           </LinkSmearing>
           <Displacement>
             <version>1</version>
-            <dir>3</dir>
-            <steps>3</steps>
+            <dir>2</dir>
+            <steps>1</steps>
             <DisplacementType>NONE</DisplacementType>
           </Displacement>
         </Source>
         <j_decay>3</j_decay>
-        <t_source>0</t_source>
+        <t_source>2</t_source>
       </PropSource>
       <Config_info>
         <Params>
@@ -956,87 +956,87 @@
 
         </Source_record_info>
         <Source_correlator>
-          <source_corr>12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</source_corr>
+          <source_corr>0 0 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</source_corr>
         </Source_correlator>
         <QuarkProp4>
           <Qprop>
             <color_source>0</color_source>
             <spin_source>0</spin_source>
-            <n_count>28</n_count>
-            <resid>0.00140514969513973</resid>
+            <n_count>168</n_count>
+            <resid>1.03841338484002e-14</resid>
           </Qprop>
           <Qprop>
             <color_source>0</color_source>
             <spin_source>1</spin_source>
-            <n_count>27</n_count>
-            <resid>0.00125248134772105</resid>
+            <n_count>168</n_count>
+            <resid>1.1883078025673e-14</resid>
           </Qprop>
           <Qprop>
             <color_source>0</color_source>
             <spin_source>2</spin_source>
-            <n_count>27</n_count>
-            <resid>0.00120559464290655</resid>
+            <n_count>167</n_count>
+            <resid>1.32191394405017e-14</resid>
           </Qprop>
           <Qprop>
             <color_source>0</color_source>
             <spin_source>3</spin_source>
-            <n_count>26</n_count>
-            <resid>0.00129732103067228</resid>
+            <n_count>168</n_count>
+            <resid>1.15060512714452e-14</resid>
           </Qprop>
           <Qprop>
             <color_source>1</color_source>
             <spin_source>0</spin_source>
-            <n_count>26</n_count>
-            <resid>0.00118148435408249</resid>
+            <n_count>167</n_count>
+            <resid>1.29955071011582e-14</resid>
           </Qprop>
           <Qprop>
             <color_source>1</color_source>
             <spin_source>1</spin_source>
-            <n_count>26</n_count>
-            <resid>0.00125738403905296</resid>
+            <n_count>168</n_count>
+            <resid>1.28496028497318e-14</resid>
           </Qprop>
           <Qprop>
             <color_source>1</color_source>
             <spin_source>2</spin_source>
-            <n_count>27</n_count>
-            <resid>0.00127251794686641</resid>
+            <n_count>166</n_count>
+            <resid>1.19599516869045e-14</resid>
           </Qprop>
           <Qprop>
             <color_source>1</color_source>
             <spin_source>3</spin_source>
-            <n_count>28</n_count>
-            <resid>0.00111065152815546</resid>
+            <n_count>168</n_count>
+            <resid>1.35519463718623e-14</resid>
           </Qprop>
           <Qprop>
             <color_source>2</color_source>
             <spin_source>0</spin_source>
-            <n_count>26</n_count>
-            <resid>0.00121063029775</resid>
+            <n_count>168</n_count>
+            <resid>1.32960951347524e-14</resid>
           </Qprop>
           <Qprop>
             <color_source>2</color_source>
             <spin_source>1</spin_source>
-            <n_count>27</n_count>
-            <resid>0.00140914435711546</resid>
+            <n_count>167</n_count>
+            <resid>1.09862176459612e-14</resid>
           </Qprop>
           <Qprop>
             <color_source>2</color_source>
             <spin_source>2</spin_source>
-            <n_count>26</n_count>
-            <resid>0.00146135763562295</resid>
+            <n_count>168</n_count>
+            <resid>1.2455467198407e-14</resid>
           </Qprop>
           <Qprop>
             <color_source>2</color_source>
             <spin_source>3</spin_source>
-            <n_count>27</n_count>
-            <resid>0.0011837751581145</resid>
+            <n_count>168</n_count>
+            <resid>1.35632751383892e-14</resid>
           </Qprop>
         </QuarkProp4>
         <Relaxation_Iterations>
-          <ncg_had>321</ncg_had>
+          <ncg_had>2011</ncg_had>
         </Relaxation_Iterations>
         <Prop_correlator>
-          <prop_corr>4.17227581943526 0.912219584222626 0.361151995000975 0.157910589464276 0.0721627237313305 0.0317999446165031 0.0147060545911884 0.00717763432586142 0.00364790110110863 0.00182120829820569 0.000877583053478407 0.00040878095694249 0.000197954720361934 9.1178662353251e-05 4.23401837148131e-05 2.35064868871265e-05 1.77589691417272e-05 2.184811410663e-05 3.82651794433673e-05 7.50767349904323e-05 0.00015235062802256 0.00030120861295648 0.000621485518167193 0.00122286408751303 0.00253801660407819 0.00574783313487458 0.0127555910697227 0.0298949742390348 0.0754009119264157 0.178918750590888 0.37836676527412 0.924756761620578</prop_corr>
+          <prop_corr>0.384595248685735 0.954100056558013 4.19990047778994 0.934637582078167 0.40930202307554 0.173233744550458 0.076974783720588 0.0391524321267896 0.019379317141152 0.00958460903024658 0.00479589148955149 0.00232233712848216 0.00110924600606743 0.000508317572918094 0.000238474489252897 0.0001226450916532 6.22413527015092e-05 3.55101084213107e-05 2.74830483121568e-05 3.28292391467919e-05 5.57645258993379e-05 0.000104385158285416 0.000207140886023789 0.000393872507409521 0.000815465462770258 0.00180620386966463 0.00383563240295468 0.00834163104747549 0.0182009348707114 0.0392236611263289 0.0816235854303012 0.172238281475733</prop_corr>
         </Prop_correlator>
       </propagator>
     </elem>
@@ -1201,7 +1201,7 @@
           </pollp>
         </Observables>
         <Prop_file_info><propagator>
-      <id>580406578</id>
+      <id>585944604</id>
     </propagator>
 
         </Prop_file_info>
@@ -1235,8 +1235,8 @@
         </FermionAction>
         <InvertParam>
           <invType>CG_INVERTER</invType>
-          <RsdCG> 1e-3 </RsdCG>
-          <MaxCG> 100 </MaxCG>
+          <RsdCG> 1e-14 </RsdCG>
+          <MaxCG> 400 </MaxCG>
           <CloverParams>
             <Mass>-0.0743</Mass>
             <clovCoeffR>1.58932722549812</clovCoeffR>
@@ -1248,7 +1248,7 @@
               <nu>1.265</nu>
             </AnisoParam>
           </CloverParams>
-          <RsdTarget>1.0e-6</RsdTarget>
+          <RsdTarget>1.0e-8</RsdTarget>
           <Delta>0.1</Delta>
           <MaxIter>10000000</MaxIter>
           <AntiPeriodicT>true</AntiPeriodicT>
@@ -1267,28 +1267,28 @@
           <version>1</version>
           <SourceType>POINT_SOURCE</SourceType>
           <j_decay>3</j_decay>
-          <t_srce>0 0 0 0</t_srce>
+          <t_srce>1 1 0 2</t_srce>
           <SmearingParam>
             <wvf_kind>GAUGE_INV_GAUSSIAN</wvf_kind>
-            <wvf_param>4</wvf_param>
-            <wvfIntPar>2</wvfIntPar>
+            <wvf_param>2.8284</wvf_param>
+            <wvfIntPar>20</wvfIntPar>
             <no_smear_dir>3</no_smear_dir>
           </SmearingParam>
           <LinkSmearing>
             <LinkSmearingType>STOUT_SMEAR</LinkSmearingType>
-            <link_smear_fact>0.08</link_smear_fact>
-            <link_smear_num>10</link_smear_num>
+            <link_smear_fact>0.0</link_smear_fact>
+            <link_smear_num>0</link_smear_num>
             <no_smear_dir>3</no_smear_dir>
           </LinkSmearing>
           <Displacement>
             <version>1</version>
-            <dir>3</dir>
-            <steps>3</steps>
+            <dir>2</dir>
+            <steps>1</steps>
             <DisplacementType>NONE</DisplacementType>
           </Displacement>
         </Source>
         <j_decay>3</j_decay>
-        <t_source>0</t_source>
+        <t_source>2</t_source>
       </PropSource>
       <Config_info>
         <Params>
@@ -1399,10 +1399,10 @@
 
         </Prop_record_info>
         <Forward_prop_correlator>
-          <forward_prop_corr>4.17227581943526 0.912219584222626 0.361151995000975 0.157910589464276 0.0721627237313305 0.0317999446165031 0.0147060545911884 0.00717763432586142 0.00364790110110863 0.00182120829820569 0.000877583053478407 0.00040878095694249 0.000197954720361934 9.1178662353251e-05 4.23401837148131e-05 2.35064868871265e-05 1.77589691417272e-05 2.184811410663e-05 3.82651794433673e-05 7.50767349904323e-05 0.00015235062802256 0.00030120861295648 0.000621485518167193 0.00122286408751303 0.00253801660407819 0.00574783313487458 0.0127555910697227 0.0298949742390348 0.0754009119264157 0.178918750590888 0.37836676527412 0.924756761620578</forward_prop_corr>
+          <forward_prop_corr>0.384595248685735 0.954100056558013 4.19990047778994 0.934637582078167 0.40930202307554 0.173233744550458 0.076974783720588 0.0391524321267896 0.019379317141152 0.00958460903024658 0.00479589148955149 0.00232233712848216 0.00110924600606743 0.000508317572918094 0.000238474489252897 0.0001226450916532 6.22413527015092e-05 3.55101084213107e-05 2.74830483121568e-05 3.28292391467919e-05 5.57645258993379e-05 0.000104385158285416 0.000207140886023789 0.000393872507409521 0.000815465462770258 0.00180620386966463 0.00383563240295468 0.00834163104747549 0.0182009348707114 0.0392236611263289 0.0816235854303012 0.172238281475733</forward_prop_corr>
         </Forward_prop_correlator>
         <SinkSmearedProp_correlator>
-          <sink_smeared_prop_corr>4.17227581943526 0.912219584222626 0.361151995000975 0.157910589464276 0.0721627237313305 0.0317999446165031 0.0147060545911884 0.00717763432586142 0.00364790110110863 0.00182120829820569 0.000877583053478407 0.00040878095694249 0.000197954720361934 9.1178662353251e-05 4.23401837148131e-05 2.35064868871265e-05 1.77589691417272e-05 2.184811410663e-05 3.82651794433673e-05 7.50767349904323e-05 0.00015235062802256 0.00030120861295648 0.000621485518167193 0.00122286408751303 0.00253801660407819 0.00574783313487458 0.0127555910697227 0.0298949742390348 0.0754009119264157 0.178918750590888 0.37836676527412 0.924756761620578</sink_smeared_prop_corr>
+          <sink_smeared_prop_corr>0.384595248685735 0.954100056558013 4.19990047778994 0.934637582078167 0.40930202307554 0.173233744550458 0.076974783720588 0.0391524321267896 0.019379317141152 0.00958460903024658 0.00479589148955149 0.00232233712848216 0.00110924600606743 0.000508317572918094 0.000238474489252897 0.0001226450916532 6.22413527015092e-05 3.55101084213107e-05 2.74830483121568e-05 3.28292391467919e-05 5.57645258993379e-05 0.000104385158285416 0.000207140886023789 0.000393872507409521 0.000815465462770258 0.00180620386966463 0.00383563240295468 0.00834163104747549 0.0182009348707114 0.0392236611263289 0.0816235854303012 0.172238281475733</sink_smeared_prop_corr>
         </SinkSmearedProp_correlator>
       </sink_smear>
     </elem>
@@ -1421,7 +1421,7 @@
             <qdp>1.44.0</qdp>
             <basePrecision>64</basePrecision>
           </code_version>
-          <run_date>23 Mar 18 16:03:01 CET</run_date>
+          <run_date>26 May 18 19:23:32 CEST</run_date>
           <Setgeom>
             <latt_size>4 4 4 32</latt_size>
             <logical_size>1 1 1 1</logical_size>

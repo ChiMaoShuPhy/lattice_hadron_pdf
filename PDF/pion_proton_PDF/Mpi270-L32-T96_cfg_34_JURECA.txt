@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<chroma>
+  <Param>
+    <InlineMeasurements>
+      <elem>
+        <Name>MAKE_SOURCE</Name>
+        <Frequency>1</Frequency>
+        <Param>
+           <Source>
+            <Source_Smearing>
+              <SourceType>POINT_SOURCE</SourceType>
+              <j_decay>3</j_decay>
+              <Sobol_src_seed>3560</Sobol_src_seed>
+              <Sobol_src_Lngth>4</Sobol_src_Lngth>
+            </Source_Smearing>
+          </Source>
+          <Sink>
+            <Sink_Smearing>
+              <SinkType>POINT_SINK</SinkType>
+              <j_decay>3</j_decay>
+            </Sink_Smearing>
+          </Sink>
+        </Param>
+      </elem>
+      <elem>
+        <propagator>
+          <Name>PROPAGATOR</Name>
+          <Frequency>1</Frequency>
+          <Param>
+            <quarkSpinType>FULL</quarkSpinType>
+            <obsvP>false</obsvP>
+            <numRetries>1</numRetries>
+            <FermionAction>
+              <FermAct>CLOVER</FermAct>
+              <Mass>-0.1265</Mass>
+              <clovCoeff>1.0</clovCoeff>
+              <FermState>
+                <Name>STOUT_FERM_STATE</Name>
+                <rho>0.14</rho>
+                <n_smear>2</n_smear>
+                <orthog_dir>3</orthog_dir>
+                <FermionBC>
+                  <FermBC>SIMPLE_FERMBC</FermBC>
+                  <boundary>1 1 1 -1</boundary>
+                </FermionBC>
+              </FermState>
+            </FermionAction>
+            <InvertParam>
+              <invType>CG_INVERTER</invType>
+              <RsdCG> 1e-9 </RsdCG>
+              <MaxCG> 300 </MaxCG>
+              <CloverParams>
+                <Mass>-0.1265</Mass>
+                <clovCoeff>1.0</clovCoeff>
+              </CloverParams>
+              <RsdTarget>1.0e-8</RsdTarget>
+              <Delta>0.1</Delta>
+              <MaxIter>10000000</MaxIter>
+              <AntiPeriodicT>true</AntiPeriodicT>
+              <SolverType>BICGSTAB</SolverType>
+              <Verbose>false</Verbose>
+              <AsymmetricLinop>false</AsymmetricLinop>
+               <AxialGaugeFix>false</AxialGaugeFix>
+            </InvertParam>
+          </Param>
+        </propagator>
+      </elem>
+    </InlineMeasurements>
+    <nrow>32 32 32 96</nrow>
+  </Param>
+  <Cfg>
+    <cfg_type>SZINQIO</cfg_type>
+    <cfg_file>../../Cnfgrtns/0120-Mpi270-L32-T96/cfg/Mpi270-L32-T96_cfg_1034.lime</cfg_file>
+  </Cfg>
+</chroma>

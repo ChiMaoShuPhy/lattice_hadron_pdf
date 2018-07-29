@@ -479,6 +479,9 @@ multi1d<DComplex> Nucleon_system::UDD_permuted(int alpha, int a, int beta, int b
       }else{
 	tr1=t1+srce_pt[3];
 	answer[t1] = temp[tr1];
+      
+    return temp;  
+      
       }
   } else {
     answer = temp;

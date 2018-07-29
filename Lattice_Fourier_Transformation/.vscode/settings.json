@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "*.cu": "cpp",
+        "*.cc": "cpp",
+        "array": "cpp",
+        "typeinfo": "cpp",
+        "iterator": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "ostream": "cpp",
+        "complex": "cpp",
+        "__locale": "cpp",
+        "__string": "cpp",
+        "iostream": "cpp"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "files.associations": {
+        "*.cu": "cpp",
+        "*.cc": "cpp",
+        "__config": "cpp",
+        "__nullptr": "cpp",
+        "exception": "cpp",
+        "initializer_list": "cpp",
+        "new": "cpp",
+        "stdexcept": "cpp",
+        "typeinfo": "cpp",
+        "algorithm": "cpp",
+        "__split_buffer": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "__bit_reference": "cpp",
+        "iterator": "cpp",
+        "string_view": "cpp",
+        "fstream": "cpp",
+        "locale": "cpp",
+        "iosfwd": "cpp"
+    }
+}
